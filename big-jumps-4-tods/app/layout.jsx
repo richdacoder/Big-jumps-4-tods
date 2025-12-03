@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
         <header className="site-header">
           <div className="header-inner">
             <h1 className="logo">Big Jumps 4 Tods</h1>
+            <h2><a className="hide" href="/packages" > packages </a></h2>
 
             {/* Hamburger button visible on mobile */}
             <button className="hamburger" onClick={toggleMenu}>
@@ -28,9 +29,13 @@ export default function RootLayout({ children }) {
             <a href="/">Home</a>
             <a href="/gallery">Gallery</a>
             <a href="/book">Booking</a>
+            <a className="hide" href="/packages">Packages</a>
             <a href="/about-us">About Us</a>
             <a href="/contact-us">Contact Us</a>
+
           </nav>
+
+
         </header>
 
         {/* Main content */}
