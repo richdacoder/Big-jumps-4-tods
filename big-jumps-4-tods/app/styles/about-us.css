@@ -1,0 +1,119 @@
+.about-page {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Hero section */
+.hero-section {
+  text-align: center;
+  background: #ffefc2;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  color: #ff7f50;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+/* Content section */
+.content-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.content-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.content-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.content-text h2 {
+  color: #ff7f50;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.content-text ul {
+  list-style: disc inside;
+  padding-left: 0;
+  color: #555;
+}
+
+.content-text li {
+  margin-bottom: 0.8rem;
+}
+
+/* Mission banner */
+.mission-banner {
+  background: #ff7f50;
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mission-banner h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.mission-banner p {
+  font-size: 1.3rem;
+}
+
+/* ------------------- */
+/* Responsive Styles */
+/* ------------------- */
+@media (max-width: 1024px) {
+  .content-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content-image img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+  .mission-banner h2 {
+    font-size: 2rem;
+  }
+  .mission-banner p {
+    font-size: 1.1rem;
+  }
+}
