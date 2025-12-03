@@ -2,7 +2,7 @@
 'use client'; // needed for interactivity
 
 import { useState } from 'react';
-import '../public/styles/globals.css';
+import './styles/globals.css';
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
             <a href="/gallery">Gallery</a>
             <a href="/booking">Booking</a>
             <a href="/about">About Us</a>
-            <a href="/contacts">Contacts</a>
+            <a href="/contact-us">Contact Us</a>
           </nav>
         </header>
 
