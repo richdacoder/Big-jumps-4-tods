@@ -1,0 +1,66 @@
+/* app/styles/contacts.css */
+
+/* Container */
+.contacts-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* Heading */
+.contacts-page h2 {
+  font-size: 2rem;
+  color: #ff7f50;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.contacts-page p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Contact list */
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+/* Links */
+.contact-list a {
+  color: #ff7f50;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-list a:hover {
+  color: #e06641; /* slightly darker coral */
+}
+
+/* Responsive for tablets */
+@media (max-width: 768px) {
+  .contacts-page h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-list li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+  .contacts-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-list li {
+    font-size: 0.9rem;
+  }
+}
