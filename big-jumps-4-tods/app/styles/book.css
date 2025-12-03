@@ -1,0 +1,103 @@
+.booking-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.booking-page h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #ff7f50;
+  margin-bottom: 2rem;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: #fff8e1;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  max-width: 600px; /* center container */
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column; /* labels on top for normal inputs */
+  gap: 0.3rem;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+label {
+  font-weight: bold;
+  color: #ff7f50;
+  font-size: 0.95rem;
+}
+
+.submit-btn {
+  background-color: #ff7f50;
+  color: white;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e06c3e;
+}
+
+/* ===== Party time row horizontal with label on top ===== */
+.party-time {
+  display: flex;
+  flex-direction: column; /* label on top */
+  gap: 0.3rem;
+}
+
+.time-selects {
+  display: flex;
+  gap: 0.5rem; /* hour, minute, ampm side by side */
+}
+
+.time-selects select {
+  flex: 1 1 auto;
+  min-width: 60px; /* avoid stretching too much */
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .booking-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .time-selects select {
+    min-width: 50px;
+  }
+}
