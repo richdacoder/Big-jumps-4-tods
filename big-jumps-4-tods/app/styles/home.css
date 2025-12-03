@@ -1,0 +1,42 @@
+.home-hero {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/your-image.jpg') center/cover no-repeat;
+  padding: 40px 20px;
+}
+
+.home-content {
+  text-align: center;
+  color: #ff4d4d;
+  max-width: 700px;
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.home-content p {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-book {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #ff4d4d;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-book:hover {
+  background: #e63b3b;
+}
