@@ -145,3 +145,30 @@ a {
 .hero .cta-button:hover {
   background-color: #ffe4d9;
 }
+
+/* ===== Packages H2 / Navbar hide/show ===== */
+.hide {
+  display: inline; /* default: visible */
+}
+
+@media (max-width: 768px) {
+  /* On mobile: hide H2, show navbar link */
+  h2 .hide {
+    display: none;
+  }
+
+  nav a.hide {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 769px) {
+  /* On desktop: show H2, hide navbar link */
+  h2 .hide {
+    display: inline;
+  }
+
+  nav a.hide {
+    display: none;
+  }
+}

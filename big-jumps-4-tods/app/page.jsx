@@ -15,7 +15,7 @@ export default function HomePage() {
 
           <p>Softplay For Children Ages 0–6 Years Old</p>
 
-          <a href="/booking" className="btn-book">
+          <a href="/book" className="btn-book">
             Book Now
           </a>
         </div>
