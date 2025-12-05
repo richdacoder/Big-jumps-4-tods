@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         {/* Header */}
         <header className="site-header">
           <div className="header-inner">
-            <h1 className="logo">Big Jumps 4 Tods</h1>
+            <h1 className="logo"><a href="/">Big Jumps 4 Tods</a></h1>
             <h2><a className="hide" href="/packages" > packages </a></h2>
 
             {/* Hamburger button visible on mobile */}

@@ -1,0 +1,47 @@
+.packages-page {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.packages-title {
+  font-size: 2.2rem;
+  color: #ff7f50;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+/* Grid layout */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.package-card {
+  background: #fff8e1;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.package-name {
+  color: #ff7f50;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.package-desc {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.package-price {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
