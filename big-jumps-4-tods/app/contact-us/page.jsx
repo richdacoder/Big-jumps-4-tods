@@ -15,10 +15,10 @@ export default function ContactsPage() {
           <strong>Email:</strong> <a href="mailto:info@bigjumps4tods.com">info@bigjumps4tods.com</a>
         </li>
         <li>
-          <strong>Instagram:</strong> <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">@yourhandle</a>
+          <strong>Instagram:</strong> <a href="https://www.instagram.com/bigjumps4tods?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">@bigjumps4tods</a>
         </li>
         <li>
-          <strong>Facebook:</strong> <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer">Big Jumps 4 Tods</a>
+          <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=100082738546816" target="_blank" rel="noopener noreferrer">Big Jumps 4 Tods</a>
         </li>
       </ul>
     </div>
