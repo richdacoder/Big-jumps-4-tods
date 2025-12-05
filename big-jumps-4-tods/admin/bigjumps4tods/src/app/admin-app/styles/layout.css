@@ -1,0 +1,174 @@
+/* Reset / base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fffaf5;
+  color: #333;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.site-header {
+  background-color: #ff7f50; /* coral / fun color */
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Navbar links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #fff;
+  color: #ff7f50;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* hide by default */
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .nav-links.open {
+    display: flex; /* show when open */
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+  }
+}
+
+/* Main content */
+.site-main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #ff7f50;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Hero section (optional if used) */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-image: url('/your-hero-image.jpg'); /* replace with your image in public/ */
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero .cta-button {
+  background-color: #fff;
+  color: #ff7f50;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero .cta-button:hover {
+  background-color: #ffe4d9;
+}
+
+/* ===== Packages H2 / Navbar hide/show ===== */
+.hide {
+  display: inline; /* default: visible */
+}
+
+@media (max-width: 768px) {
+  /* On mobile: hide H2, show navbar link */
+  h2 .hide {
+    display: none;
+  }
+
+  nav a.hide {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 769px) {
+  /* On desktop: show H2, hide navbar link */
+  h2 .hide {
+    display: inline;
+  }
+
+  nav a.hide {
+    display: none;
+  }
+}
