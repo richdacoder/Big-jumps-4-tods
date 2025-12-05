@@ -8,13 +8,13 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Big Jumps 4 Tods Admin</title>
+        <title> Big Jumps 4 Tods Admin</title>
       </head>
       <body>
         {/* Header */}
         <header className="site-header">
           <div className="header-inner">
-            <div className="logo">Big Jumps 4 Tods Admin</div>
+            <div className="logo"><a href="/">Big Jumps 4 Tods Admin</a></div>
             <button className="hamburger" onClick={() => setNavOpen(!navOpen)}>
               ☰
             </button>
