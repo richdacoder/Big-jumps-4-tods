@@ -35,8 +35,10 @@ a {
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 3rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 /* Hamburger button */
@@ -170,5 +172,20 @@ a {
 
   nav a.hide {
     display: none;
+  }
+}
+
+/* ===== Responsive Logo ===== */
+.logo img,
+.logo-image {
+  width: 100%;
+  height: auto;
+  max-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .logo img,
+  .logo-image {
+    max-width: 70px;
   }
 }

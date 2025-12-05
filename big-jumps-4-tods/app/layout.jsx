@@ -3,6 +3,8 @@
 
 import { useState } from 'react';
 import './styles/globals.css';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,8 +17,16 @@ export default function RootLayout({ children }) {
         {/* Header */}
         <header className="site-header">
           <div className="header-inner">
-            <h1 className="logo"><a href="/">Big Jumps 4 Tods</a></h1>
-            <h2><a className="hide" href="/packages" > packages </a></h2>
+          <Link href="/" className="logo">
+              <Image
+                src="/images/IMG_0442_2-removebg-preview.png"
+                alt="Big Jumps 4 Tods Logo"
+                width={200}
+                height={200}
+              />
+            </Link>
+            {/* <h1 className="logo"><a href="/">Big Jumps 4 Tods</a></h1> */}
+            <h2><a className="hide" href="/packages" > Packages </a></h2>
 
             {/* Hamburger button visible on mobile */}
             <button className="hamburger" onClick={toggleMenu}>

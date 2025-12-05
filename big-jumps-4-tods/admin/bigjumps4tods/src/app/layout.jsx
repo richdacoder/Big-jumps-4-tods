@@ -1,6 +1,9 @@
 "use client";
 import "./styles/globals.css";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
 
 export default function Layout({ children }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -14,7 +17,14 @@ export default function Layout({ children }) {
         {/* Header */}
         <header className="site-header">
           <div className="header-inner">
-            <div className="logo"><a href="/">Big Jumps 4 Tods Admin</a></div>
+          <Link href="/" className="logo">
+              <Image
+                src="/images/IMG_0442_2-removebg-preview.png"
+                alt="Big Jumps 4 Tods Logo"
+                width={200}
+                height={200}
+              />
+            </Link>
             <button className="hamburger" onClick={() => setNavOpen(!navOpen)}>
               ☰
             </button>
