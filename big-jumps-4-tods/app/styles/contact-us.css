@@ -1,11 +1,12 @@
-/* app/styles/contacts.css */
-
 /* Container */
 .contacts-page {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: pageFadeIn 1s forwards;
 }
 
 /* Heading */
@@ -13,18 +14,31 @@
   font-size: 2rem;
   color: #ff7f50;
   margin-bottom: 1rem;
+  font-family: 'Arial Black', Arial, sans-serif; /* same bold fun font as gallery */
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: titleSlideIn 1s forwards;
+  animation-delay: 0.3s;
 }
 
 /* Paragraph */
 .contacts-page p {
   margin-bottom: 2rem;
   font-size: 1.1rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: paragraphSlideIn 1s forwards;
+  animation-delay: 0.6s;
 }
 
 /* Contact list */
 .contact-list {
   list-style: none;
   padding: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: listSlideIn 1s forwards;
+  animation-delay: 0.9s;
 }
 
 .contact-list li {
@@ -62,5 +76,34 @@
 
   .contact-list li {
     font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes pageFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes paragraphSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes listSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

@@ -9,8 +9,9 @@
 
 /* Title */
 .gallery-page h2 {
+  font-weight: bold;
+  font-family: 'Arial Black', Arial, sans-serif;
   font-size: 3rem;
-  font-weight: 800;
   margin-bottom: 2rem;
   color: #ff7f50;
   text-shadow: 2px 2px 0 #ffd2c2;
