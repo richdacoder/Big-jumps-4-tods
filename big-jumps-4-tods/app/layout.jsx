@@ -13,6 +13,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Baloo+2:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
       <body>
         {/* Header */}
         <header className="site-header">
