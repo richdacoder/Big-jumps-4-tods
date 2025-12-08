@@ -1,0 +1,23 @@
+/* ==== Event Button Styling ==== */
+.event-button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #fff3f0;   /* matches your .request-item color */
+  border: none;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.25s ease, transform 0.1s ease;
+  margin-top: 1rem;
+}
+
+.event-button:hover {
+  background-color: #ffe1d9;
+  transform: translateY(-1px);
+}
+
+.event-button:active {
+  transform: translateY(1px);
+}

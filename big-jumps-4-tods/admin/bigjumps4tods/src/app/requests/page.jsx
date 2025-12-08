@@ -1,23 +1,31 @@
 "use client";
-import "../styles/requests.css"; // import the separate CSS file
+import "../styles/requests.css";
 
 export default function RequestsPage() {
   return (
-      <div className="requests-page">
-        <h1>Requests</h1>
+    <div className="requests-page">
+      <h1>Requests</h1>
 
-        <section className="site-main">
-          {/* Example request items */}
-          <div className="request-item">
-            <p>Request 1: John Doe - Haircut</p>
-          </div>
-          <div className="request-item">
-            <p>Request 2: Jane Smith - Hair Coloring</p>
-          </div>
-          <div className="request-item">
-            <p>Request 3: Mike Johnson - Kids Haircut</p>
-          </div>
-        </section>
-      </div>
+      <section className="site-main">
+        {/* Example request items */}
+        <div className="request-item">
+          <button className="request-button">
+            Request Date: John Doe for Date of schedule
+          </button>
+        </div>
+
+        <div className="request-item">
+          <button className="request-button">
+            Request Date: Jane Smith for Date of schedule
+          </button>
+        </div>
+
+        <div className="request-item">
+          <button className="request-button">
+            Request Date: Mike Johnson for Date of schedule
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }

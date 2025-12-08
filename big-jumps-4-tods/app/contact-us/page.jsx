@@ -9,7 +9,7 @@ export default function ContactsPage() {
 
       <ul className="contact-list">
         <li>
-          <strong>Phone:</strong> <a href="tel:+1234567890">‭(203) 843-7531‬</a>
+          <strong>Phone:</strong> <a href="tel:+12038437531">‭(203) 843-7531‬</a>
         </li>
         <li>
           <strong>Email:</strong> <a href="mailto:Bigjumps4tods@gmail.com">Bigjumps4tods@gmail.com </a>
