@@ -1,21 +1,21 @@
 # Use official Node.js LTS image
 FROM node:20-alpine
 
-# Set working directory
-WORKDIR /app
+# Set working directory inside container
+WORKDIR /big-jumps-4-tods
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install --frozen-lockfile
 
-# Copy the rest of the app
+# Copy the rest of the project files
 COPY . .
 
-# Build the Next.js app
+# Build Next.js app
 RUN npm run build
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 5432
 
 # Start the app
 CMD ["npm", "start"]
