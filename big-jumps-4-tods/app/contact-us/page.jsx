@@ -9,10 +9,10 @@ export default function ContactsPage() {
 
       <ul className="contact-list">
         <li>
-          <strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a>
+          <strong>Phone:</strong> <a href="tel:+1234567890">‭(203) 843-7531‬</a>
         </li>
         <li>
-          <strong>Email:</strong> <a href="mailto:info@bigjumps4tods.com">info@bigjumps4tods.com</a>
+          <strong>Email:</strong> <a href="mailto:Bigjumps4tods@gmail.com">Bigjumps4tods@gmail.com </a>
         </li>
         <li>
           <strong>Instagram:</strong> <a href="https://www.instagram.com/bigjumps4tods?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">@bigjumps4tods</a>

@@ -1,28 +1,8 @@
-// // # Dependencies
-// node_modules
-// npm-debug.log
-// yarn-error.log
-// pnpm-debug.log
-
-// // # Next.js build output
-// .next
-// out
-
-// // // # Env files
-// // .env
-// .env.local
-// .env.development
-// .env.test
-// .env.production
-
-// // # macOS / system files
-// .DS_Store
-// .idea
-// .vscode
-
-// // # Logs
-// logs
-// // *.log
-
-// // // # Optional
-// // *.tgz
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.env
+.vscode
