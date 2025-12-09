@@ -61,6 +61,11 @@ export default function BookingPage() {
         </div>
 
         <div className="form-row">
+          <label>Party Date *</label>
+          <input type="date" name="partyDate" value={formData.partyDate} onChange={handleChange} required />
+        </div>
+
+        <div className="form-row">
           <label>Message *</label>
           <textarea name="message" value={formData.message} onChange={handleChange} required />
         </div>
@@ -72,11 +77,6 @@ export default function BookingPage() {
         <div className="form-row">
           <label>Address Line 2</label>
           <input type="text" name="addressLine2" value={formData.addressLine2} onChange={handleChange} />
-        </div>
-
-        <div className="form-row">
-          <label>Party Date *</label>
-          <input type="date" name="partyDate" value={formData.partyDate} onChange={handleChange} required />
         </div>
 
         <div className="form-row party-time">
