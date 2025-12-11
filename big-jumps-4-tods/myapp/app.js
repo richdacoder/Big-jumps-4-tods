@@ -1,47 +1,41 @@
-const express = require("express");
-const cors = require("cors");
-
-const requestsRouter = require("./routes/requests");
-const bookingsRouter = require("./routes/bookings");
-
+const createError = require('http-errors');
+const express = require('express');
+const cors = require('cors');
 const app = express();
 
-// CORS
+// CORS - Allow only your frontend
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
 );
 
-app.options("*", cors());
+// Middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: false }));
 
-// Parse JSON
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true }));
+// Only 1 route
+// const appointmentRouter = require('../routes/appointments');
+// app.use('/appointments', appointmentRouter);
 
-// API Routes
-app.use("/requests", requestsRouter);
-app.use("/bookings", bookingsRouter);
-
-// Catch 404
-app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
+// 404 handler
+app.use((req, res, next) => {
+  next(createError(404));
 });
 
-// Global Error Handler
+// Error handler
 app.use((err, req, res, next) => {
-  console.error("Server Error:", err);
   res.status(err.status || 500).json({
-    error: err.message || "Internal Server Error",
+    error: err.message,
   });
 });
 
-// Server Start
+// Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`✅ API server running at http://localhost:${PORT}`);
+  console.log(`🚀 API running at http://localhost:${PORT}`);
 });
 
 module.exports = app;

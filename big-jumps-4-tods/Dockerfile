@@ -11,11 +11,8 @@ RUN npm install --frozen-lockfile
 # Copy the rest of the project files
 COPY . .
 
-# Build Next.js app
-RUN npm run build
+# Expose port 5000 (matches Express PORT)
+EXPOSE 5000
 
-# Expose port 3000
-EXPOSE 5432
-
-# Start the app
-CMD ["npm", "start"]
+# Start Express app
+CMD ["node", "myapp/app.js"]

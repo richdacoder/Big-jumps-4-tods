@@ -1,0 +1,38 @@
+services:
+  postgres-db:
+    image: postgres
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5050:5000"
+    depends_on:
+      - postgres-db
+    networks:
+      - app-net
+
+networks:
+  app-net:
+
+volumes:
+  postgres_data:
