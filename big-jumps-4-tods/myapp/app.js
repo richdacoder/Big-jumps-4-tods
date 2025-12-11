@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const requestRouter = require('../routes/request');
 
 // CORS - Allow only your frontend
 app.use(
@@ -16,9 +17,7 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
 
-// Only 1 route
-// const appointmentRouter = require('../routes/appointments');
-// app.use('/appointments', appointmentRouter);
+app.use('/requests', requestRouter);
 
 // 404 handler
 app.use((req, res, next) => {
