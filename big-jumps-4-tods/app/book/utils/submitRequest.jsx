@@ -1,0 +1,14 @@
+export const submitRequest = async (formData) => {
+  const res = await fetch('/api/requests', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw errorData;
+  }
+
+  return res.json();
+};
