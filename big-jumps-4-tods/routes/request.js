@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knexfile');
-
 console.log('conneting requests');
 
 router.post('/', async (req, res, next) => {
