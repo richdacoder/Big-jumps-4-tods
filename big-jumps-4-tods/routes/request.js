@@ -1,12 +1,14 @@
 const express = require('express');
+const db = require('../db/db.js'); // your knex instance
 const router = express.Router();
-const knex = require('../knexfile');
-console.log('conneting requests');
+
+console.log('connecting requests');
 
 router.post('/', async (req, res, next) => {
   try {
     const data = req.body;
     console.log(data);
+
     const required = [
       'first_name',
       'last_name',
@@ -19,16 +21,14 @@ router.post('/', async (req, res, next) => {
       'package'
     ];
 
-    const missing = required.filter((f) => !data[f]);
+    const missing = required.filter(f => !data[f]);
     if (missing.length) {
       return res.status(400).json({
         error: `Missing required fields: ${missing.join(', ')}`
       });
     }
 
-    const newRequest = await knex('requests')
-      .insert(data)
-      .returning('*');
+    const newRequest = await db('requests').insert(data).returning('*');
 
     res.status(201).json(newRequest[0]);
   } catch (err) {
@@ -36,4 +36,5 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+// ✅ Export the router correctly
 module.exports = router;

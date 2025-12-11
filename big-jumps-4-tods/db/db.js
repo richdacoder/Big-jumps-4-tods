@@ -1,4 +1,6 @@
-import { knex } from 'knex';
-import knexfile from '../knexfile.js';
+const knex = require('knex');
+const knexfile = require('../knexfile.js');
 
-export const db = knex(knexfile.docker);  // connect using the "docker" config
+const db = knex(knexfile.docker);
+
+module.exports = db;
