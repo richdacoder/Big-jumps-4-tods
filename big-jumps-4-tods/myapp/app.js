@@ -4,6 +4,9 @@ const cors = require('cors');
 const app = express();
 const requestRouter = require('../routes/request');
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 // CORS - Allow only your frontend
 app.use(
   cors({
