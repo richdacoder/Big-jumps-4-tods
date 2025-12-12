@@ -28,9 +28,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5050:5000"
-    volumes:
-      - ./big-jumps-4-tods-backend:/big-jumps-4-tods-backend
-      - /big-jumps-4-tods-backend/node_modules
     depends_on:
       - postgres-db
     networks:
@@ -43,9 +40,6 @@ services:
     container_name: frontend
     ports:
       - "3000:3000"
-    volumes:
-      - ./big-jumps-4-tods-frontend:/big-jumps-4-tods-frontend
-      - /big-jumps-4-tods-frontend/node_modules
     depends_on:
       - backend
     networks:
