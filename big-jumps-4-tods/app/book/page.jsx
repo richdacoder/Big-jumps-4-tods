@@ -34,7 +34,7 @@ export default function BookingPage() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+console.log(initialState)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

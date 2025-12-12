@@ -20,7 +20,7 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/requests', requestRouter);
+app.use('/api', requestRouter);
 
 // 404 handler
 app.use((req, res, next) => {
