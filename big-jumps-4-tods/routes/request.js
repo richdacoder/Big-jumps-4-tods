@@ -4,7 +4,7 @@ const router = express.Router();
 
 console.log('connecting requests');
 
-router.post('/', async (req, res, next) => {
+router.post('/requests', async (req, res, next) => {
   try {
     const data = req.body;
     console.log(data);
