@@ -10,7 +10,7 @@ app.get('/health', (req, res) => {
 // CORS - Allow only your frontend
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
