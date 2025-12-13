@@ -1,7 +1,9 @@
 export const submitRequest = async (formData) => {
-  const res = await fetch('/api/requests', {
+  const res = await fetch('http://localhost:3001/api/requests', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(formData)
   });
 
@@ -9,6 +11,6 @@ export const submitRequest = async (formData) => {
     const errorData = await res.json();
     throw errorData;
   }
+return res.json();
 
-  return res.json();
 };
