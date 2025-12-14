@@ -1,5 +1,5 @@
 export const submitRequest = async (formData) => {
-  const res = await fetch('http://localhost:3001/api/requests', {
+  const res = await fetch('http://localhost:3001/api/request', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

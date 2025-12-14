@@ -6,8 +6,32 @@
   font-size: 1rem;
   text-align: left;
   cursor: pointer;
+
+  /* ✅ ADD: layout for left / middle / right */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 1rem;
 }
 
 .request-button:hover {
   background-color: #ffe1d9; /* light hover */
+}
+
+/* ✅ ADD: alignment helpers */
+.request-left {
+  text-align: left;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.request-middle {
+  text-align: center;
+  font-weight: 600;
+}
+
+.request-right {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #555;
 }
