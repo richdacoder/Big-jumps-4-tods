@@ -25,23 +25,23 @@ router.get('/requests', async (req, res, next) => {
  * ✅ GET single request by ID
  * GET /api/requests/:id
  */
-// router.get('/requests/:id', async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
+router.get('/requests/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-//     const request = await db('requests')
-//       .where({ id })
-//       .first();
+    const request = await db('requests')
+      .where({ id })
+      .first();
 
-//     if (!request) {
-//       return res.status(404).json({ error: 'Request not found' });
-//     }
+    if (!request) {
+      return res.status(404).json({ error: 'Request not found' });
+    }
 
-//     res.json(request);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+    res.json(request);
+  } catch (err) {
+    next(err);
+  }
+});
 
 /**
  * ✅ POST create request
