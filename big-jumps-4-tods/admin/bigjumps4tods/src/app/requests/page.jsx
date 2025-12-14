@@ -11,7 +11,7 @@ export default function RequestsPage() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/requests");
+        const res = await fetch("http://localhost:3002/api/requests");
 
         if (!res.ok) {
           throw new Error("Failed to fetch requests");

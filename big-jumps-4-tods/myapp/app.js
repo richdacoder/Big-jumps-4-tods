@@ -12,6 +12,7 @@ const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 
 app.use(cors({
   origin: function(origin, callback){
+    console.log(origin);
     if(!origin) return callback(null, true); // server-to-server or Postman
     if(allowedOrigins.includes(origin)){
       callback(null, true);
@@ -41,7 +42,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 API running at http://localhost:${PORT}`);
 });
