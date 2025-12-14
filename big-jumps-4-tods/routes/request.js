@@ -14,8 +14,8 @@ router.get('/requests', async (req, res, next) => {
     const requests = await db('requests')
       .select('*')
       .orderBy('created_at', 'desc');
-    const resJson = res.json(requests);
-    console.log('request here', resJson);
+     res.json(requests);
+    console.log('request here', requests );
   } catch (err) {
     next(err);
   }
