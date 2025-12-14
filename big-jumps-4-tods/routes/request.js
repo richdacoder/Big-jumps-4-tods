@@ -1,13 +1,57 @@
 const express = require('express');
 const db = require('../db/db.js'); // your knex instance
 const router = express.Router();
+
 console.log('connecting requests 1');
 
-router.post('/requests', async (req, res, next) => {
+/**
+ * ✅ GET all requests
+ * GET /api/requests
+ */
+router.get('/requests', async (req, res, next) => {
+  console.log(res);
+  try {
+    const requests = await db('requests')
+      .select('*')
+      .orderBy('created_at', 'desc');
+    const resJson = res.json(requests);
+    console.log('request here', resJson);
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * ✅ GET single request by ID
+ * GET /api/requests/:id
+ */
+// router.get('/requests/:id', async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+
+//     const request = await db('requests')
+//       .where({ id })
+//       .first();
+
+//     if (!request) {
+//       return res.status(404).json({ error: 'Request not found' });
+//     }
+
+//     res.json(request);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+/**
+ * ✅ POST create request
+ * POST /api/requests
+ */
+router.post('/request', async (req, res, next) => {
   try {
     const data = req.body;
 
-    // Normalize camelCase frontend keys → snake_case backend keys
+    // Normalize camelCase frontend → snake_case backend
     const normalizedData = {
       first_name: data.firstName,
       last_name: data.lastName,
@@ -15,7 +59,6 @@ router.post('/requests', async (req, res, next) => {
       email: data.email,
       party_date: data.partyDate,
       party_address: data.partyAddress,
-      // ✅ FIXED: convert to Date object including partyDate
       party_start_time:
         data.startHour && data.startMinute && data.startAMPM
           ? new Date(`${data.partyDate} ${data.startHour}:${data.startMinute} ${data.startAMPM}`)
@@ -43,18 +86,11 @@ router.post('/requests', async (req, res, next) => {
       'package'
     ];
 
-    console.log("before missing", normalizedData);
-
-    const missing = required.filter(f => {
-      console.log('filter', f, 'value:', normalizedData[f]);
-      return (
-        normalizedData[f] === undefined ||
-        normalizedData[f] === null ||
-        normalizedData[f] === ''
-      );
-    });
-
-    console.log('after missing', missing);
+    const missing = required.filter(f =>
+      normalizedData[f] === undefined ||
+      normalizedData[f] === null ||
+      normalizedData[f] === ''
+    );
 
     if (missing.length) {
       return res.status(400).json({
@@ -62,14 +98,9 @@ router.post('/requests', async (req, res, next) => {
       });
     }
 
-    console.log("this the body yung fella", normalizedData);
-
-    // Insert normalizedData
     const newRequest = await db('requests')
       .insert(normalizedData)
       .returning('*');
-
-    console.log(newRequest);
 
     res.status(201).json(newRequest[0]);
   } catch (err) {
