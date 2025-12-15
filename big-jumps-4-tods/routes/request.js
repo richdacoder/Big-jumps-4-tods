@@ -15,7 +15,6 @@ router.get('/requests', async (req, res, next) => {
       .select('*')
       .orderBy('created_at', 'desc');
      res.json(requests);
-    console.log('request here', requests );
   } catch (err) {
     next(err);
   }

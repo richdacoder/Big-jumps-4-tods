@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const requestRouter = require('../routes/request');
+const bookingRouter = require('../routes/booking');
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
@@ -28,6 +29,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', requestRouter);
+app.use('/api', bookingRouter);
 
 // 404 handler
 app.use((req, res, next) => {

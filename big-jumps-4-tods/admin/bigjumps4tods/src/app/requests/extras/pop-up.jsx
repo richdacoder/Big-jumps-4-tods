@@ -35,9 +35,30 @@ export default function RequestModal({ request, onClose, onDelete }) {
     }
   };
 
-  const handleCheckAvailability = () => {
-    alert(`Checking availability for ${request.party_start_time } ${request.party_end_time }`);
+  const handleCheckAvailability = async () => {
+    try {
+      const res = await fetch("http://localhost:3002/api/bookings");
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch bookings");
+      }
+
+      const bookings = await res.json();
+
+      console.log("Bookings:", bookings);
+
+      alert(
+        `Checking availability from ${new Date(
+          request.party_start_time
+        ).toLocaleString()} to ${new Date(
+          request.party_end_time
+        ).toLocaleString()}`
+      );
+    } catch (err) {
+      console.error("Failed to check availability:", err);
+    }
   };
+
 
   return (
     <div className="modal-overlay" onClick={onClose}>
