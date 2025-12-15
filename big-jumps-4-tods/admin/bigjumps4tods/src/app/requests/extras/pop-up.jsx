@@ -36,7 +36,7 @@ export default function RequestModal({ request, onClose, onDelete }) {
   };
 
   const handleCheckAvailability = () => {
-    alert(`Checking availability for ${request.first_name} ${request.last_name}`);
+    alert(`Checking availability for ${request.party_start_time } ${request.party_end_time }`);
   };
 
   return (
