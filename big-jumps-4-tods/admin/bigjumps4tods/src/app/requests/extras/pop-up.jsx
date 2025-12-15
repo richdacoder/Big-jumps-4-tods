@@ -36,17 +36,23 @@ export default function RequestModal({ request, onClose, onDelete }) {
   };
 
   const handleCheckAvailability = async () => {
-    //fetch booking
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
-    console.log(bookings);
-    //store request start time and end time and date
-    const requestStartTime = new Date(request.party_start_time);
-    const requestEndTime = new Date(request.party_end_time);
-    //check all booking turn into start time and end time and date variables
-// const overLap = bookings.some( b =>{
-//   return b.party_start_time
-// })
+    const [Sdate, requestStartTime] = request.party_start_time.split('T');
+    const [Edate, requestEndTime] = request.party_end_time.split('T');
+    const requestDate = Sdate && Edate;
+    let availability;
+    const overLap = bookings.some( b =>{
+      const [sBookDate, bookingStartTime] = b.party_start_time.split('T');
+      const [eBookDate, bookingEndTime] = b.party_end_time.split('T');
+      const bookingDate = sBookDate && eBookDate;
+      if(requestStartTime === bookingStartTime && requestEndTime === bookingEndTime && requestDate === bookingDate ){
+        availability = 'date not available';
+      } else {
+        availability = 'date available'
+      }
+      return alert(availability)
+    })
 
     //if available send popup saying its available and to add to schedule
     //if not pop up saying not available and to contact user

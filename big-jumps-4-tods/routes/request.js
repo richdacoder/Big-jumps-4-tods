@@ -49,7 +49,7 @@ router.get('/requests/:id', async (req, res, next) => {
 router.post('/request', async (req, res, next) => {
   try {
     const data = req.body;
-
+    console.log('req body', data)
     // Normalize camelCase frontend → snake_case backend
     const normalizedData = {
       first_name: data.firstName,
