@@ -11,7 +11,7 @@ router.get('/bookings', async (req, res, next) => {
 if(bookings){
     console.log('books?', bookings)}
     // Example response (empty array for now)
-    res.json({ bookings: [] });
+    res.json(bookings);
 
   } catch (err) {
     next(err); // forwards error to Express error handler

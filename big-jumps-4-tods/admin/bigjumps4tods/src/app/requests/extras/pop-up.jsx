@@ -36,27 +36,23 @@ export default function RequestModal({ request, onClose, onDelete }) {
   };
 
   const handleCheckAvailability = async () => {
-    try {
-      const res = await fetch("http://localhost:3002/api/bookings");
+    //fetch booking
+    const res = await fetch('http://localhost:3002/api/bookings');
+    const bookings = await res.json();
+    console.log(bookings);
+    //store request start time and end time and date
+    const requestStartTime = new Date(request.party_start_time);
+    const requestEndTime = new Date(request.party_end_time);
+    //check all booking turn into start time and end time and date variables
+// const overLap = bookings.some( b =>{
+//   return b.party_start_time
+// })
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch bookings");
-      }
+    //if available send popup saying its available and to add to schedule
+    //if not pop up saying not available and to contact user
+    //
 
-      const bookings = await res.json();
-
-      console.log("Bookings:", bookings);
-
-      alert(
-        `Checking availability from ${new Date(
-          request.party_start_time
-        ).toLocaleString()} to ${new Date(
-          request.party_end_time
-        ).toLocaleString()}`
-      );
-    } catch (err) {
-      console.error("Failed to check availability:", err);
-    }
+    //
   };
 
 
