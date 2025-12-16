@@ -54,24 +54,12 @@ export default function RequestModal({ request, onClose, onDelete }) {
       const bookingDate = sBookDate && eBookDate;
       if(requestStartTime === bookingStartTime && requestEndTime === bookingEndTime && requestDate === bookingDate ){
         availability = true;
-        //render not available page
       } else {
         availability = false
-        //render available page
       }
       return availability
-
-      // return console.log(availability)
     })
      setAvailabilityComponent(isOverLap ? <NotAvailable />: <Available />);
-    // setAvailabilityComponent('hi');
-    //   console.log('checkk ', availabilityComponent);
-  //  console.log(setAvailabilityComponent( 'hi' ));
-    //if available send popup saying its available and to add to schedule
-    //if not pop up saying not available and to contact user
-    //
-
-    //
   };
 
 
