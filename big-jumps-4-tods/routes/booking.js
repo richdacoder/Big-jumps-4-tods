@@ -18,4 +18,20 @@ if(bookings){
   }
 });
 
-module.exports = router;
+router.post('/booking', async (req, res, next) => {
+try{
+const [bookings] = await knex('bookings').insert(req.body).returning('*');
+console.log(bookings)
+
+} catch(err) {
+  next(err);
+}
+})
+
+function errorHandler(err, req, res, next) {
+  console.error(err.stack); // logs error stack in server console
+  res.status(500).json({ error: err.message || 'Internal Server Error' });
+}
+
+
+module.exports = {router, errorHandler};

@@ -107,4 +107,9 @@ router.post('/request', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+function errorHandler(err, req, res, next) {
+  console.error(err.stack); // logs error stack in server console
+  res.status(500).json({ error: err.message || 'Internal Server Error' });
+}
+
+module.exports = {router, errorHandler};
