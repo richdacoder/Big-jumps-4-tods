@@ -1,5 +1,9 @@
 "use client";
 
+import Available from './available.jsx';
+import NotAvailable from './not-available.jsx';
+import { useState } from 'react';
+
 
 export default function RequestModal({ request, onClose, onDelete }) {
   if (!request) return null;
@@ -35,25 +39,34 @@ export default function RequestModal({ request, onClose, onDelete }) {
     }
   };
 
+  const [availabilityComponent, setAvailabilityComponent] = useState(null);
+
   const handleCheckAvailability = async () => {
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
     const [Sdate, requestStartTime] = request.party_start_time.split('T');
-    const [Edate, requestEndTime] = request.party_end_time.split('T');
-    const requestDate = Sdate && Edate;
+    const [_, requestEndTime] = request.party_end_time.split('T');
+    const requestDate = Sdate;
     let availability;
-    const overLap = bookings.some( b =>{
+    const isOverLap = bookings.some( b =>{
       const [sBookDate, bookingStartTime] = b.party_start_time.split('T');
       const [eBookDate, bookingEndTime] = b.party_end_time.split('T');
       const bookingDate = sBookDate && eBookDate;
       if(requestStartTime === bookingStartTime && requestEndTime === bookingEndTime && requestDate === bookingDate ){
-        availability = 'date not available';
+        availability = true;
+        //render not available page
       } else {
-        availability = 'date available'
+        availability = false
+        //render available page
       }
-      return alert(availability)
-    })
+      return availability
 
+      // return console.log(availability)
+    })
+     setAvailabilityComponent(isOverLap ? <NotAvailable />: <Available />);
+    // setAvailabilityComponent('hi');
+    //   console.log('checkk ', availabilityComponent);
+  //  console.log(setAvailabilityComponent( 'hi' ));
     //if available send popup saying its available and to add to schedule
     //if not pop up saying not available and to contact user
     //
@@ -89,8 +102,9 @@ export default function RequestModal({ request, onClose, onDelete }) {
           <li><strong>Referral:</strong> {request.referral || "-"}</li>
           <li><strong>Request Made:</strong> {formatDate(request.created_at)}</li>
         </ul>
-
-        <div className="modal-actions">
+            <div className="availability-container" >
+               {availabilityComponent} </div>
+        <div className="modal-actions" >
           <button className="delete-button" onClick={handleDelete}>
             Delete Request
           </button>
