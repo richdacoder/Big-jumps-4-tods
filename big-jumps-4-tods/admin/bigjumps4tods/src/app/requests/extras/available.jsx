@@ -1,12 +1,23 @@
 "use client";
 
-export default function Available(){
-
+export default function Available(bookingData){
+//get request body
+//get avaible funstion into pop up page
+//get request body into booking data
   const createBooking = async () => {
-    //fetch api
-    //check for error
-    //send it to back end
-    console.log('create booking')
+    const res = await fetch('http://localhost:3002/api/booking', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(bookingData),
+});
+console.log(res.body);
+if (!res.ok) {
+  throw new Error(`HTTP error! status: ${res.status}`);
+
+}
+return res.json();
   }
 
   const deleteRequest = async () => {
