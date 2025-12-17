@@ -9,14 +9,19 @@ router.get('/bookings', async (req, res, next) => {
     .orderBy('created_at', 'desc');
 if(bookings){
     }
-    // Example response (empty array for now)
+    console.log('bookings', bookings);
     res.json(bookings);
 
   } catch (err) {
-    next(err); // forwards error to Express error handler
+    next(err);
   }
 });
+/*
+ - get all bookings with knex
+ - fetch on the front end
+ - for each booking row/button
 
+*/
 
 router.post('/booking', async (req, res, next) => {
 try{
