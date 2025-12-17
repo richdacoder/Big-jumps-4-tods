@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 
 export default function RequestModal({ request, onClose, onDelete }) {
+  //what is on close and on delete doing ?
   if (!request) return null;
 
   const formatDate = (dateString) =>
@@ -57,8 +58,15 @@ export default function RequestModal({ request, onClose, onDelete }) {
       }
       return availability
     })
-     setAvailabilityComponent(isOverLap ? <NotAvailable />: <Available request = {request} />);
-  };
+        setAvailabilityComponent(
+          isOverLap
+            ? <NotAvailable />
+            : <Available
+                request={request}
+                onClose={onClose}
+              />
+        );
+      };
 
 
   return (
