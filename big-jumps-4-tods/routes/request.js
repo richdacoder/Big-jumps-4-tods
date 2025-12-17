@@ -9,7 +9,6 @@ console.log('connecting requests 1');
  * GET /api/requests
  */
 router.get('/requests', async (req, res, next) => {
-  console.log(res);
   try {
     const requests = await db('requests')
       .select('*')
@@ -49,7 +48,6 @@ router.get('/requests/:id', async (req, res, next) => {
 router.post('/request', async (req, res, next) => {
   try {
     const data = req.body;
-    console.log('req body', data)
     // Normalize camelCase frontend → snake_case backend
     const normalizedData = {
       first_name: data.firstName,
@@ -107,9 +105,5 @@ router.post('/request', async (req, res, next) => {
   }
 });
 
-function errorHandler(err, req, res, next) {
-  console.error(err.stack); // logs error stack in server console
-  res.status(500).json({ error: err.message || 'Internal Server Error' });
-}
 
-module.exports = {router, errorHandler};
+module.exports = router;

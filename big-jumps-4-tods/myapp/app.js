@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const requestRouter = require('../routes/request');
-const bookingRouter = require('../routes/booking');
+const bookingRouter = require('../routes/booking.js');
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
