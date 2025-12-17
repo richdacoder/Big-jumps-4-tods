@@ -43,6 +43,10 @@ export default function RequestsPage() {
     });
   };
 
+  const handleDelete = (id) => {
+    const newRequest = requests.filter(req => req.id !== id )
+    return setRequests(newRequest);
+  }
   return (
     <div className="requests-page">
       <h1>Requests</h1>
@@ -66,7 +70,7 @@ export default function RequestsPage() {
 
       {/* Render modal */}
       {selectedRequest && (
-        <RequestModal request={selectedRequest} onClose={() => setSelectedRequest(null)} />
+        <RequestModal request={selectedRequest} onClose={() => setSelectedRequest(null)} onDelete={handleDelete} />
       )}
     </div>
   );
