@@ -1,6 +1,6 @@
 "use client";
 
-export default function Available({request}){
+export default function Available({request,onClose}){
   const createBooking = async () => {
     const res = await fetch('http://localhost:3002/api/booking', {
   method: 'POST',
@@ -12,15 +12,17 @@ export default function Available({request}){
 console.log('aqui', res.body, request);
 if (!res.ok) {
   throw new Error(`HTTP error! status: ${res.status}`);
-
 }
-return res.json();
+    const data = await res.json()
+    onClose()
+return data;
   }
 
   const deleteRequest = async () => {
     //fetch api
-    const res = await fetch(`http://localhost:3002/api/request/${request.id}`
-    )
+    const res = await fetch(`http://localhost:3002/api/request/${request.id}`,{
+      method:'DELETE'
+    })
     //check for error
     //send it to backend
     console.log('delete request')
