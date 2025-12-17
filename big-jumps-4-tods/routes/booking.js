@@ -23,11 +23,11 @@ router.post('/booking', async (req, res, next) => {
   console.log('before try booking')
 try{
   console.log('inside try before await')
-const bookings = await db('bookings');
-// .insert(req.body)
-// .returning('*');
+const bookings = await db('bookings')
+.insert(req.body)
+.returning('*');
 console.log('after await')
-console.log('check booking now', req.body)
+console.log('check booking now', bookings)
 
 res.status(201).json(bookings);
 
