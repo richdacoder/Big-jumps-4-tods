@@ -36,6 +36,7 @@ export default function RequestModal({ request, onClose, onDelete }) {
     } catch (err) {
       console.error("Failed to delete request:", err);
     }
+    onClose();
   };
 
   const [availabilityComponent, setAvailabilityComponent] = useState(null);

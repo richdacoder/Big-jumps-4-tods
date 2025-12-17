@@ -25,7 +25,7 @@ return data;
     })
     //check for error
     //send it to backend
-    console.log('delete request')
+   alert('Booked schedule');
 
   }
 //post
