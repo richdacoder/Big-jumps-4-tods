@@ -70,7 +70,11 @@ export default function RequestsPage() {
 
       {/* Render modal */}
       {selectedRequest && (
-        <RequestModal request={selectedRequest} onClose={() => setSelectedRequest(null)} onDelete={handleDelete} />
+        <RequestModal
+        request={selectedRequest}
+        onClose={() => setSelectedRequest(null)}
+        onDelete={handleDelete}
+         />
       )}
     </div>
   );
