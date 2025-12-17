@@ -1,9 +1,6 @@
 "use client";
 
 export default function Available({request}){
-//get request body
-//get create funstion into pop up page
-//get request body into booking data
   const createBooking = async () => {
     const res = await fetch('http://localhost:3002/api/booking', {
   method: 'POST',
@@ -22,7 +19,8 @@ return res.json();
 
   const deleteRequest = async () => {
     //fetch api
-    const res = await fetch(`http://localhost:3002/api/request/${request.id}`)
+    const res = await fetch(`http://localhost:3002/api/request/${request.id}`
+    )
     //check for error
     //send it to backend
     console.log('delete request')

@@ -29,11 +29,9 @@ export default function RequestModal({ request, onClose, onDelete }) {
     if (!window.confirm("Are you sure you want to delete this request?")) return;
 
     try {
-      await fetch(`http://localhost:3002/api/requests/${request.id}`, {
+      await fetch(`http://localhost:3002/api/request/${request.id}`, {
         method: "DELETE",
       });
-      onDelete(request.id);
-      onClose();
     } catch (err) {
       console.error("Failed to delete request:", err);
     }

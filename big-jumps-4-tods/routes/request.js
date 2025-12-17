@@ -105,5 +105,22 @@ router.post('/request', async (req, res, next) => {
   }
 });
 
+router.delete('/request/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deletedCount = await db('requests')
+      .where({ id })
+      .del();
+
+    if (deletedCount) {
+      res.status(202).json({ message: 'Request deleted' });
+    } else {
+      res.status(404).json({ message: 'Request not found' });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
