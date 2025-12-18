@@ -1,8 +1,10 @@
 "use client";
-
+import {useState} from 'react'
 import EditBookings from "./extras/edit.jsx"
 
 export default function BookingModal({ booking, onClose }) {
+  const [isEditing, setIsEditing] = useState(false);
+
   if (!booking) return null;
 
   const formatDate = (dateString) =>
@@ -53,7 +55,16 @@ export default function BookingModal({ booking, onClose }) {
           <button className="check-button" onClick={onClose}>
             Close
           </button>
-          <EditBookings booking={booking}/>
+          <button onClick={() => setIsEditing(true)}>Edit Booking</button>
+          {isEditing && (
+          <div className="edit-popup">
+            <EditBookings
+              booking={booking}
+              onClose={() => setIsEditing(false)}
+            />
+          </div>
+        )}
+
         </div>
       </div>
     </div>
