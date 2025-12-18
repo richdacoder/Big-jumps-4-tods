@@ -51,7 +51,7 @@ const HomePage = () => {
       <h2>Upcoming Events</h2>
 
       <div className="bookInfo">
-        <span>Date</span>
+        <span>Party Date</span>
         <span>Name</span>
         <span>Party Time</span>
       </div>
@@ -71,7 +71,6 @@ const HomePage = () => {
             </span>
           </button>
         ))}
-
       {selectedBooking && (
         <BookingModal
           booking={selectedBooking}

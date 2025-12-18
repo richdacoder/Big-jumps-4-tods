@@ -1,5 +1,7 @@
 "use client";
 
+import EditBookings from "./extras/edit.jsx"
+
 export default function BookingModal({ booking, onClose }) {
   if (!booking) return null;
 
@@ -52,6 +54,7 @@ export default function BookingModal({ booking, onClose }) {
             Close
           </button>
         </div>
+        <EditBookings booking={booking}/>
       </div>
     </div>
   );
