@@ -16,12 +16,6 @@ if(bookings){
     next(err);
   }
 });
-/*
- - get all bookings with knex
- - fetch on the front end
- - for each booking row/button
-
-*/
 
 router.post('/booking', async (req, res, next) => {
 try{
@@ -36,5 +30,28 @@ res.status(201).json(bookings);
   next(err);
 }
 })
+
+router.put('/booking/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const updatedBooking = await db('bookings')
+      .where({ id })
+      .update(updateData)
+      .returning('*');
+
+    if (!updatedBooking || updatedBooking.length === 0) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+
+    res.json({ message: 'Booking updated', booking: updatedBooking[0] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 
 module.exports = router;

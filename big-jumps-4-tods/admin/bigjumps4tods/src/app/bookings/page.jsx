@@ -53,8 +53,8 @@ export default function BookingModal({ booking, onClose }) {
           <button className="check-button" onClick={onClose}>
             Close
           </button>
+          <EditBookings booking={booking}/>
         </div>
-        <EditBookings booking={booking}/>
       </div>
     </div>
   );

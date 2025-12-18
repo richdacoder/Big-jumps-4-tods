@@ -57,16 +57,18 @@ const HomePage = () => {
       </div>
 
       {[...bookings]
-        .sort((a, b) => new Date(a.party_date) - new Date(b.party_date))
+        // .sort((a, b) => new Date(a.party_date) - new Date(b.party_date))
         .map((book) => (
           <button
             className="event-button"
             key={book.id}
-            onClick={() => setSelectedBooking(book)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedBooking(book);}}
           >
             <span>{formatDate(book.party_date)}</span>
             <span>{book.first_name} {book.last_name}</span>
-            <span>
+             <span>
               {formatTime(book.party_start_time)} - {formatTime(book.party_end_time)}
             </span>
           </button>
