@@ -50,6 +50,11 @@ export default function RequestsPage() {
   return (
     <div className="requests-page">
       <h1>Requests</h1>
+      <div className={'bookInfo'}>
+        <span>Request Date</span>
+        <span>Requester Name</span>
+        <span>Party Date</span>
+      </div>
 
       <section className="site-main">
         {requests.length === 0 && <p className="empty">No requests found</p>}
