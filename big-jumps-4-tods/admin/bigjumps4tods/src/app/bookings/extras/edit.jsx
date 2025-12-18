@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 
 export default function EditBookings({booking}){
 //fetch get bookings
-console.log('check for booking', booking)
 //fetch edit or put
 useEffect(() => {
   const edit = async () => {
     try {
-      const res = await fetch('http://localhost:3002/api/bookings', {
+      const res = await fetch(`http://localhost:3002/api/bookings/${booking.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -25,8 +24,8 @@ useEffect(() => {
     }
   };
 
-  edit();
-}, []); // run once on mount
+ // edit();
+},); // add []
 
 //fetch delete
 
