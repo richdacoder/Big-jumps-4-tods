@@ -1,37 +1,89 @@
+/* ==== Apply fun font ==== */
+.requests-page {
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
+}
+
+/* ==== Header Row ==== */
+.bookInfo {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr; /* same as buttons */
+  gap: 1rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-top: 2rem;
+  padding: 0 0.5rem;
+  border-bottom: 2px solid #ff6b6b;
+}
+
+/* ==== Request Button Styling ==== */
 .request-button {
   width: 100%;
-  padding: 0.75rem;
-  background-color: white;
-  border: none;
+  padding: 1rem;
   font-size: 1rem;
+  background-color: #fff3f0;
+  border: none;
+  border-radius: 8px;
   text-align: left;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.25s ease, transform 0.1s ease;
+  margin-top: 1rem;
 
-  /* ✅ ADD: layout for left / middle / right */
+  /* horizontal 3-column layout */
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  align-items: center;
+  grid-template-columns: 2fr 3fr 2fr;
   gap: 1rem;
+  align-items: center;
+  border-left: 4px solid #ff6b6b;
 }
 
-.request-button:hover {
-  background-color: #ffe1d9; /* light hover */
+.request-button span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ✅ ADD: alignment helpers */
-.request-left {
-  text-align: left;
+/* Badges for left/right columns */
+.request-left,
+.request-right {
+  color: #0f0303;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
   font-size: 0.9rem;
-  color: #555;
+  font-weight: bold;
 }
 
 .request-middle {
-  text-align: center;
+  text-align: left;
   font-weight: 600;
+  color: #333;
 }
 
-.request-right {
-  text-align: right;
-  font-size: 0.9rem;
-  color: #555;
+/* Hover / active effects */
+.request-button:hover {
+  background-color: #ffe1d9;
+  transform: translateY(-1px);
+}
+
+.request-button:active {
+  transform: translateY(1px);
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .bookInfo,
+  .request-button {
+    grid-template-columns: 2fr 3fr 2fr; /* keep horizontal columns even on mobile */
+    gap: 0.5rem;
+  }
+  .bookInfo span,
+  .request-button span {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  .request-button {
+    border-left: none;
+    border-top: 3px solid #ff6b6b;
+    border-radius: 6px;
+  }
 }
