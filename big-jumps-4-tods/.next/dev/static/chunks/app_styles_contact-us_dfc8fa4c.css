@@ -1,0 +1,101 @@
+/* [project]/app/styles/contact-us.css [app-client] (css) */
+.contacts-page {
+  text-align: center;
+  opacity: 0;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  animation: 1s forwards pageFadeIn;
+  transform: translateY(30px);
+}
+
+.contacts-page h2 {
+  color: coral;
+  opacity: 0;
+  margin-bottom: 1rem;
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 2rem;
+  animation: 1s .3s forwards titleSlideIn;
+  transform: translateY(-20px);
+}
+
+.contacts-page p {
+  opacity: 0;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  animation: 1s .6s forwards paragraphSlideIn;
+  transform: translateX(-20px);
+}
+
+.contact-list {
+  opacity: 0;
+  padding: 0;
+  list-style: none;
+  animation: 1s .9s forwards listSlideIn;
+  transform: translateX(20px);
+}
+
+.contact-list li {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.contact-list a {
+  color: coral;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.contact-list a:hover {
+  color: #e06641;
+}
+
+@media (max-width: 768px) {
+  .contacts-page h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-list li {
+    font-size: .95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-list li {
+    font-size: .9rem;
+  }
+}
+
+@keyframes pageFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes paragraphSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes listSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*# sourceMappingURL=app_styles_contact-us_dfc8fa4c.css.map*/

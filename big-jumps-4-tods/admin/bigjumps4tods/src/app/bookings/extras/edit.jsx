@@ -28,6 +28,24 @@ useEffect(() => {
 },); // add []
 
 //fetch delete
+const handleDelete = async (bookingId) => {
+  try {
+    const res = await fetch(`http://localhost:3002/api/bookings/${bookingId}`, {
+      method: 'DELETE',
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to delete booking');
+    }
+
+    const data = await res.json();
+    console.log('Deleted booking:', data);
+    alert('Booking deleted successfully!');
+  } catch (err) {
+    console.error(err);
+    alert('Error deleting booking: ' + err.message);
+  }
+};
 
 //make submit form with input and get
 //make iteration of booking in placeholder
