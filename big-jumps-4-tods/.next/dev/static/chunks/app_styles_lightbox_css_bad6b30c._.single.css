@@ -1,0 +1,76 @@
+/* [project]/app/styles/lightbox.css [app-client] (css) */
+.lightbox {
+  z-index: 2000;
+  background: #000000e6;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.lightbox-img {
+  max-width: 85%;
+  max-height: 85%;
+  transition: transform .3s;
+}
+
+.lightbox-img.zoomed {
+  transform: scale(1.8);
+}
+
+.close-btn {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.controls-right {
+  gap: 15px;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 80px;
+}
+
+.ctrl-btn {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 24px;
+}
+
+.arrow {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.left {
+  left: 30px;
+}
+
+.arrow.right {
+  right: 30px;
+}
+
+.counter {
+  color: #fff;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+/*# sourceMappingURL=app_styles_lightbox_css_bad6b30c._.single.css.map*/

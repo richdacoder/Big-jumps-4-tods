@@ -1,0 +1,38 @@
+/* [project]/app/styles/gallery.css [app-client] (css) */
+.gallery-page {
+  text-align: center;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.gallery-page h2 {
+  color: coral;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  display: grid;
+}
+
+.gallery-item img {
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  transition: transform .3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/*# sourceMappingURL=app_styles_gallery_c0a52985.css.map*/

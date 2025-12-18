@@ -1,0 +1,107 @@
+/* [project]/app/styles/home.css [app-client] (css) */
+.home-hero {
+  background: linear-gradient(#0000008c, #0000008c), url("/images/IMG_0472.png") center / cover no-repeat;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 75vh;
+  padding: 40px 20px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero:before, .home-hero:after {
+  content: "";
+  z-index: 1;
+  background: #ff7f5040;
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  animation: 8s ease-in-out infinite float;
+  position: absolute;
+}
+
+.home-hero:before {
+  top: -100px;
+  left: -150px;
+}
+
+.home-hero:after {
+  animation-delay: 3s;
+  bottom: -120px;
+  right: -170px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(40px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.home-content {
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  max-width: 700px;
+  animation: 1s forwards fadeInUp;
+  position: relative;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-content h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.home-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.btn-book {
+  color: #fff;
+  background: #ff4d4d;
+  border-radius: 10px;
+  padding: 14px 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  box-shadow: 0 0 #ff4d4d66;
+}
+
+.btn-book:hover {
+  background: #e63b3b;
+  box-shadow: 0 0 20px #ff4d4d99;
+}
+
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .home-content p {
+    font-size: 1.1rem;
+  }
+}
+
+/*# sourceMappingURL=app_styles_home_253db2f7.css.map*/

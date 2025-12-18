@@ -52,6 +52,24 @@ router.put('/booking/:id', async (req, res) => {
   }
 });
 
+router.delete('/booking/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedCount = await db('bookings')
+      .where({ id })
+      .del();
+
+    if (deletedCount === 0) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+
+    res.json({ message: 'Booking deleted', id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
 module.exports = router;
