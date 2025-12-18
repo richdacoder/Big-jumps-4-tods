@@ -1,9 +1,11 @@
 "use client";
 import "./styles/home.css";
+import BookingModal from "./bookings/page.jsx";
 import { useState, useEffect } from "react";
 
 const HomePage = () => {
   const [bookings, setBookings] = useState([]);
+  const [selectedBooking, setSelectedBooking] = useState(null);
 
   // Format dates safely
   const formatDate = (dateString) => {
@@ -12,7 +14,6 @@ const HomePage = () => {
       year: "numeric",
       month: "short",
       day: "numeric",
-
     });
   };
 
@@ -27,7 +28,6 @@ const HomePage = () => {
     const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
     return `${hours}:${minutesStr} ${ampm}`;
   };
-
 
   // Fetch bookings once on mount
   useEffect(() => {
@@ -44,25 +44,40 @@ const HomePage = () => {
     };
 
     fetchBookings();
-  }, []); // empty array → run only once
+  }, []);
 
   return (
     <section className="site-main">
       <h2>Upcoming Events</h2>
-      <div className={'bookInfo'}>
+
+      <div className="bookInfo">
         <span>Date</span>
         <span>Name</span>
         <span>Party Time</span>
       </div>
-      {bookings.map((book) => (
-        <button className="event-button" key={book.id}>
-          <span>{formatDate(book.party_date)}</span>
-          <span>{book.first_name} {book.last_name}</span>
-          <span>
-            {formatTime(book.party_start_time)} - {formatTime(book.party_end_time)}
-          </span>
-        </button>
-      ))}
+
+      {[...bookings]
+        .sort((a, b) => new Date(a.party_date) - new Date(b.party_date))
+        .map((book) => (
+          <button
+            className="event-button"
+            key={book.id}
+            onClick={() => setSelectedBooking(book)}
+          >
+            <span>{formatDate(book.party_date)}</span>
+            <span>{book.first_name} {book.last_name}</span>
+            <span>
+              {formatTime(book.party_start_time)} - {formatTime(book.party_end_time)}
+            </span>
+          </button>
+        ))}
+
+      {selectedBooking && (
+        <BookingModal
+          booking={selectedBooking}
+          onClose={() => setSelectedBooking(null)}
+        />
+      )}
     </section>
   );
 };
