@@ -1,7 +1,7 @@
-"use clients"
+"use client";
 import { useEffect, useState } from "react";
 
-export default function EditBookings({booking}){
+export default function EditBookings({booking, onClose, formatDate, formatTime}){
 //fetch get bookings
 //fetch edit or put
 useEffect(() => {
@@ -53,7 +53,35 @@ const handleDelete = async (bookingId) => {
 // hide activate when click on edit
 return(
 
-  <button>test</button>
+<>
+  <h2>
+  {booking.first_name} {booking.last_name}
+</h2>
+<button className="close-button" onClick={onClose}>
+  &times;
+</button>
+
+<ul className="request-details">
+<li><strong>Booking ID:</strong> {booking.id}</li>
+<li><strong>Email:</strong> {booking.email || "-"}</li>
+<li><strong>Phone:</strong> {booking.phone || "-"}</li>
+<li><strong>Party Address:</strong> {booking.party_address || "-"}</li>
+<li><strong>Address Line 2:</strong> {booking.address_line2 || "-"}</li>
+<li><strong>Party Date:</strong> {formatDate(booking.party_date)}</li>
+<li><strong>Start Time:</strong> {formatTime(booking.party_start_time)}</li>
+<li><strong>End Time:</strong> {formatTime(booking.party_end_time)}</li>
+<li><strong>Package:</strong> {booking.package || "-"}</li>
+<li><strong>Theme:</strong> {booking.theme || "-"}</li>
+<li><strong>Notes:</strong> {booking.notes || "-"}</li>
+<li><strong>Booked On:</strong> {formatDate(booking.created_at)}</li>
+</ul>
+</>
+
+
+
+
+
+
 )
 
 }

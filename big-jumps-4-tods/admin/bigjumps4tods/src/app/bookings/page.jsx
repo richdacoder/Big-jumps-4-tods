@@ -61,6 +61,8 @@ export default function BookingModal({ booking, onClose }) {
             <EditBookings
               booking={booking}
               onClose={() => setIsEditing(false)}
+              formatDate={formatDate}
+              formatTime={formatTime}
             />
           </div>
         )}
