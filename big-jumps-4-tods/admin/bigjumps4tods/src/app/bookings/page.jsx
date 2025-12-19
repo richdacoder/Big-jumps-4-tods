@@ -1,9 +1,10 @@
 "use client";
-import {useState} from 'react'
-import EditBookings from "./extras/edit.jsx"
+import { useState } from "react";
+import EditBookings from "./extras/edit.jsx";
 
 export default function BookingModal({ booking, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   if (!booking) return null;
 
@@ -24,38 +25,84 @@ export default function BookingModal({ booking, onClose }) {
         })
       : "";
 
-  return (
-    <div className="modal-overlay hide" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-        <button className="close-button" onClick={onClose}>
-            &times;
-          </button>
-          <h2>
-            {booking.first_name} {booking.last_name}
-          </h2>
-        </div>
-        <ul className="request-details">
-          <li><strong>Booking ID:</strong> {booking.id}</li>
-          <li><strong>Email:</strong> {booking.email || "-"}</li>
-          <li><strong>Phone:</strong> {booking.phone || "-"}</li>
-          <li><strong>Party Address:</strong> {booking.party_address || "-"}</li>
-          <li><strong>Address Line 2:</strong> {booking.address_line2 || "-"}</li>
-          <li><strong>Party Date:</strong> {formatDate(booking.party_date)}</li>
-          <li><strong>Start Time:</strong> {formatTime(booking.party_start_time)}</li>
-          <li><strong>End Time:</strong> {formatTime(booking.party_end_time)}</li>
-          <li><strong>Package:</strong> {booking.package || "-"}</li>
-          <li><strong>Theme:</strong> {booking.theme || "-"}</li>
-          <li><strong>message:</strong> {booking.message || "-"}</li>
-          <li><strong>Booked On:</strong> {formatDate(booking.created_at)}</li>
-        </ul>
+  // Hide main BookingModal content
+  const hideBookingContent = () => setIsHidden(true);
 
-        <div className="modal-actions">
-          <button className="check-button" onClick={onClose}>
-            Close
-          </button>
-          <button onClick={() => setIsEditing(true)}>Edit Booking</button>
-          {isEditing && (
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal-card"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* BookingModal content */}
+        {!isEditing && !isHidden && (
+          <>
+            <div className="modal-header">
+              <h2>
+                {booking.first_name} {booking.last_name}
+              </h2>
+              <button className="close-button" onClick={onClose}>
+                &times;
+              </button>
+            </div>
+
+            <ul className="request-details">
+              <li>
+                <strong>Booking ID:</strong> {booking.id}
+              </li>
+              <li>
+                <strong>Email:</strong> {booking.email || "-"}
+              </li>
+              <li>
+                <strong>Phone:</strong> {booking.phone || "-"}
+              </li>
+              <li>
+                <strong>Party Address:</strong> {booking.party_address || "-"}
+              </li>
+              <li>
+                <strong>Address Line 2:</strong> {booking.address_line2 || "-"}
+              </li>
+              <li>
+                <strong>Party Date:</strong> {formatDate(booking.party_date)}
+              </li>
+              <li>
+                <strong>Start Time:</strong> {formatTime(booking.party_start_time)}
+              </li>
+              <li>
+                <strong>End Time:</strong> {formatTime(booking.party_end_time)}
+              </li>
+              <li>
+                <strong>Package:</strong> {booking.package || "-"}
+              </li>
+              <li>
+                <strong>Theme:</strong> {booking.theme || "-"}
+              </li>
+              <li>
+                <strong>Message:</strong> {booking.message || "-"}
+              </li>
+              <li>
+                <strong>Booked On:</strong> {formatDate(booking.created_at)}
+              </li>
+            </ul>
+
+            <div className="modal-actions">
+              <button className="check-button" onClick={onClose}>
+                Close
+              </button>
+              <button
+                onClick={() => {
+                  setIsEditing(true);
+                  hideBookingContent();
+                }}
+              >
+                Edit Booking
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* EditBookings popup */}
+        {isEditing && (
           <div className="edit-popup">
             <EditBookings
               booking={booking}
@@ -65,8 +112,6 @@ export default function BookingModal({ booking, onClose }) {
             />
           </div>
         )}
-
-        </div>
       </div>
     </div>
   );
