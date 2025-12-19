@@ -1,6 +1,7 @@
 "use client";
 import "./styles/home.css";
 import './styles/edit.css';
+import './styles/book-modal.css';
 import BookingModal from "./bookings/page.jsx";
 import { useState, useEffect } from "react";
 
