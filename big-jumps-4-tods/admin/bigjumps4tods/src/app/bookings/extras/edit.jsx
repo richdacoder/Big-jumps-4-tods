@@ -56,13 +56,16 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
   const [endTime, setEndTime] = useState(toTimeInput(booking.party_end_time));
   const [pkg, setPkg] = useState(booking.package || "");
   const [theme, setTheme] = useState(booking.theme || "");
-  const [notes, setNotes] = useState(booking.notes || "");
+  const [message, setMessage] = useState(booking.message || "");
+
+  const startTimestamp = `${partyDate} ${startTime}`;
+    const endTimestamp   = `${partyDate} ${endTime}`;
 
   // Submit function for updating booking
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3002/api/bookings/${booking.id}`, {
+      const res = await fetch(`http://localhost:3002/api/booking/${booking.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -71,14 +74,14 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           party_address: partyAddress,
           address_line2: addressLine2,
           party_date: partyDate,
-          party_start_time: startTime,
-          party_end_time: endTime,
+          party_start_time: startTimestamp,
+          party_end_time: endTimestamp,
           package: pkg,
-          theme,
-          notes,
+          theme: theme,
+          message: message,
         }),
       });
-      if (!res.ok) throw new Error("Failed to update booking");
+      if (!res.ok) throw new Error("Failed to update booking", console.log(res)) ;
       const data = await res.json();
       console.log("Updated booking:", data);
       alert("Booking updated successfully!");
@@ -92,7 +95,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
   //fetch delete
   const handleDelete = async (bookingId) => {
     try {
-      const res = await fetch(`http://localhost:3002/api/bookings/${bookingId}`, {
+      const res = await fetch(`http://localhost:3002/api/booking/${bookingId}`, {
         method: "DELETE",
       });
 
@@ -109,8 +112,8 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
     }
   };
 
-  //make submit form with input and get
-  //make iteration of booking in placeholder
+  //make submit form with input and get x
+  //make iteration of booking in placeholder x
   //make class call hide on pop up
   // hide activate when click on edit
   return (
@@ -164,8 +167,8 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
             <input type="text" value={theme} onChange={(e) => setTheme(e.target.value)} />
           </li>
           <li>
-            <strong>Notes:</strong>{" "}
-            <input type="text" value={notes} onChange={(e) => setNotes(e.target.value)} />
+            <strong>Message:</strong>{" "}
+            <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
           </li>
           <li>
             <strong>Booked On:</strong> {formatDate(booking.created_at)}
