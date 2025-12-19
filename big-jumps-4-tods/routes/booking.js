@@ -40,7 +40,7 @@ router.put('/booking/:id', async (req, res) => {
       .where({ id })
       .update(updateData)
       .returning('*');
-
+      console.log({'id:': id, 'updateData:' : updateData, 'updatedBooking:': updatedBooking})
     if (!updatedBooking || updatedBooking.length === 0) {
       return res.status(404).json({ error: 'Booking not found' });
     }
