@@ -1,9 +1,0 @@
-[10:39:24.733] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/app/_not-found/page/build-manifest.json'
-[10:39:24.759] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/app/_not-found/page/build-manifest.json'
-[10:39:24.760] Server  LOG      ✓ Compiled in 173ms
-[10:39:24.786] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
-[10:39:24.811] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
-[10:39:24.875] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
-[10:39:24.898] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
-[10:39:24.921] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
-[10:39:24.947] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/valuedcustomer/Desktop/Big Jumps 4 Tods/big-jumps-4-tods/.next/dev/server/pages/_app/build-manifest.json'
