@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///Users/valuedcustomer/Desktop/Big%20Jumps%204%20Tods/big-jumps-4-tods/app/styles/gallery.css"],"sourcesContent":[".gallery-page {\n  max-width: 1200px;\n  margin: 2rem auto;\n  padding: 0 1rem;\n  text-align: center;\n}\n\n.gallery-page h2 {\n  color: #ff7f50;\n  margin-bottom: 1.5rem;\n}\n\n/* Responsive Grid */\n.gallery-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));\n  gap: 1rem;\n}\n\n.gallery-item img {\n  width: 100%;\n  border-radius: 10px;\n  cursor: pointer;\n  object-fit: cover;\n  transition: transform 0.3s;\n}\n\n.gallery-item img:hover {\n  transform: scale(1.05);\n}\n\n@media (min-width: 768px) {\n  .gallery-grid {\n    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n  }\n}\n"],"names":[],"mappings":"AAAA;;;;;;;AAOA;;;;;AAMA;;;;;;AAMA;;;;;;;;AAQA;;;;AAIA;EACE"}}]
-}
