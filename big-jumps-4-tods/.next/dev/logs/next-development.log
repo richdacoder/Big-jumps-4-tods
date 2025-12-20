@@ -3,3 +3,4 @@
 [00:00:04.171] Browser LOG     {"addressLine2":"","email":"","endAMPM":"AM","endHour":"","endMinute":"","firstName":"","lastName":"","message":"","package":"","partyAddress":"","partyDate":"","phone":"","referral":"","startAMPM":"AM","startHour":"","startMinute":"","theme":""}
 [00:00:04.171] Browser LOG     [2;38;2;124;124;124m%s[0m {"addressLine2":"","email":"","endAMPM":"AM","endHour":"","endMinute":"","firstName":"","lastName":"","message":"","package":"","partyAddress":"","partyDate":"","phone":"","referral":"","startAMPM":"AM","startHour":"","startMinute":"","theme":""}
 [10:04:13.634] Server  LOG      ✓ Compiled in 642ms
+[10:16:37.442] Server  LOG      ✓ Compiled in 98ms
