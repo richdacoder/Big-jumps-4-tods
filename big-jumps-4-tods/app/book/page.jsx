@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import '../styles/book.css';
 import { submitRequest } from './utils/submitRequest';
-
+import { useRouter } from 'next/navigation';
 export default function BookingPage() {
   const initialState = {
     firstName: '',
@@ -34,14 +34,17 @@ export default function BookingPage() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-console.log(initialState)
+
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const data = await submitRequest(formData);
       console.log('Booking submitted:', data);
+      console.log(router);
       alert('Booking submitted successfully!');
       setFormData(initialState);
+      router.push(`/confirmation`);
     } catch (err) {
       console.error(err);
       alert(err.error || 'Submission failed');

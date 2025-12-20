@@ -32,7 +32,9 @@ export default function BookingModal({ booking, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div
         className="modal-card"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          onClose;
+          e.stopPropagation()}}
       >
         {/* BookingModal content */}
         {!isEditing && !isHidden && (
