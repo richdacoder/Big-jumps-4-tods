@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/valuedcustomer/Desktop/Big%20Jumps%204%20Tods/big-jumps-4-tods/app/page.jsx"],"sourcesContent":["'use client';\n\nimport React from 'react';\nimport './styles/home.css';\n\nexport default function HomePage() {\n  return (\n    <div className=\"home\">\n      <section className=\"home-hero\">\n        <div className=\"home-content\">\n\n          <h1>\n            Unlimited Fun, Unlimited Smiles <br /> Priceless Memories\n          </h1>\n\n          <p>Softplay For Children Ages 0–6 Years Old</p>\n\n          <a href=\"/book\" className=\"btn-book\">\n            Book Now\n          </a>\n        </div>\n      </section>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;;AAKe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAQ,WAAU;sBACjB,cAAA,8OAAC;gBAAI,WAAU;;kCAEb,8OAAC;;4BAAG;0CAC8B,8OAAC;;;;;4BAAK;;;;;;;kCAGxC,8OAAC;kCAAE;;;;;;kCAEH,8OAAC;wBAAE,MAAK;wBAAQ,WAAU;kCAAW;;;;;;;;;;;;;;;;;;;;;;AAO/C"}}]
-}
