@@ -8,7 +8,15 @@ console.log('before fetch',formData )
     body: JSON.stringify(formData)
   });
   console.log('after fetch',res);
+/*
+objective: send email to when submit
+- import resned
+- create function for send email
+- get email of submitter
+- send them confirmation email
 
+
+*/
   if (!res.ok) {
     const errorData = await res.json();
     throw errorData;
