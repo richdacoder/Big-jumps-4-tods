@@ -100,6 +100,12 @@ router.post('/request', async (req, res, next) => {
       .insert(normalizedData)
       .returning('*');
 
+      await sendRequestConfirmationEmail(
+        normalizedData.email,
+        normalizedData.first_name
+      );
+
+
     res.status(201).json(newRequest[0]);
   } catch (err) {
     next(err);
