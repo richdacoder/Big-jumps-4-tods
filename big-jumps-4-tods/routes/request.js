@@ -1,5 +1,6 @@
 const express = require('express');
-const db = require('../db/db.js'); // your knex instance
+const db = require('../db/db.js');
+const { sendRequestConfirmationEmail } = require('../services/email-services');
 const router = express.Router();
 
 console.log('connecting requests 1');
