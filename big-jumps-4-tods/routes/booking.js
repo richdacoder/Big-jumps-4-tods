@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../db/db.js'); // correct import
+const { sendBookingConfirmationEmail } = require('../services/email-booking.js')
 const router = express.Router();
 
 router.get('/bookings', async (req, res, next) => {
@@ -9,7 +10,6 @@ router.get('/bookings', async (req, res, next) => {
     .orderBy('created_at', 'desc');
 if(bookings){
     }
-    console.log('bookings', bookings);
     res.json(bookings);
 
   } catch (err) {
@@ -19,11 +19,18 @@ if(bookings){
 
 router.post('/booking', async (req, res, next) => {
 try{
+
 const bookings = await db('bookings')
 .insert(req.body)
 .returning('*');
-console.log('check booking now', bookings)
+const booking = bookings[0];
+console.log('check booking info', booking.first_name, booking. email)
 
+ await sendBookingConfirmationEmail(
+   booking.first_name,
+   booking. email
+   )
+console.log('after email sent', booking )
 res.status(201).json(bookings);
 
 } catch(err) {
