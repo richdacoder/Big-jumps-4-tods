@@ -22,6 +22,7 @@ return data;
     const res = await fetch(`http://localhost:3002/api/request/${request.id}`,{
       method:'DELETE'
     })
+    console.log('deleted', res.body);
    alert('Booked schedule');
    onDelete(request.id);
   }
