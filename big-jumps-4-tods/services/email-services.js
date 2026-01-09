@@ -6,6 +6,7 @@ async function sendRequestConfirmationEmail(toEmail, firstName) {
   return resend.emails.send({
     from: 'Big Jumps 4 Tods <onboarding@resend.dev>',
     to: [toEmail],
+    reply_to: '56realman@gmail.com',
     subject: 'We received your party request 🎉',
     html: `
       <p>Hi ${firstName},</p>
