@@ -7,7 +7,7 @@ async function sendBookingConfirmationEmail(firstName, email) {
     const result = await resend.emails.send({
       from: 'Big Jumps 4 Tods <onboarding@resend.dev>',
       to: [email],
-      reply_to: '56realman@gmail.com',
+      reply_to: 'richardwilliams5697@yahoo.com',
       subject: 'Booking Accepted 🎉',
       html: `
         <p>Hi ${firstName},</p>
