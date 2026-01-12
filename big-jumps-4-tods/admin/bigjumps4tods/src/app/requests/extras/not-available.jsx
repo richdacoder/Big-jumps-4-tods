@@ -1,6 +1,11 @@
 "use client"
+import ContactUser from "./contact-user";
+import { useState } from "react";
 
 export default function NotAvailable(){
+
+  const [ showConact, setShowContact ] = useState(false);
+
 console.log('not available working')
 /*
 - click contact user
@@ -14,9 +19,13 @@ return (
   <div className="container">
     <div>
   <div> Date is not available must contact user  </div>
-  <button className="not-available-btn">
-    Contact User
+  <button onClick={() => setShowContact(true)}className="not-available-btn">
+  Contact User
   </button>
+  {
+    showConact && (<ContactUser/>)
+  }
+
   </div>
   </div>
 )
