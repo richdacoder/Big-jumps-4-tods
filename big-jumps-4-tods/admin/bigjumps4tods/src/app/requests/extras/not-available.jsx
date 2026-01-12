@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function NotAvailable(){
 
-  const [ showConact, setShowContact ] = useState(false);
+  const [ showContact, setShowContact ] = useState(false);
 
 console.log('not available working')
 /*
@@ -23,7 +23,7 @@ return (
   Contact User
   </button>
   {
-    showConact && (<ContactUser/>)
+    showContact && (<ContactUser onClose= {() => setShowContact(false)} />)
   }
 
   </div>
