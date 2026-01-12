@@ -1,8 +1,9 @@
 const ContactUser = () => {
-
+console.log('contat user')
 return(
   <div>
-  Contact User
+  <h1>hey</h1>
+
   </div>
 )
 }
