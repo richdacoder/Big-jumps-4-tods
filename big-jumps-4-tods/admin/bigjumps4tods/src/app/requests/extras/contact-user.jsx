@@ -20,13 +20,16 @@ const ContactUser = ({ onClose }) => {
     // fetch('/api/contact', { ... })
     useEffect(() => {
       const fetchMessage = async () => {
-        const res = await fetch();
+        try{
+        const res = await fetch("http://localhost:3003/api/message");
         const message = await res.json();
-        console.log(message);
-
+        console.log(message); }
+        catch(err){
+          console.error("Fail to send message", err);
+        }
       }
       fetchMessage();
-    }, [])
+    }, []);
 
     onClose(); // close popup after send
   };
