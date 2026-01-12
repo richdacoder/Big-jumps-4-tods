@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const ContactUser = ({ onClose }) => {
   console.log("contact user");
@@ -17,6 +18,15 @@ const ContactUser = ({ onClose }) => {
 
     // later:
     // fetch('/api/contact', { ... })
+    useEffect(() => {
+      const fetchMessage = async () => {
+        const res = await fetch();
+        const message = await res.json();
+        console.log(message);
+
+      }
+      fetchMessage();
+    }, [])
 
     onClose(); // close popup after send
   };
