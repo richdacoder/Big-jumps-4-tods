@@ -31,6 +31,31 @@ const ContactUser = ({ onClose }) => {
       fetchMessage();
     }, []);
 
+    useEffect(()=>{
+      if (!request.id) return;
+      const displayEmail = async () => {
+        try{
+          const res = await fetch(`http://localhost:3002/api/requests/${request.id}`);
+          if (!res.ok){
+            console.log('Fail to fetch email');
+            return;
+          }
+          const data = await res.json();
+          console.log('request fetched', data);
+
+        } catch(err){
+          console.error(err);
+        }
+      }
+      displayEmail();
+    }, [request.id]
+    )
+
+    /*
+    - fetch currect email
+    - display in input
+
+    */
     onClose(); // close popup after send
   };
 
