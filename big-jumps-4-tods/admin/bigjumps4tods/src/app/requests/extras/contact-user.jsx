@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
-import { useEffect } from "react";
 
 const ContactUser = ({ onClose, request }) => {
   console.log("contact user");
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(request.email || "");
   const [message, setMessage] = useState("");
 
   const sendMessage = async (e) => {
