@@ -112,10 +112,6 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
     }
   };
 
-  //make submit form with input and get x
-  //make iteration of booking in placeholder x
-  //make class call hide on pop up
-  // hide activate when click on edit
   return (
     <>
       <h2>
