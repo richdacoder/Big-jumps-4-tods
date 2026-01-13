@@ -62,7 +62,9 @@ export default function RequestModal({ request, onClose, onDelete }) {
     })
         setAvailabilityComponent(
           isOverLap
-            ? <NotAvailable />
+            ? <NotAvailable
+            request={request}
+            />
             : <Available
                 request={request}
                 onClose={onClose}

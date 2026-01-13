@@ -2,7 +2,7 @@
 import ContactUser from "./contact-user";
 import { useState } from "react";
 
-export default function NotAvailable(){
+export default function NotAvailable({request}){
 
   const [ showContact, setShowContact ] = useState(false);
 
@@ -22,10 +22,12 @@ return (
   <button onClick={() => setShowContact(true)}className="not-available-btn">
   Contact User
   </button>
-  {
-    showContact && (<ContactUser onClose= {() => setShowContact(false)} />)
-  }
-
+  {showContact && (
+          <ContactUser
+            request={request}
+            onClose={() => setShowContact(false)}
+          />
+        )}
   </div>
   </div>
 )
