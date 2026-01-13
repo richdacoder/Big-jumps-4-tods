@@ -2,62 +2,42 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ContactUser = ({ onClose }) => {
+const ContactUser = ({ onClose, request }) => {
   console.log("contact user");
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const sendMessage = (e) => {
-    e.preventDefault(); // ⛔ stop page refresh
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    try{
+    const messageJson = await {
+      method: 'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+      email: email,
+      message: message
+      })
+    }
+    messageJson();
+  } catch (err) {
+    console.error('Message fail to send', err)
+  }
+  };
+  console.log('request object', request)
 
-    console.log("Sending message:", {
-      email,
-      message,
-    });
-
-    // later:
-    // fetch('/api/contact', { ... })
-    useEffect(() => {
-      const fetchMessage = async () => {
-        try{
-        const res = await fetch("http://localhost:3003/api/message");
-        const message = await res.json();
-        console.log(message); }
-        catch(err){
-          console.error("Fail to send message", err);
-        }
-      }
-      fetchMessage();
-    }, []);
-
-    useEffect(()=>{
-      if (!request.id) return;
-      const displayEmail = async () => {
-        try{
-          const res = await fetch(`http://localhost:3002/api/requests/${request.id}`);
-          if (!res.ok){
-            console.log('Fail to fetch email');
-            return;
-          }
-          const data = await res.json();
-          console.log('request fetched', data);
-
-        } catch(err){
-          console.error(err);
-        }
-      }
-      displayEmail();
-    }, [request.id]
-    )
 
     /*
-    - fetch currect email
-    - display in input
+    - get currect email
+    - display in inputxxxxx
+    - make state for selected email
+    - put data from fetch in selected email state
+    - on click of contact user button
+    - email is in put
 
     */
-    onClose(); // close popup after send
-  };
 
   return (
     <div className="popup">
