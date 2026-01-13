@@ -10,7 +10,7 @@ const ContactUser = ({ onClose, request }) => {
   const sendMessage = async (e) => {
     e.preventDefault();
     try{
-    const messageJson = await {
+    const res = await fetch('http://localhost:3002/api/message', {
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
@@ -19,8 +19,13 @@ const ContactUser = ({ onClose, request }) => {
       email: email,
       message: message
       })
+    })
+    const data = await res.json();
+    if (!res.ok){
+      console.error('messaage failed to send', data);
+      return;
     }
-    messageJson();
+    console.log('message sent', data);
   } catch (err) {
     console.error('Message fail to send', err)
   }
@@ -60,6 +65,7 @@ const ContactUser = ({ onClose, request }) => {
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            placeholder="Type your message here"
             required
           />
         </div>
