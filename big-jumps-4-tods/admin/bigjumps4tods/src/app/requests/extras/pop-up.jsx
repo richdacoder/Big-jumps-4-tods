@@ -20,7 +20,6 @@ export default function RequestModal({ request, onClose, onDelete }) {
           day: "numeric",
         })
       : "";
-
   const formatTime = (dateString) =>
     dateString
       ? new Date(dateString).toLocaleTimeString("en-US", {
@@ -121,6 +120,9 @@ export default function RequestModal({ request, onClose, onDelete }) {
           (<EditRequest
           request={request}
           onClose={() => setEditRequest(false)}
+          formatDate={formatDate}
+          formatTime={formatTime}
+
           />)
           }
 
