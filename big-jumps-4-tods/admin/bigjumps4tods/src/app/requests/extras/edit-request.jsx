@@ -1,3 +1,4 @@
+"use client";
 /*
 
 - click edit request button
@@ -7,3 +8,11 @@
 - pop up request but now they are inputs with the value of request.info
 (now call request variable and make input elements )
    */
+
+export const EditRequest = () => {
+
+
+return (
+  <div>edit request</div>
+);
+}
