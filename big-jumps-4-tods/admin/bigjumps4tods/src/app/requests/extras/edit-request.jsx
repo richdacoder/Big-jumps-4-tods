@@ -9,8 +9,8 @@
 (now call request variable and make input elements )
    */
 
-export const EditRequest = () => {
-
+export default function EditRequest(){
+console.log('working edit request');
 
 return (
   <div>edit request</div>

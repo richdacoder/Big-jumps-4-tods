@@ -2,11 +2,14 @@
 
 import Available from './available.jsx';
 import NotAvailable from './not-available.jsx';
+import EditRequest from './edit-request.jsx';
 import { useState } from 'react';
 
 
 export default function RequestModal({ request, onClose, onDelete }) {
-  //what is on close and on delete doing ?
+
+  const[editRequest, setEditRequest] = useState(false);
+
   if (!request) return null;
 
   const formatDate = (dateString) =>
@@ -110,9 +113,17 @@ export default function RequestModal({ request, onClose, onDelete }) {
           <button className="check-button" onClick={handleCheckAvailability}>
             Check Availability
           </button>
-          <button>
+          <button className="edit-request" onClick={() => setEditRequest(true)} >
             Edit Request
           </button>
+          {
+            editRequest &&
+          (<EditRequest
+          request={request}
+          onClose={() => setEditRequest(false)}
+          />)
+          }
+
         </div>
       </div>
     </div>
