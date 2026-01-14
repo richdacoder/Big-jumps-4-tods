@@ -10,6 +10,8 @@
 
 now:
 - info must be able to update database
+- make use state for all keys in object
+- use effect to add fetch (PUT)
    */
 
 export default function EditRequest({ request, onClose, formatTime, formatDate }){
@@ -20,19 +22,19 @@ return (
  <button onClick={onClose}>&times;</button>
  <h1>edit request</h1>
   <ul className="request-details">
-  <li><strong>ID:</strong> <input value={request.id} /></li>
-  <li><strong>Email:</strong> <input value={request.email} /></li>
-  <li><strong>Phone:</strong> <input value={request.phone} /></li>
-  <li><strong>Party Address:</strong> <input value={request.party_address} /></li>
-  <li><strong>Address Line 2:</strong> <input value={request.address_line2 || "-"} /></li>
-  <li><strong>Party Date:</strong> <input value={formatDate(request.party_date)} /></li>
-  <li><strong>Start Time:</strong> <input value={formatTime(request.party_start_time)} /></li>
-  <li><strong>End Time:</strong> <input value={formatTime(request.party_end_time)} /></li>
-  <li><strong>Package:</strong> <input value={request.package} /></li>
-  <li><strong>Message:</strong> <input value={request.message || "-"} /></li>
-  <li><strong>Theme:</strong> <input value={request.theme || "-"} /></li>
-  <li><strong>Referral:</strong> <input value={request.referral || "-"} /></li>
-  <li><strong>Request Made:</strong> <input value={formatDate(request.created_at)} /></li>
+  <li><strong>ID:</strong> <input type="number" value={request.id} /></li>
+  <li><strong>Email:</strong> <input type="email" value={request.email} /></li>
+  <li><strong>Phone:</strong> <input type="tel" value={request.phone} /></li>
+  <li><strong>Party Address:</strong> <input type="text" value={request.party_address} /></li>
+  <li><strong>Address Line 2:</strong> <input type="text" value={request.address_line2 || "-"} /></li>
+  <li><strong>Party Date:</strong> <input type="date" value={formatDate(request.party_date)} /></li>
+  <li><strong>Start Time:</strong> <input type="time" value={formatTime(request.party_start_time)} /></li>
+  <li><strong>End Time:</strong> <input type="time" value={formatTime(request.party_end_time)} /></li>
+  <li><strong>Package:</strong> <input type="text" value={request.package} /></li>
+  <li><strong>Message:</strong> <input type="text" value={request.message || "-"} /></li>
+  <li><strong>Theme:</strong> <input type="text" value={request.theme || "-"} /></li>
+  <li><strong>Referral:</strong> <input type="text" value={request.referral || "-"} /></li>
+  <li><strong>Request Made:</strong> <input type="time" value={formatDate(request.created_at)} /></li>
 </ul>
 </>
 );
