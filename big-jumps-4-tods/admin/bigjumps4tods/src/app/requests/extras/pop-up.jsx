@@ -110,6 +110,9 @@ export default function RequestModal({ request, onClose, onDelete }) {
           <button className="check-button" onClick={handleCheckAvailability}>
             Check Availability
           </button>
+          <button>
+            Edit Request
+          </button>
         </div>
       </div>
     </div>

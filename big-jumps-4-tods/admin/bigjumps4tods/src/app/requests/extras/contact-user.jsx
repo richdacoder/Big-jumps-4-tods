@@ -33,19 +33,10 @@ const ContactUser = ({ onClose, request }) => {
   console.log('request object', request)
 
 
-    /*
-    - get currect email
-    - display in inputxxxxx
-    - make state for selected email
-    - put data from fetch in selected email state
-    - on click of contact user button
-    - email is in put
-
-    */
 
   return (
     <div className="popup">
-      <button onClick={onClose}>X</button>
+      <button onClick={onClose}>&times;</button>
 
       <h1>Contact User</h1>
 
