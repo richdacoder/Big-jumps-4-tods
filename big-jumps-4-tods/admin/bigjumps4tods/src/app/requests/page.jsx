@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import RequestModal from "./extras/pop-up"; // import modal
 import "../styles/requests.css";
+import "../styles/edit-request.css";
 import "../styles/modal.css"; // Import the separate CSS
 
 
