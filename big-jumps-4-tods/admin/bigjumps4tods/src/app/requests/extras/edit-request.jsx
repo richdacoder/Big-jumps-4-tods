@@ -34,6 +34,10 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
+const toDateInput = () =>{
+console.log('start and end time', startTime, endTime);
+}
+toDateInput();
 
 const handleUpdate = async(e) => {
   e.preventDefault();
