@@ -23,7 +23,7 @@ export default function EditRequest({ request, onClose }){
 console.log('working edit request', request);
 
 const toDateInput = (d) =>{
-  const date = new Date(d)
+  const date = new Date(d);
 const month = (date.getMonth() + 1).toString().padStart(2,"0");
 const dateDay = date.getDate().toString().padStart(2,"0");
 const year = date.getFullYear();
@@ -32,8 +32,10 @@ console.log(`${year}-${month}-${dateDay}`);
 }
 
 const toTimeInput = (t) => {
-  const time = new Date(t).toISOString().split("T")[1];
-  return time.split(".")[0];
+  const date = new Date(t);
+  const hour = (date.getHours()).toString().padStart(2,"0");
+  const minutes = (date.getMinutes()).toString().padStart(2,"0");
+  return `${hour}:${minutes}`;
   }
 
 
@@ -42,8 +44,8 @@ const [ phone, setPhone] = useState(request.phone || "");
 const [ partyAddress, setPartyAddress ] = useState(request.party_address || "");
 const [ Addressline2,setAddressline2] = useState(request.address_line2  || "");
 const [ partyDate, setPartyDate] = useState(toDateInput(request.party_date));
-const [ startTime, setStartTime] = useState(request.party_start_time);
-const [ endTime, setEndTime] = useState(request.party_end_time);
+const [ startTime, setStartTime] = useState(toTimeInput(request.party_start_time));
+const [ endTime, setEndTime] = useState(toTimeInput(request.party_end_time));
 const [ pkg, setPkg] = useState(request.package || "");
 const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
@@ -70,8 +72,8 @@ return (
   <li><strong>Party Address:</strong> <input type="text" value={partyAddress} onChange={e => setPartyAddress(e.target.value)}/></li>
   <li><strong>Address Line 2:</strong> <input type="text" value={Addressline2} onChange={e => setAddressline2(e.target.value)} /></li>
   <li><strong>Party Date:</strong> <input type="date" value={partyDate} onChange={e => setPartyDate(e.target.value)} /></li>
-  <li><strong>Start Time:</strong>{""}<input type="time" value={toTimeInput(startTime)} onChange={e => setStartTime(e.target.value)} /></li>
-  <li><strong>End Time:</strong> <input type="time" value={toTimeInput(endTime)} onChange={e => setEndTime(e.target.value)} /></li>
+  <li><strong>Start Time:</strong>{""}<input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} /></li>
+  <li><strong>End Time:</strong> <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} /></li>
   <li><strong>Package:</strong> <input type="text" value={pkg} onChange={e => setPkg(e.target.value)} /></li>
   <li><strong>Message:</strong> <input type="text" value={message} onChange={e => setMessage(e.target.value)} /></li>
   <li><strong>Theme:</strong> <input type="text" value={theme} onChange={e => setTheme(e.target.value)} /></li>
