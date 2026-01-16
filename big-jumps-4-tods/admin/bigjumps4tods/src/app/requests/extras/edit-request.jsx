@@ -26,16 +26,27 @@ const [ email, setEmail ] = useState(request.email || "");
 const [ phone, setPhone] = useState(request.phone || "");
 const [ partyAddress, setPartyAddress ] = useState(request.party_address || "");
 const [ Addressline2,setAddressline2] = useState(request.address_line2  || "");
-const [ partyDate, setPartyDate] = useState(formatDate(request.party_date));
-const [ startTime, setStartTime] = useState(formatTime(request.party_start_time));
-const [ endTime, setEndTime] = useState(formatTime(request.party_end_time));
+const [ partyDate, setPartyDate] = useState(request.party_date);
+const [ startTime, setStartTime] = useState(request.party_start_time);
+const [ endTime, setEndTime] = useState(request.party_end_time);
 const [ pkg, setPkg] = useState(request.package || "");
 const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
 const toDateInput = () =>{
-console.log('start and end time', startTime, endTime);
+  const date = new Date(partyDate).toLocaleDateString("en-US");
+  const starT = new Date(startTime).toLocaleTimeString("en-US");
+  const enD = new Date(endTime).toLocaleTimeString("en-US");
+console.log('Date:', date, 'start and end time:', starT, 'hey', enD);
+  const dater = date;
+  const start = starT;
+  const end = enD;
+console.log('object time', {
+'month':dater,
+'start date':start,
+'end date':end
+});
 }
 toDateInput();
 
