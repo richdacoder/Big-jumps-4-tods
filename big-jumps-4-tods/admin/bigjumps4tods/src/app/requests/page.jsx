@@ -43,6 +43,14 @@ export default function RequestsPage() {
       day: "numeric",
     });
   };
+  const formatTime = (dateString) =>
+  dateString
+    ? new Date(dateString).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "";
+
 
   const handleDelete = (id) => {
     const newRequest = requests.filter(req => req.id !== id )
@@ -81,6 +89,8 @@ export default function RequestsPage() {
         request={selectedRequest}
         onClose={() => setSelectedRequest(null)}
         onDelete={handleDelete}
+        formatDate={formatDate}
+        formatTime={formatTime}
          />
       )}
     </div>
