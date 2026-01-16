@@ -34,13 +34,14 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
-const toDateInput = (T) =>{
-  const date = new Date(T).toISOString().split("T")[0];
+const toDateInput = (d) =>{
+  const date = new Date(d).toISOString().split("T")[0];
   return date;
 }
 
-const toTimeInput = () => {
-
+const toTimeInput = (t) => {
+const time = new Date(t).toISOString().split("T")[1];
+return time.split(".")[0];
 }
 const handleUpdate = async(e) => {
   e.preventDefault();
@@ -62,8 +63,8 @@ return (
   <li><strong>Party Address:</strong> <input type="text" value={partyAddress} onChange={e => setPartyAddress(e.target.value)}/></li>
   <li><strong>Address Line 2:</strong> <input type="text" value={Addressline2} onChange={e => setAddressline2(e.target.value)} /></li>
   <li><strong>Party Date:</strong> <input type="date" value={toDateInput(partyDate)} onChange={e => setPartyDate(e.target.value)} /></li>
-  <li><strong>Start Time:</strong>{""}<input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} /></li>
-  <li><strong>End Time:</strong> <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} /></li>
+  <li><strong>Start Time:</strong>{""}<input type="time" value={toTimeInput(startTime)} onChange={e => setStartTime(e.target.value)} /></li>
+  <li><strong>End Time:</strong> <input type="time" value={toTimeInput(endTime)} onChange={e => setEndTime(e.target.value)} /></li>
   <li><strong>Package:</strong> <input type="text" value={pkg} onChange={e => setPkg(e.target.value)} /></li>
   <li><strong>Message:</strong> <input type="text" value={message} onChange={e => setMessage(e.target.value)} /></li>
   <li><strong>Theme:</strong> <input type="text" value={theme} onChange={e => setTheme(e.target.value)} /></li>
