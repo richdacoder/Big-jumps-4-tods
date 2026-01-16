@@ -34,22 +34,14 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
-const toDateInput = () =>{
-  const date = new Date(partyDate).toLocaleDateString("en-US");
-  const starT = new Date(startTime).toLocaleTimeString("en-US");
-  const enD = new Date(endTime).toLocaleTimeString("en-US");
-console.log('Date:', date, 'start and end time:', starT, 'hey', enD);
-  const dater = date;
-  const start = starT;
-  const end = enD;
-console.log('object time', {
-'month':dater,
-'start date':start,
-'end date':end
-});
+const toDateInput = (T) =>{
+  const date = new Date(T).toISOString().split("T")[0];
+  return date;
 }
-toDateInput();
 
+const toTimeInput = () => {
+
+}
 const handleUpdate = async(e) => {
   e.preventDefault();
   try {
@@ -69,7 +61,7 @@ return (
   <li><strong>Phone:</strong> <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} /></li>
   <li><strong>Party Address:</strong> <input type="text" value={partyAddress} onChange={e => setPartyAddress(e.target.value)}/></li>
   <li><strong>Address Line 2:</strong> <input type="text" value={Addressline2} onChange={e => setAddressline2(e.target.value)} /></li>
-  <li><strong>Party Date:</strong> <input type="date" value={partyDate} onChange={e => setPartyDate(e.target.value)} /></li>
+  <li><strong>Party Date:</strong> <input type="date" value={toDateInput(partyDate)} onChange={e => setPartyDate(e.target.value)} /></li>
   <li><strong>Start Time:</strong>{""}<input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} /></li>
   <li><strong>End Time:</strong> <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} /></li>
   <li><strong>Package:</strong> <input type="text" value={pkg} onChange={e => setPkg(e.target.value)} /></li>
