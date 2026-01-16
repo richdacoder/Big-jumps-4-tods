@@ -120,9 +120,6 @@ export default function RequestModal({ request, onClose, onDelete }) {
           (<EditRequest
           request={request}
           onClose={() => setEditRequest(false)}
-          formatDate={formatDate}
-          formatTime={formatTime}
-
           />)
           }
 
