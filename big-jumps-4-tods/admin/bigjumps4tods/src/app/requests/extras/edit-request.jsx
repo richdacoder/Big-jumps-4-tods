@@ -19,7 +19,7 @@ now:
 
    */
 
-export default function EditRequest({ request, onClose }){
+export default function EditRequest({ request, onClose, formatDate, formatTime }){
 console.log('working edit request', request);
 
 const toDateInput = (d) =>{
