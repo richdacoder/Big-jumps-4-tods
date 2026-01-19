@@ -42,6 +42,16 @@ router.get('/requests/:id', async (req, res, next) => {
   }
 });
 
+router.put('/request/:id', async () => {
+  try {
+
+  } catch(err){
+
+    console.error(err);
+  }
+}
+
+)
 /**
  * ✅ POST create request
  * POST /api/requests
