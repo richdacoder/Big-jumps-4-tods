@@ -42,16 +42,57 @@ router.get('/requests/:id', async (req, res, next) => {
   }
 });
 
-router.put('/request/:id', async () => {
+
+router.put('/requests/:id', async (req, res) => {
   try {
+    const { id } = req.params;
 
-  } catch(err){
+    const {
+      email,
+      phone,
+      party_address,
+      address_line2,
+      party_date,
+      party_start_time,
+      party_end_time,
+      package: pkg,
+      message,
+      theme,
+      referral
+    } = req.body;
 
-    console.error(err);
+    const updated = await knex('requests')
+      .where({ id })
+      .update(
+        {
+          email,
+          phone,
+          party_address,
+          address_line2,
+          party_date,
+          party_start_time,
+          party_end_time,
+          package: pkg,
+          message,
+          theme,
+          referral
+        },
+        '*'
+      );
+
+    if (updated.length === 0) {
+      return res.status(404).json({ message: 'Request not found' });
+    }
+
+    res.status(200).json(updated[0]);
+
+  } catch (err) {
+    console.error('Update request error:', err);
+    res.status(500).json({ message: 'Server error' });
   }
-}
+});
 
-)
+
 /**
  * ✅ POST create request
  * POST /api/requests
