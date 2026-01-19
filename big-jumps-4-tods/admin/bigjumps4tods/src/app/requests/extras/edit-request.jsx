@@ -12,10 +12,17 @@ import {useState, useEffect} from 'react';
 now:
 - info must be able to update database
 - create function to handle updates xx
-- make use state for all keys in object
+- make use state for all keys in object xx
 (useState)
-- use effect to add fetch (PUT)
-(useEffect)
+
+update:
+- clicks update(onclick)
+- turn body to json
+- cheeck if party date and start and end time is available
+- check if update time is not 1 hour before start time nor 1 hour after end time nor in between start and end time
+- get send to api in express
+- express makes PUT route
+- updates PUT by id
 
    */
 
@@ -51,13 +58,47 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
+const availableTime = partyDate === r.party_date && startTime === r.party_start_time && endTime ===  r.party_end_time;
+const timeBetweenDatatime = startTime > r.party_start_time && endTime < r.party_end_time;
+const dataTimeBetweenTime = r.party_start_time > startTime && r.party_end_time < endTime;
+const oneHourBefore = startTime <= r.party_start_time - 60;
+const oneHourAfter = startTime <= r.party_end_time + 60;
 
-const handleUpdate = async(e) => {
+
+
+const handleUpdate = async (e) => {
   e.preventDefault();
   try {
+    const res = await fetch(`https://localhost:3002/api/requests/${request.id}`, {
+      method: "PUT",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        phone: phone,
+        party_address: partyAddress,
+        address_line2: Addressline2,
+        party_date: partyDate,
+        party_start_time: startTime,
+        party_end_time: endTime,
+        package: pkg,
+        message: message,
+        theme: theme,
+        referral: referral
+      })
+    });
 
-  } catch(err) {
-    console.error(err)
+    if (!res.ok) {
+      throw new Error(`Update failed with status ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log('Update successful:', data);
+
+    onClose();
+
+  } catch (err) {
+    console.error('Error updating request:', err);
+    alert('Failed to update request');
   }
 };
 
