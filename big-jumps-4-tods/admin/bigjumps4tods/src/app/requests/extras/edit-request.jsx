@@ -100,7 +100,7 @@ const handleUpdate = async (e) => {
 return (
  <>
  <form onSubmit={handleUpdate}>
- <button onClick={onClose}>&times;</button>
+ <button className="delete-button" onClick={onClose}>&times;</button>
  <h1>edit request</h1>
   <ul className="request-details">
   <li><strong>Email:</strong> <input type="email" value={email} onChange={ e => setEmail(e.target.value) } /></li>
@@ -115,7 +115,7 @@ return (
   <li><strong>Theme:</strong> <input type="text" value={theme} onChange={e => setTheme(e.target.value)} /></li>
   <li><strong>Referral:</strong> <input type="text" value={referral} onChange={e => setReferral(e.target.value)} /></li>
 </ul>
-<button>Update</button>
+<button className="edit-request" >Update</button>
 </form>
 </>
 );
