@@ -1,10 +1,137 @@
-.request-details input{
-  border: none;
-
+.request-details input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* rounded corners */
+  box-sizing: border-box;
 }
 
+/* Edit Request Button */
 .edit-request {
-  background-color: #4f46e5; /* example */
+  background-color: #4f46e5; /* example color */
   color: white;
-  border-radius: 10;
+  border-radius: 8px; /* rounded corners */
+  border: none;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.edit-request:hover {
+  background-color: #4338ca;
+}
+
+/* ==== Edit Request Modal Styling ==== */
+.modal-card {
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #fff3f0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 12px; /* rounded corners for modal */
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
+  color: #333;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  font-size: 1.4rem;
+  color: #ff6b6b;
+}
+
+.close-button {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px; /* rounded corners */
+  transition: background-color 0.25s ease;
+}
+
+.close-button:hover {
+  background-color: #ff3b3b;
+}
+
+.edit-request-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.request-details li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.request-details li strong {
+  margin-bottom: 0.2rem;
+  color: #ff6b6b;
+}
+
+/* ==== Modal Action Buttons ==== */
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 0.6rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px; /* rounded corners */
+  transition: background-color 0.25s ease;
+}
+
+.update-button {
+  background-color: #ff6b6b;
+}
+
+.update-button:hover {
+  background-color: #ff3b3b;
+}
+
+.modal-actions .close-button {
+  background-color: #666;
+}
+
+.modal-actions .close-button:hover {
+  background-color: #444;
+}
+
+/* ==== Responsive: stack buttons on mobile ==== */
+@media (max-width: 480px) {
+  .modal-card {
+    padding: 1rem 1rem;
+  }
+  .modal-actions {
+    flex-direction: column;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+  .request-details li {
+    flex-direction: column;
+  }
 }
