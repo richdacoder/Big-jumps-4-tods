@@ -2,30 +2,7 @@
 import { useEffect, useState } from "react";
 
 export default function EditBookings({ booking, onClose, formatDate, formatTime }) {
-  //fetch get bookings
-  //fetch edit or put
-  useEffect(() => {
-    const edit = async () => {
-      try {
-        const res = await fetch(`http://localhost:3002/api/bookings/${booking.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ modifystring: "yourValueHere" }),
-        });
-
-        if (!res.ok) throw new Error("Failed to update booking");
-
-        const data = await res.json();
-        console.log(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    // edit();
-  }, []); // add []
+  const today = new Date().toISOString().split('T')[0];
 
   // Helper function to convert full date/time string to "HH:MM" for input[type="time"]
   const toTimeInput = (dateString) => {
@@ -64,6 +41,11 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
   // Submit function for updating booking
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    if (!email || !phone || !partyAddress || !partyDate || !startTime || !endTime || !pkg) {
+      return alert('Please fill in all required fields.');
+    }
+
     try {
       const res = await fetch(`http://localhost:3002/api/booking/${booking.id}`, {
         method: "PUT",
@@ -144,7 +126,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           </li>
           <li>
             <strong>Party Date:</strong>{" "}
-            <input type="date" value={partyDate} onChange={(e) => setPartyDate(e.target.value)} />
+            <input type="date" min={today} value={partyDate} onChange={(e) => setPartyDate(e.target.value)} />
           </li>
           <li>
             <strong>Start Time:</strong>{" "}
@@ -152,7 +134,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           </li>
           <li>
             <strong>End Time:</strong>{" "}
-            <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+            <input type="time" min={startTime} value={endTime} onChange={(e) => setEndTime(e.target.value)} />
           </li>
           <li>
             <strong>Package:</strong>{" "}
