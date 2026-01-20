@@ -1,7 +1,7 @@
 "use client";
 import {useState, useEffect} from 'react';
 /*
-- these cannot be empty email: email,
+- these cannot be empty email: email, xx
         phone: phone,
         party_address: partyAddress,
          party_date: partyDate,
@@ -9,13 +9,12 @@ import {useState, useEffect} from 'react';
         party_end_time: endTimestamp,
         package: pkg,
 
-  -  party_date: partyDate, cant be booked in the past
-  -  party_start_time: startTimestamp, cant be greater than party_end_time: endTimestamp,
+  -  party_date: partyDate, cant be booked in the past xx
+  -  party_start_time: startTimestamp, cant be greater than party_end_time: endTimestamp,xx
 
    */
 
 export default function EditRequest({ request, onClose, onUpdate, formatDate, formatTime }){
-console.log('working edit request', request);
 
 const toDateInput = (d) =>{
   const date = new Date(d);
@@ -49,21 +48,21 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
+console.log('party date',typeof startTime);
+
 
 const handleUpdate = async (e) => {
   e.preventDefault();
+
+  if (!email || !phone || !partyAddress || !partyDate || !startTime || !endTime || !pkg) {
+    return alert('Please fill in all required fields.');
+  }
 
 
   try {
     const startTimestamp = new Date(`${partyDate}T${startTime}:00`).toISOString();
     const endTimestamp = new Date(`${partyDate}T${endTime}:00`).toISOString();
 
-    console.log({
-      'party date':partyDate,
-      'start date':startTimestamp,
-      'end time':endTimestamp
-    });
-    console.log('party date',typeof partyDate  );
 
     const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
       method: "PUT",
@@ -110,7 +109,7 @@ return (
   <li><strong>Address Line 2:</strong> <input type="text" value={Addressline2} onChange={e => setAddressline2(e.target.value)} /></li>
   <li><strong>Party Date:</strong> <input min={today} type="date" value={partyDate} onChange={e => setPartyDate(e.target.value)} /></li>
   <li><strong>Start Time:</strong>{""}<input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} /></li>
-  <li><strong>End Time:</strong> <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} /></li>
+  <li><strong>End Time:</strong> <input min={startTime} type="time" value={endTime} onChange={e => setEndTime(e.target.value)} /></li>
   <li><strong>Package:</strong> <input type="text" value={pkg} onChange={e => setPkg(e.target.value)} /></li>
   <li><strong>Message:</strong> <input type="text" value={message} onChange={e => setMessage(e.target.value)} /></li>
   <li><strong>Theme:</strong> <input type="text" value={theme} onChange={e => setTheme(e.target.value)} /></li>
