@@ -6,7 +6,7 @@ import EditRequest from './edit-request.jsx';
 import { useState } from 'react';
 
 
-export default function RequestModal({ request, onClose, onDelete }) {
+export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
 
   const[editRequest, setEditRequest] = useState(false);
 
@@ -87,43 +87,54 @@ export default function RequestModal({ request, onClose, onDelete }) {
             &times;
           </button>
         </div>
+        {!editRequest && (
+          <>
+            <ul className="request-details">
+              <li><strong>ID:</strong> {request.id}</li>
+              <li><strong>Email:</strong> {request.email}</li>
+              <li><strong>Phone:</strong> {request.phone}</li>
+              <li><strong>Party Address:</strong> {request.party_address}</li>
+              <li><strong>Address Line 2:</strong> {request.address_line2 || "-"}</li>
+              <li><strong>Party Date:</strong> {formatDate(request.party_date)}</li>
+              <li><strong>Start Time:</strong> {formatTime(request.party_start_time)}</li>
+              <li><strong>End Time:</strong> {formatTime(request.party_end_time)}</li>
+              <li><strong>Package:</strong> {request.package}</li>
+              <li><strong>Message:</strong> {request.message || "-"}</li>
+              <li><strong>Theme:</strong> {request.theme || "-"}</li>
+              <li><strong>Referral:</strong> {request.referral || "-"}</li>
+              <li><strong>Request Made:</strong> {formatDate(request.created_at)}</li>
+            </ul>
 
-        <ul className="request-details">
-          <li><strong>ID:</strong> {request.id}</li>
-          <li><strong>Email:</strong> {request.email}</li>
-          <li><strong>Phone:</strong> {request.phone}</li>
-          <li><strong>Party Address:</strong> {request.party_address}</li>
-          <li><strong>Address Line 2:</strong> {request.address_line2 || "-"}</li>
-          <li><strong>Party Date:</strong> {formatDate(request.party_date)}</li>
-          <li><strong>Start Time:</strong> {formatTime(request.party_start_time)}</li>
-          <li><strong>End Time:</strong> {formatTime(request.party_end_time)}</li>
-          <li><strong>Package:</strong> {request.package}</li>
-          <li><strong>Message:</strong> {request.message || "-"}</li>
-          <li><strong>Theme:</strong> {request.theme || "-"}</li>
-          <li><strong>Referral:</strong> {request.referral || "-"}</li>
-          <li><strong>Request Made:</strong> {formatDate(request.created_at)}</li>
-        </ul>
-            <div className="availability-container" >
-               {availabilityComponent} </div>
-        <div className="modal-actions" >
-          <button className="delete-button" onClick={handleDelete}>
-            Delete Request
-          </button>
-          <button className="check-button" onClick={handleCheckAvailability}>
-            Check Availability
-          </button>
-          <button className="edit-request" onClick={() => setEditRequest(true)} >
-            Edit Request
-          </button>
-          {
+            <div className="availability-container">
+              {availabilityComponent}
+            </div>
+
+            <div className="modal-actions">
+              <button className="delete-button" onClick={handleDelete}>
+                Delete Request
+              </button>
+              <button className="check-button" onClick={handleCheckAvailability}>
+                Check Availability
+              </button>
+              <button
+                className="edit-request"
+                onClick={() => setEditRequest(true)}
+              >
+                Edit Request
+              </button>
+            </div>
+          </>
+        )}
+
+        {
             editRequest &&
           (<EditRequest
           request={request}
           onClose={() => setEditRequest(false)}
+          onUpdate={onUpdate}
           />)
           }
 
-        </div>
       </div>
     </div>
   );

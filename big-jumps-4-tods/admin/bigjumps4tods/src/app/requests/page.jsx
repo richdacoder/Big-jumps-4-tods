@@ -51,11 +51,17 @@ export default function RequestsPage() {
       })
     : "";
 
-
   const handleDelete = (id) => {
     const newRequest = requests.filter(req => req.id !== id )
     return setRequests(newRequest);
   }
+
+  const handleUpdate = (updatedRequest) => {
+    setRequests(prev =>
+      prev.map(req => req.id === updatedRequest.id ? updatedRequest : req)
+    );
+    setSelectedRequest(null);
+  };
   return (
 
     <div className="requests-page">
@@ -91,6 +97,7 @@ export default function RequestsPage() {
         onDelete={handleDelete}
         formatDate={formatDate}
         formatTime={formatTime}
+        onUpdate={handleUpdate}
          />
       )}
     </div>

@@ -2,3 +2,9 @@
   border: none;
 
 }
+
+.edit-request {
+  background-color: #4f46e5; /* example */
+  color: white;
+  border-radius: 10;
+}
