@@ -26,7 +26,7 @@ update:
 
    */
 
-export default function EditRequest({ request, onClose, formatDate, formatTime }){
+export default function EditRequest({ request, onClose, onUpdate, formatDate, formatTime }){
 console.log('working edit request', request);
 
 const toDateInput = (d) =>{
@@ -97,8 +97,7 @@ const handleUpdate = async (e) => {
     const updatedRequest = await res.json();
     console.log('Update successful:', updatedRequest);
 
-
-    onClose();
+    onUpdate(updatedRequest);
 
   } catch (err) {
     console.error('Error updating request:', err);
