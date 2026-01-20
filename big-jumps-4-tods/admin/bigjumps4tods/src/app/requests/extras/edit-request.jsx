@@ -1,18 +1,5 @@
 "use client";
 import {useState, useEffect} from 'react';
-/*
-- these cannot be empty email: email, xx
-        phone: phone,
-        party_address: partyAddress,
-         party_date: partyDate,
-        party_start_time: startTimestamp,
-        party_end_time: endTimestamp,
-        package: pkg,
-
-  -  party_date: partyDate, cant be booked in the past xx
-  -  party_start_time: startTimestamp, cant be greater than party_end_time: endTimestamp,xx
-
-   */
 
 export default function EditRequest({ request, onClose, onUpdate, formatDate, formatTime }){
 
@@ -47,8 +34,6 @@ const [ pkg, setPkg] = useState(request.package || "");
 const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
-
-console.log('party date',typeof startTime);
 
 
 const handleUpdate = async (e) => {
