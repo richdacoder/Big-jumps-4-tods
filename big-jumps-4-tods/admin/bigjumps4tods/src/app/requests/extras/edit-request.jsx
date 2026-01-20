@@ -58,18 +58,21 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
-const availableTime = partyDate === r.party_date && startTime === r.party_start_time && endTime ===  r.party_end_time;
-const timeBetweenDatatime = startTime > r.party_start_time && endTime < r.party_end_time;
-const dataTimeBetweenTime = r.party_start_time > startTime && r.party_end_time < endTime;
-const oneHourBefore = startTime <= r.party_start_time - 60;
-const oneHourAfter = startTime <= r.party_end_time + 60;
-
-
 
 const handleUpdate = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch(`https://localhost:3002/api/requests/${request.id}`, {
+    const startTimestamp = new Date(`${partyDate}T${startTime}:00`).toISOString();
+    const endTimestamp = new Date(`${partyDate}T${endTime}:00`).toISOString();
+
+    console.log({
+      'party date':partyDate,
+      'start date':startTimestamp,
+      'end time':endTimestamp
+    });
+    console.log('party date',typeof partyDate  );
+
+    const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -78,8 +81,8 @@ const handleUpdate = async (e) => {
         party_address: partyAddress,
         address_line2: Addressline2,
         party_date: partyDate,
-        party_start_time: startTime,
-        party_end_time: endTime,
+        party_start_time: startTimestamp,
+        party_end_time: endTimestamp,
         package: pkg,
         message: message,
         theme: theme,
@@ -91,8 +94,9 @@ const handleUpdate = async (e) => {
       throw new Error(`Update failed with status ${res.status}`);
     }
 
-    const data = await res.json();
-    console.log('Update successful:', data);
+    const updatedRequest = await res.json();
+    console.log('Update successful:', updatedRequest);
+
 
     onClose();
 

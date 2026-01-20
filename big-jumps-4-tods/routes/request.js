@@ -61,7 +61,9 @@ router.put('/requests/:id', async (req, res) => {
       referral
     } = req.body;
 
-    const updated = await knex('requests')
+    console.log(party_date, party_start_time );
+
+    const updated = await db('requests')
       .where({ id })
       .update(
         {
