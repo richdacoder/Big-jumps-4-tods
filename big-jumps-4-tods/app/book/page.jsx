@@ -5,24 +5,36 @@ import { submitRequest } from './utils/submitRequest';
 import { useRouter } from 'next/navigation';
 export default function BookingPage() {
   const initialState = {
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     phone: '',
     email: '',
     message: '',
-    partyAddress: '',
-    addressLine2: '',
-    partyDate: '',
-    startHour: '',
-    startMinute: '',
-    startAMPM: 'AM',
-    endHour: '',
-    endMinute: '',
-    endAMPM: 'AM',
+    party_address: '',
+    address_line2: '',
+    party_date: '',
+    party_start_time: '',
+    party_end_time: '',
     package: '',
     theme: '',
     referral: ''
   };
+
+  const formatTimestamp = (dateString, timestring) => {
+    console.log('datestring and timestring formatimestmat', dateString)
+   const date = new Date(dateString);
+   console.log('date formatimestmap', timestring)
+   const [ hour, minutes ] = timestring.split(':');
+   console.log('hour mintutes formatimestmap', hour, minutes)
+   date.setHours(parseInt(hour, 10));
+   date.setMinutes(parseInt(minutes, 10));
+   date.setSeconds(0);
+   date.setMilliseconds(0);
+   console.log('TIMESTAMP', date);
+    return date.toISOString();
+  }
+
+  const today = new Date().toISOString().split("T")[0];
 
   const [formData, setFormData] = useState(initialState);
 
@@ -33,13 +45,22 @@ export default function BookingPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
   };
+
 
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const startTimeStamp = formatTimestamp(formData. party_date, formData.party_start_time);
+    const endTimeStamp = formatTimestamp(formData. party_date, formData.party_end_time);
+
     try {
-      const data = await submitRequest(formData);
+    const data = await submitRequest({...formData,
+      party_start_time: startTimeStamp,
+      party_end_time: endTimeStamp,
+  });
       console.log('Booking submitted:', data);
       console.log(router);
       alert('Booking submitted successfully!');
@@ -56,7 +77,7 @@ export default function BookingPage() {
       <h1>Book Your Party</h1>
       <form className="booking-form" onSubmit={handleSubmit}>
         {/* First Name / Last Name / Phone / Email */}
-        {['firstName','lastName','phone','email'].map((field, i) => (
+        {['first_name','last_name','phone','email'].map((field, i) => (
           <div className="form-row" key={i}>
             <label>{field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} *</label>
             <input
@@ -72,7 +93,7 @@ export default function BookingPage() {
         {/* Party Date */}
         <div className="form-row">
           <label>Party Date *</label>
-          <input type="date" name="partyDate" value={formData.partyDate} onChange={handleChange} required />
+          <input min={today} type="date" name="party_date" value={formData.party_date} onChange={handleChange} required />
         </div>
 
         {/* Message */}
@@ -84,32 +105,38 @@ export default function BookingPage() {
         {/* Addresses */}
         <div className="form-row">
           <label>Party Address *</label>
-          <input type="text" name="partyAddress" value={formData.partyAddress} onChange={handleChange} required />
+          <input type="text" name="party_address" value={formData.party_address} onChange={handleChange} required />
         </div>
         <div className="form-row">
           <label>Address Line 2</label>
-          <input type="text" name="addressLine2" value={formData.addressLine2} onChange={handleChange} />
+          <input type="text" name="address_line2" value={formData.address_line2} onChange={handleChange} />
         </div>
 
-        {/* Start / End Times */}
-        {['Start','End'].map((type, i) => (
-          <div className="form-row party-time" key={i}>
-            <label>Party {type} Time *</label>
-            <div className="time-selects">
-              <select name={`${type.toLowerCase()}Hour`} value={formData[`${type.toLowerCase()}Hour`]} onChange={handleChange} required>
-                <option value="">Hour</option>
-                {hours.map(h => <option key={h} value={h}>{h}</option>)}
-              </select>
-              <select name={`${type.toLowerCase()}Minute`} value={formData[`${type.toLowerCase()}Minute`]} onChange={handleChange} required>
-                <option value="">Minute</option>
-                {minutes.map(m => <option key={m} value={m < 10 ? `0${m}` : m}>{m < 10 ? `0${m}` : m}</option>)}
-              </select>
-              <select name={`${type.toLowerCase()}AMPM`} value={formData[`${type.toLowerCase()}AMPM`]} onChange={handleChange} required>
-                {ampm.map(a => <option key={a} value={a}>{a}</option>)}
-              </select>
-            </div>
-          </div>
-        ))}
+        {/* Start Time */}
+<div className="form-row party-time">
+  <label>Party Start Time *</label>
+  <input
+    type="time"
+    name="party_start_time"
+    value={formData.party_start_time}
+    onChange={handleChange}
+    required
+  />
+</div>
+
+{/* End Time */}
+<div className="form-row party-time">
+  <label>Party End Time *</label>
+  <input
+    type="time"
+    name="party_end_time"
+    min={formData.party_start_time}
+    value={formData.party_end_time}
+    onChange={handleChange}
+    required
+  />
+</div>
+
 
         {/* Package, Theme, Referral */}
         {['package','theme','referral'].map((field, i) => (

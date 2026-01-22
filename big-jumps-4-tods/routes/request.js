@@ -104,26 +104,24 @@ router.post('/request', async (req, res, next) => {
     const data = req.body;
     // Normalize camelCase frontend → snake_case backend
     const normalizedData = {
-      first_name: data.firstName,
-      last_name: data.lastName,
+      first_name: data.first_name,
+      last_name: data.last_name,
       phone: data.phone,
       email: data.email,
-      party_date: data.partyDate,
-      party_address: data.partyAddress,
-      party_start_time:
-        data.startHour && data.startMinute && data.startAMPM
-          ? new Date(`${data.partyDate} ${data.startHour}:${data.startMinute} ${data.startAMPM}`)
-          : undefined,
-      party_end_time:
-        data.endHour && data.endMinute && data.endAMPM
-          ? new Date(`${data.partyDate} ${data.endHour}:${data.endMinute} ${data.endAMPM}`)
-          : undefined,
+      party_date: data.party_date,
+      party_address: data.party_address,
+      party_start_time: data.party_start_time,
+      party_end_time: data.party_end_time,
       package: data.package,
       message: data.message || null,
       theme: data.theme || null,
       referral: data.referral || null,
-      address_line2: data.addressLine2 || null,
+      address_line2: data.address_line2 || null,
     };
+
+    console.log('final', normalizedData);
+    console.log('final', normalizedData)
+
 
     const required = [
       'first_name',
@@ -144,9 +142,7 @@ router.post('/request', async (req, res, next) => {
     );
 
     if (missing.length) {
-      return res.status(400).json({
-        error: `Missing required fields: ${missing.join(', ')}`
-      });
+      return res.status(400).json();
     }
 
     const newRequest = await db('requests')

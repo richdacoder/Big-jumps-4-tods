@@ -1,5 +1,6 @@
 export const submitRequest = async (formData) => {
-console.log('before fetch',formData )
+  console.log('before fetch', structuredClone(formData));
+
   const res = await fetch('http://localhost:3002/api/request', {
     method: 'POST',
     headers: {
@@ -7,16 +8,7 @@ console.log('before fetch',formData )
     },
     body: JSON.stringify(formData)
   });
-  console.log('after fetch',res);
-/*
-objective: send email to when submit
-- import resned
-- create function for send email
-- get email of submitter
-- send them confirmation email
-
-
-*/
+  console.log('after fetch', structuredClone(formData));
   if (!res.ok) {
     const errorData = await res.json();
     throw errorData;
