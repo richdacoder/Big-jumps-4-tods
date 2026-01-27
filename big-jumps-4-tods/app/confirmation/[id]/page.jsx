@@ -42,7 +42,7 @@ const formatTime = (dateString) =>
 
 return (
   <>
-    <h2>Request Confirmed 🎉</h2>
+    <h2 className="coral-color">Request Confirmed 🎉</h2>
 
     {request && (
       <div>

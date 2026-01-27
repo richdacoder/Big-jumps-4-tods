@@ -142,7 +142,7 @@ export default function BookingPage() {
         {['package','theme','referral'].map((field, i) => (
           <div className="form-row" key={i}>
             <label>{field.charAt(0).toUpperCase() + field.slice(1)} *</label>
-            <input type="text" name={field} value={formData[field]} onChange={handleChange} />
+            <input type="text" name={field} value={formData[field]} onChange={handleChange} required={field === 'package'} />
           </div>
         ))}
 

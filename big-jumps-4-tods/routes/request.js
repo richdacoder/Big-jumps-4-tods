@@ -142,7 +142,7 @@ router.post('/request', async (req, res, next) => {
     );
 
     if (missing.length) {
-      return res.status(400).json();
+      return res.status(400).json({ error: `Missing required fields: ${missing.join(', ')}` });
     }
 
     const newRequest = await db('requests')
