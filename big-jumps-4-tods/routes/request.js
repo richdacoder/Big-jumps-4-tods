@@ -24,7 +24,7 @@ router.get('/requests', async (req, res, next) => {
  * ✅ GET single request by ID
  * GET /api/requests/:id
  */
-router.get('/requests/:id', async (req, res, next) => {
+router.get('/request/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
 
