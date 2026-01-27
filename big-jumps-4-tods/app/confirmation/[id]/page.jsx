@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import '../../styles/confirmation.css';
 
 function ConfirmRequest() {
   const { id } = useParams();
@@ -42,34 +43,36 @@ const formatTime = (dateString) =>
 
 return (
   <>
+  <div className="background">
     <h2 className="coral-color">Request Confirmed 🎉</h2>
 
     {request && (
       <div>
-        <p>
+        <p className="words">
           Thank you <strong>{request.first_name} {request.last_name}</strong>!
         </p>
 
-        <p>
+        <p className="words">
           We’ve received your party request for{" "}
-          <strong>{formatDate(request.party_date)}</strong> from{" "}
-          <strong>
+          <strong className="words">{formatDate(request.party_date)}</strong> from{" "}
+          <strong className="words">
             {formatTime(request.party_start_time)} –{" "}
             {formatTime(request.party_end_time)}
           </strong>.
         </p>
 
-        <p>
+        <p className="words">
           Our team will review your request and contact you shortly to let you
           know whether it has been accepted or not.
         </p>
 
-        <p>
+        <p className="words">
           A confirmation has also been sent to{" "}
           <strong>{request.email}</strong>.
         </p>
       </div>
     )}
+    </div>
   </>
 );
 }
