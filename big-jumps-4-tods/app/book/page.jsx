@@ -65,7 +65,7 @@ export default function BookingPage() {
       console.log(router);
       alert('Booking submitted successfully!');
       setFormData(initialState);
-      router.push(`/confirmation`);
+      router.push(`/confirmation/${data.id}`);
     } catch (err) {
       console.error(err);
       alert(err.error || 'Submission failed');
