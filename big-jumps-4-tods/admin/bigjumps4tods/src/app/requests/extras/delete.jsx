@@ -1,33 +1,34 @@
 "use client";
 
-import {useState, useEffect} from "react";
+import { useEffect } from "react";
 
-export default function Delete({requests}){
-const date = new Date();
-const request = requests.find(req => req );
-const realReq = new Date(request.party_date)
-console.log('date', typeof realReq);
-console.log('request', typeof date);
+export default function Delete({ requests }) {
+  useEffect(() => {
+    if (!requests || requests.length === 0) return;
 
-useEffect(() => {
-  const removeData = async () => {
+    const dateNow = new Date();
 
-    if (realReq > date )
-    try{
-      const api = await fetch(`http://localhost:3002/api/request/${request.id}`,
-      {
-        method: 'DELETE',
-        headers: {'Content-Type':'application/json'}
-      })
-    }catch(err){
-      console.error(err)
-    }
-  }
+    const removeExpiredRequests = async () => {
+      for (const req of requests) {
+        if (!req.party_date || !req.id) continue;
 
+        const partyDate = new Date(req.party_date);
 
-})
+        if (dateNow > partyDate) {
+          try {
+            console.log("Deleting expired request:", req.id, partyDate);
+            await fetch(`http://localhost:3002/api/request/${req.id}`, {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+            });
+          } catch (err) {
+            console.error("Failed to delete request", req.id, err);
+          }
+        }
+      }
+    };
 
-return(
-  <></>
-)
+    removeExpiredRequests();
+  }, [requests]);
+  return null;
 }
