@@ -59,7 +59,7 @@ const HomePage = () => {
       </div>
 
       {[...bookings]
-        // .sort((a, b) => new Date(a.party_date) - new Date(b.party_date))
+        .sort((a, b) => new Date(a.party_date) - new Date(b.party_date))
         .map((book) => (
           <button
             className="event-button"
