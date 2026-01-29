@@ -1,15 +1,18 @@
 "use client";
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 export default function Delete({requests}){
 const date = new Date();
-const stringDate = date.toISOString();
-const request = requests.find(req =>  req);
+const request = requests.find(req => req );
+const realReq = new Date(request.party_date)
+console.log('date', typeof realReq);
+console.log('request', typeof date);
 
+useEffect(() => {
   const removeData = async () => {
 
-    if (request.party_date > stringDate )
+    if (realReq > date )
     try{
       const api = await fetch(`http://localhost:3002/api/request/${request.id}`,
       {
@@ -17,9 +20,13 @@ const request = requests.find(req =>  req);
         headers: {'Content-Type':'application/json'}
       })
     }catch(err){
-      console.err(err)
+      console.error(err)
     }
   }
+
+
+})
+
 return(
   <></>
 )
