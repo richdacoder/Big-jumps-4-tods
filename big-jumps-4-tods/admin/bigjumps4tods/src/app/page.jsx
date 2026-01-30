@@ -2,6 +2,7 @@
 import "./styles/home.css";
 import './styles/edit.css';
 import './styles/book-modal.css';
+import Delete from "./bookings/extras/delete.jsx"
 import BookingModal from "./bookings/page.jsx";
 import { useState, useEffect } from "react";
 
@@ -81,6 +82,7 @@ const HomePage = () => {
           onClose={() => setSelectedBooking(null)}
         />
       )}
+      <Delete bookings={bookings} />
     </section>
   );
 };

@@ -7,6 +7,9 @@ export default function Delete({ requests }) {
     if (!requests || requests.length === 0) return;
 
     const dateNow = new Date();
+    dateNow.setHours(0, 0, 0, 0);
+
+
 
     const removeExpiredRequests = async () => {
       for (const req of requests) {
