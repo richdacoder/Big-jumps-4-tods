@@ -32,35 +32,35 @@ export default function PackagesPage() {
 
         {/* Bounce Houses */}
         <div className="package-card">
-          <img src="/images/12ft-white-playhouse.jpg" alt="12ft White Bounce House with playhouse" className='images' />
+          <img src="/images/package/big-white-playh/15727D1C-E8F3-42CF-881A-14A6116350A5.png" alt="12ft White Bounce House with playhouse" className='images' />
           <h2 className="package-name">12ft White Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$575</p>
         </div>
 
         <div className="package-card">
-          <img src="/images/10ft-black-playhouse.jpg" alt="10ft Black Bounce House with playhouse" className='images' />
+          <img src="/images/package/" alt="10ft Black Bounce House with playhouse" className='images' />
           <h2 className="package-name">10ft Black Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$550</p>
         </div>
 
         <div className="package-card">
-          <img src="/images/8ft-pink-playhouse.jpg" alt="8ft Pink Bounce House with playhouse" className='images'/>
+          <img src="/images/package/" alt="8ft Pink Bounce House with playhouse" className='images'/>
           <h2 className="package-name">8ft Pink Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$525</p>
         </div>
 
         <div className="package-card">
-          <img src="/images/6ft-toddler-playhouse.jpg" alt="6ft Toddler Bounce House with playhouse" className='images'/>
+          <img src="/images/package/" alt="6ft Toddler Bounce House with playhouse" className='images'/>
           <h2 className="package-name">6ft Little Toddler Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$475</p>
         </div>
 
         <div className="package-card">
-          <img src="/images/12ft-white.jpg" alt="12ft White Bounce House" className='images'/>
+          <img src="/images/package/smll-white-playh/IMG_7180.png" alt="12ft White Bounce House" className='images'/>
           <h2 className="package-name">12ft White Bounce House</h2>
           <p className="package-desc">No playhouse</p>
           <p className="package-price">$275</p>
