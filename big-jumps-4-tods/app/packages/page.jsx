@@ -1,7 +1,16 @@
 'use client';
 import '../styles/packages.css';
-// import '../../public/images/package/basic';
 
+/*
+- function for all packages
+- includes an array of img urls
+- turn package card into button
+- change hover
+- arrows to go back and forth in photos
+- when click image goes large and you can scroll with arrows
+
+
+*/
 export default function PackagesPage() {
   return (
     <div className="packages-page">
@@ -22,12 +31,14 @@ export default function PackagesPage() {
 
         {/* Basic Package */}
         <div className="package-card">
+          <button className='card-button'>
           <img src="/images/package/basic/IMG_5820.png" alt="Basic Package" className='images'/>
           <h2 className="package-name">Basic Package</h2>
           <p className="package-desc">
             All basic packages include 4 hours of fun! Extra hour: $40/hr.
           </p>
           <p className="package-price">$250 / 4 hours</p>
+          </button>
         </div>
 
         {/* Bounce Houses */}
