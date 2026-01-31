@@ -39,14 +39,14 @@ export default function PackagesPage() {
         </div>
 
         <div className="package-card">
-          <img src="/images/package/" alt="10ft Black Bounce House with playhouse" className='images' />
+          <img src="/images/package/blk-playh/IMG_8364 2 2.png" alt="10ft Black Bounce House with playhouse" className='images' />
           <h2 className="package-name">10ft Black Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$550</p>
         </div>
 
         <div className="package-card">
-          <img src="/images/package/" alt="8ft Pink Bounce House with playhouse" className='images'/>
+          <img src="/images/package/pink-house/IMG_4392.png" alt="8ft Pink Bounce House with playhouse" className='images'/>
           <h2 className="package-name">8ft Pink Bounce House</h2>
           <p className="package-desc">Includes playhouse</p>
           <p className="package-price">$525</p>
