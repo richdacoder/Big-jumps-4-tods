@@ -12,6 +12,8 @@ export default function PackagesPage() {
           <ul className="package-notes">
             <li>Non-refundable deposit: $75</li>
             <li>Outdoor setups: If it rains, reschedule or get half deposit back</li>
+            <li>All Toddler Playhouse packages include 4 hours of playtime.
+              Additional time beyond the initial 4 hours is available for $40 per extra hour.</li>
           </ul>
         </div>
 
