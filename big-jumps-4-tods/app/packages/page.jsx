@@ -11,6 +11,85 @@ import '../styles/packages.css';
 
 
 */
+
+const packages = [
+  {
+    id:"basic-package",
+    image:"/images/package/basic/IMG_5820.png",
+    alt:"Basic Package",
+     name:"Basic Package",
+     description:"All basic packages include 4 hours of fun! Extra hour: $40/hr.",
+     price:"$250 / 4 hours"
+  },
+  {
+    id:"large-white-bounce",
+      image:"/images/package/big-white-playh/15727D1C-E8F3-42CF-881A-14A6116350A5.png",
+      alt:"12ft White Bounce House with playhouse",
+      name:"12ft White Bounce House with playhouse",
+      description:"Includes playhouse",
+      price:"$575"
+    }
+    ,
+    {
+    id:"small-white-bounce",
+    image:"/images/package/smll-white-playh/IMG_7180.png",
+    alt:"12ft White Bounce House",
+    name:"6ft White Bounce House",
+     description:"No playhouse",
+     price:"$275"
+    },
+{
+  id:"pink-bounce",
+  image:"/images/package/pink-house/IMG_4392.png",
+  alt: "8ft Pink Bounce House with playhouse",
+  name:"8ft Pink Bounce House",
+  description:"Includes playhouse",
+  price: "$525"
+  },
+  {
+    id:"black-bounce",
+    image:"/images/package/blk-playh/IMG_8364 2 2.png",
+    alt:"10ft Black Bounce House with playhouse",
+    name:"10ft Black Bounce House",
+    description:"Includes playhouse",
+    price:"$550"
+  },
+  {
+    id:"chairs-tables",
+    image:"/images/tables-chairs.jpg" ,
+    alt:"Kids tables and chairs",
+    name:"Kids tables and chairs",
+    description:"10 chairs and 2 tables for the whole day",
+    price:"$125"
+
+
+  },
+  {
+    id:"ball-pit",
+    image:"/images/ball-pit.jpg" ,
+    alt:"Personalized ball pit",
+    name:"Personalized ball pit",
+    description:"10 chairs and 2 tables for the whole day",
+    price:"$25"
+
+
+  },
+  {
+    id:"Personalized-soft-blocks",
+    image:"/images/tables-chairs.jpg" ,
+    alt:"Personalized soft blocks",
+    name:"Personalized soft blocks",
+    description:"Custom soft blocks for kids",
+    price:"$10"
+
+
+  }
+
+
+,
+]
+
+
 export default function PackagesPage() {
   return (
     <div className="packages-page">
@@ -28,98 +107,21 @@ export default function PackagesPage() {
 
 
       <div className="packages-grid">
+        {
+          packages.map((pkg) => (
+            <div className="package-card" key={pkg.id}>
+            <button className='card-button'>
+            <img src={pkg.image} alt={pkg.alt} className='images'/>
+            <h2 className="package-name">{pkg.name}</h2>
+            <p className="package-desc">{pkg.description} </p>
+            <p className="package-price">{pkg.price}</p>
+            </button>
+          </div>
+          )
+          )}
 
-        {/* Basic Package */}
-        <div className="package-card">
-          <button className='card-button'>
-          <img src="/images/package/basic/IMG_5820.png" alt="Basic Package" className='images'/>
-          <h2 className="package-name">Basic Package</h2>
-          <p className="package-desc">
-            All basic packages include 4 hours of fun! Extra hour: $40/hr.
-          </p>
-          <p className="package-price">$250 / 4 hours</p>
-          </button>
-        </div>
 
-        {/* Bounce Houses */}
-        <div className="package-card">
-          <img src="/images/package/big-white-playh/15727D1C-E8F3-42CF-881A-14A6116350A5.png" alt="12ft White Bounce House with playhouse" className='images' />
-          <h2 className="package-name">12ft White Bounce House</h2>
-          <p className="package-desc">Includes playhouse</p>
-          <p className="package-price">$575</p>
-        </div>
 
-        <div className="package-card">
-          <img src="/images/package/blk-playh/IMG_8364 2 2.png" alt="10ft Black Bounce House with playhouse" className='images' />
-          <h2 className="package-name">10ft Black Bounce House</h2>
-          <p className="package-desc">Includes playhouse</p>
-          <p className="package-price">$550</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/package/pink-house/IMG_4392.png" alt="8ft Pink Bounce House with playhouse" className='images'/>
-          <h2 className="package-name">8ft Pink Bounce House</h2>
-          <p className="package-desc">Includes playhouse</p>
-          <p className="package-price">$525</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/package/" alt="6ft Toddler Bounce House with playhouse" className='images'/>
-          <h2 className="package-name">6ft Little Toddler Bounce House</h2>
-          <p className="package-desc">Includes playhouse</p>
-          <p className="package-price">$475</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/package/smll-white-playh/IMG_7180.png" alt="12ft White Bounce House" className='images'/>
-          <h2 className="package-name">12ft White Bounce House</h2>
-          <p className="package-desc">No playhouse</p>
-          <p className="package-price">$275</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/10ft-black.jpg" alt="10ft Black Bounce House" className='images'/>
-          <h2 className="package-name">10ft Black Bounce House</h2>
-          <p className="package-desc">No playhouse</p>
-          <p className="package-price">$225</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/8ft-pink.jpg" alt="8ft Pink Bounce House" className='images'/>
-          <h2 className="package-name">8ft Pink Bounce House</h2>
-          <p className="package-desc">No playhouse</p>
-          <p className="package-price">$200</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/6ft-toddler.jpg" alt="6ft Toddler Bounce House" className='images' />
-          <h2 className="package-name">6ft Small Toddler Bounce House</h2>
-          <p className="package-desc">No playhouse</p>
-          <p className="package-price">$150</p>
-        </div>
-
-        {/* Tables & Chairs */}
-        <div className="package-card">
-          <img src="/images/tables-chairs.jpg" alt="Kids tables and chairs" className='images'/>
-          <h2 className="package-name">Kids Tables & Chairs</h2>
-          <p className="package-desc">10 chairs and 2 tables for the whole day</p>
-          <p className="package-price">$125</p>
-        </div>
-
-        {/* Extras */}
-        <div className="package-card">
-          <img src="/images/ball-pit.jpg" alt="Personalized ball pit" className='images'/>
-          <h2 className="package-name">Personalize Ball Pit</h2>
-          <p className="package-desc">Custom ball pit for your event</p>
-          <p className="package-price">$25</p>
-        </div>
-
-        <div className="package-card">
-          <img src="/images/soft-blocks.jpg" alt="Personalized soft blocks" className='images'/>
-          <h2 className="package-name">Personalize Soft Blocks</h2>
-          <p className="package-desc">Custom soft blocks for kids</p>
-          <p className="package-price">$10</p>
-        </div>
 
 
       </div>
