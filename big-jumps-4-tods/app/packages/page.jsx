@@ -130,7 +130,7 @@ export default function PackagesPage() {
 
       </div>
       { selectedImage &&
-      <PackageImages packages={packages}/>
+      <PackageImages packages={packages} onClose={() => setSelectedImage(false)}/>
       }
     </div>
   );
