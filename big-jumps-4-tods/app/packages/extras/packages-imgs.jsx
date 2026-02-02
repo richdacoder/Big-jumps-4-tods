@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export default function PackageImages({ pkg, onClose }) {
   const [index, setIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+
 
   function next() {
     setIndex((i) => (i + 1) % pkg.image.length);
