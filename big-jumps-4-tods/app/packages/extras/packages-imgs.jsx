@@ -42,7 +42,8 @@ image2:'IMG_5820.png'
 ,
 {
   id:'big white with playhouse',
-  image1:'15727D1C-E8F3-42CF-881A-14A6116350A5.png'
+  image1:'bigwhite1',
+  image:'15727D1C-E8F3-42CF-881A-14A6116350A5.png'
   }
   ,
   {
