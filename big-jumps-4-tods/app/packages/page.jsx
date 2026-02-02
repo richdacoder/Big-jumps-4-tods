@@ -18,10 +18,16 @@ export default function PackagesPage() {
 
   const [selectedImage, setSelectedImage] = useState(false);
 
+  const basic = "/images/package/basic";
+  const lrgWhite = "/images/package/big-white-playh";
+  const smllwhite = "/images/package/smll-white-playh";
+  const pinkHouse = "/images/package/pink-house";
+  const blackHouse = "/images/package/blk-playh";
+
   const packages = [
     {
       id:"basic-package",
-      image:"/images/package/basic/IMG_5820.png",
+      image:[`${basic}/IMG_5820.png`],
       alt:"Basic Package",
        name:"Basic Package",
        description:"All basic packages include 4 hours of fun! Extra hour: $40/hr.",
@@ -29,7 +35,7 @@ export default function PackagesPage() {
     },
     {
       id:"large-white-bounce",
-        image:"/images/package/big-white-playh/15727D1C-E8F3-42CF-881A-14A6116350A5.png",
+        image:[`${lrgWhite}/15727D1C-E8F3-42CF-881A-14A6116350A5.png`],
         alt:"12ft White Bounce House with playhouse",
         name:"12ft White Bounce House with playhouse",
         description:"Includes playhouse",
@@ -38,7 +44,7 @@ export default function PackagesPage() {
       ,
       {
       id:"small-white-bounce",
-      image:"/images/package/smll-white-playh/IMG_7180.png",
+      image:[`${smllwhite}/IMG_7180.png`],
       alt:"12ft White Bounce House",
       name:"6ft White Bounce House",
        description:"No playhouse",
@@ -46,7 +52,7 @@ export default function PackagesPage() {
       },
   {
     id:"pink-bounce",
-    image:"/images/package/pink-house/IMG_4392.png",
+    image:[`${pinkHouse}/IMG_4392.png`],
     alt: "8ft Pink Bounce House with playhouse",
     name:"8ft Pink Bounce House",
     description:"Includes playhouse",
@@ -54,7 +60,7 @@ export default function PackagesPage() {
     },
     {
       id:"black-bounce",
-      image:"/images/package/blk-playh/IMG_8364 2 2.png",
+      image:[`${blackHouse}/IMG_8364 2 2.png`],
       alt:"10ft Black Bounce House with playhouse",
       name:"10ft Black Bounce House",
       description:"Includes playhouse",
@@ -62,7 +68,7 @@ export default function PackagesPage() {
     },
     {
       id:"chairs-tables",
-      image:"/images/tables-chairs.jpg" ,
+      image:["/images/tables-chairs.jpg"] ,
       alt:"Kids tables and chairs",
       name:"Kids tables and chairs",
       description:"10 chairs and 2 tables for the whole day",
@@ -72,7 +78,7 @@ export default function PackagesPage() {
     },
     {
       id:"ball-pit",
-      image:"/images/ball-pit.jpg" ,
+      image:["/images/ball-pit.jpg"] ,
       alt:"Personalized ball pit",
       name:"Personalized ball pit",
       description:"10 chairs and 2 tables for the whole day",
@@ -82,7 +88,7 @@ export default function PackagesPage() {
     },
     {
       id:"Personalized-soft-blocks",
-      image:"/images/tables-chairs.jpg" ,
+      image:["/images/tables-chairs.jpg"] ,
       alt:"Personalized soft blocks",
       name:"Personalized soft blocks",
       description:"Custom soft blocks for kids",
