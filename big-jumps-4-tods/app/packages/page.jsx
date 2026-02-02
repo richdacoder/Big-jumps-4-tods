@@ -27,7 +27,9 @@ export default function PackagesPage() {
   const packages = [
     {
       id:"basic-package",
-      image:[`${basic}/IMG_5820.png`],
+      image:[
+      `${basic}/IMG_5820.png`,
+      `${basic}/IMG_6490.png`],
       alt:"Basic Package",
        name:"Basic Package",
        description:"All basic packages include 4 hours of fun! Extra hour: $40/hr.",
@@ -35,7 +37,10 @@ export default function PackagesPage() {
     },
     {
       id:"large-white-bounce",
-        image:[`${lrgWhite}/15727D1C-E8F3-42CF-881A-14A6116350A5.png`],
+        image:[
+        `${lrgWhite}/15727D1C-E8F3-42CF-881A-14A6116350A5.png`,
+        `${lrgWhite}/bigwhite1`,
+        `${lrgWhite}/bigwhite2`],
         alt:"12ft White Bounce House with playhouse",
         name:"12ft White Bounce House with playhouse",
         description:"Includes playhouse",
@@ -44,7 +49,12 @@ export default function PackagesPage() {
       ,
       {
       id:"small-white-bounce",
-      image:[`${smllwhite}/IMG_7180.png`],
+      image:[
+      `${smllwhite}/IMG_7180.png`,
+      `${smllwhite}/smallwhite2`,
+      `${smllwhite}/smallwhite3`,
+      `${smllwhite}/smallwhite4`,
+      `${smllwhite}/smallwhite11`],
       alt:"12ft White Bounce House",
       name:"6ft White Bounce House",
        description:"No playhouse",
@@ -52,7 +62,10 @@ export default function PackagesPage() {
       },
   {
     id:"pink-bounce",
-    image:[`${pinkHouse}/IMG_4392.png`],
+    image:[
+    `${pinkHouse}/IMG_4392.png`,
+    `${pinkHouse}/pink1`,
+    `${pinkHouse}/pink2`],
     alt: "8ft Pink Bounce House with playhouse",
     name:"8ft Pink Bounce House",
     description:"Includes playhouse",
@@ -60,7 +73,11 @@ export default function PackagesPage() {
     },
     {
       id:"black-bounce",
-      image:[`${blackHouse}/IMG_8364 2 2.png`],
+      image:[
+        `${blackHouse}/IMG_8364 2 2.png`,
+       `${blackHouse}/black1`,
+       `${blackHouse}/black2`,
+       `${blackHouse}/black3`],
       alt:"10ft Black Bounce House with playhouse",
       name:"10ft Black Bounce House",
       description:"Includes playhouse",
@@ -121,7 +138,7 @@ export default function PackagesPage() {
           packages.map((pkg) => (
             <div className="package-card" key={pkg.id}>
             <button className='card-button' onClick={() => setSelectedImage(true)}>
-            <img src={pkg.image} alt={pkg.alt} className='images'/>
+            <img src={pkg.image[0]} alt={pkg.alt} className='images'/>
             <h2 className="package-name">{pkg.name}</h2>
             <p className="package-desc">{pkg.description} </p>
             <p className="package-price">{pkg.price}</p>
