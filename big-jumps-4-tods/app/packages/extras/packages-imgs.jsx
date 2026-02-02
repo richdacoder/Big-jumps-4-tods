@@ -1,83 +1,36 @@
-"use client"
-import {useState} from "react";
-/*
-- click package card ***
-* other page onClick set state to true****
-* state && render this page***
-- page pop up in mid screen
-* with css
-- scroll arrows
-* creat array of object
-* in each object contains url for each package
-* create iterate to output packages images
-* each object will contain package name(id), necesities for attributes and urls
-* now when iterating src and alt attributes are being replaced
-- x button
-* onclose
-* use state
-- able to zoom in
+"use client";
+import { useState } from "react";
 
+export default function PackageImages({ pkg, onClose }) {
+  const [index, setIndex] = useState(0);
 
-
-
-
-
-*/
- export default function PackageImages({packages, onClose}){
-
-
-const packageInfo = packages.map((p) => (
-  p
-)
-)
-
-
-
-const images = [
-{
-id:'basic',
-image1:'IMG_6490.png',
-image2:'IMG_5820.png'
-}
-,
-{
-  id:'big white with playhouse',
-  image1:'bigwhite1',
-  image:'15727D1C-E8F3-42CF-881A-14A6116350A5.png'
+  function next() {
+    setIndex((i) => (i + 1) % pkg.image.length);
   }
-  ,
-  {
-    id:'small white with playhouse',
-    image1:'IMG_7180.png'
-    }
-    ,
-    {
-      id:'black with playhouse',
-      image1:'IMG_8364 2 2.png'
-      }
-      ,
-      {
-        id:'pink',
-        image1:'IMG_4392.png'
-        }
-        ,
 
-]
+  function prev() {
+    setIndex((i) =>
+      i === 0 ? pkg.image.length - 1 : i - 1
+    );
+  }
 
-console.log('{packages', images)
+  return (
+    <div className="wrapper">
+      <div className="image-card-wrapper">
+        <button onClick={onClose}>x</button>
 
+        <div className="image-card">
+          <button onClick={prev}>←</button>
 
+          <img
+            src={pkg.image[index]}
+            alt={pkg.alt}
+            className="images"
+          />
 
-
-  return(
-    <>
-    <button onClick={onClose}>x</button>
-    <div className="image-card">
-      <button>←</button>
-    <div>Pop up</div>
-    <button>→</button>
-
+          <button onClick={next}>→</button>
+        </div>
+      </div>
     </div>
-    </>
-  )
- }
+  );
+}
