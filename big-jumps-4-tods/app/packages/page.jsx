@@ -1,6 +1,7 @@
 'use client';
 import '../styles/packages.css';
-import PackageImages from "./extras/packages-imgs.jsx"
+import PackageImages from "./extras/packages-imgs.jsx";
+import { useState } from "react";
 
 /*
 - function for all packages
@@ -14,6 +15,8 @@ import PackageImages from "./extras/packages-imgs.jsx"
 */
 
 export default function PackagesPage() {
+
+  const [selectedImage, setSelectedImage] = useState(false);
 
   const packages = [
     {
@@ -111,7 +114,7 @@ export default function PackagesPage() {
         {
           packages.map((pkg) => (
             <div className="package-card" key={pkg.id}>
-            <button className='card-button'>
+            <button className='card-button' onClick={() => setSelectedImage(true)}>
             <img src={pkg.image} alt={pkg.alt} className='images'/>
             <h2 className="package-name">{pkg.name}</h2>
             <p className="package-desc">{pkg.description} </p>
@@ -126,7 +129,9 @@ export default function PackagesPage() {
 
 
       </div>
+      { selectedImage &&
       <PackageImages packages={packages}/>
+      }
     </div>
   );
 }
