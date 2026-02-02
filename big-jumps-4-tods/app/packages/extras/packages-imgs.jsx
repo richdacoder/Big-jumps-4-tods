@@ -23,7 +23,7 @@ import {useState} from "react";
 
 
 */
- export default function PackageImages({packages}){
+ export default function PackageImages({packages, onClose}){
 
 
 console.log('{packages', packages)
@@ -31,6 +31,9 @@ console.log('{packages', packages)
 
 
   return(
-    <div>Pop up</div>
+    <>
+    <button onClick={onClose}>x</button>
+  <div>Pop up</div>
+  </>
   )
  }
