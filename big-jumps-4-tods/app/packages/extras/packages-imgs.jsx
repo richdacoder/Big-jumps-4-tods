@@ -26,7 +26,45 @@ import {useState} from "react";
  export default function PackageImages({packages, onClose}){
 
 
-console.log('{packages', packages)
+const packageInfo = packages.map((p) => (
+  p
+)
+)
+
+
+
+const images = [
+{
+id:'basic',
+image1:'IMG_6490.png',
+image2:'IMG_5820.png'
+}
+,
+{
+  id:'big white with playhouse',
+  image1:'15727D1C-E8F3-42CF-881A-14A6116350A5.png'
+  }
+  ,
+  {
+    id:'small white with playhouse',
+    image1:'IMG_7180.png'
+    }
+    ,
+    {
+      id:'black with playhouse',
+      image1:'IMG_8364 2 2.png'
+      }
+      ,
+      {
+        id:'pink',
+        image1:'IMG_4392.png'
+        }
+        ,
+
+]
+
+console.log('{packages', images)
+
 
 
 
