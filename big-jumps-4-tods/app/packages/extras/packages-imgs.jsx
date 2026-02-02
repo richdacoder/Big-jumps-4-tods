@@ -2,7 +2,8 @@
 import {useState} from "react";
 /*
 - click package card
-* other page onClick
+* other page onClick set state to true
+* state && render this page
 - page pop up in mid screen
 * with css
 - scroll arrows
