@@ -1,36 +1,27 @@
 "use client";
 import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
 export default function PackageImages({ pkg, onClose }) {
   const [index, setIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
 
-
-  function next() {
-    setIndex((i) => (i + 1) % pkg.image.length);
-  }
-
-  function prev() {
-    setIndex((i) =>
-      i === 0 ? pkg.image.length - 1 : i - 1
-    );
-  }
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setIndex((i) => (i + 1) % pkg.image.length),
+    onSwipedRight: () =>
+      setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1)),
+    trackMouse: true // allows desktop mouse drag
+  });
 
   return (
     <div className="wrapper">
       <div className="image-card-wrapper">
         <button onClick={onClose}>x</button>
-
-        <div className="image-card">
-          <button onClick={prev}>←</button>
-
-          <img
-            src={pkg.image[index]}
-            alt={pkg.alt}
-            className="images"
-          />
-
-          <button onClick={next}>→</button>
+        <div className="image-card" {...handlers}>
+          <button onClick={() => setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1))}>
+            ←
+          </button>
+          <img src={pkg.image[index]} alt={pkg.alt} className="images" />
+          <button onClick={() => setIndex((i) => (i + 1) % pkg.image.length)}>→</button>
         </div>
       </div>
     </div>
