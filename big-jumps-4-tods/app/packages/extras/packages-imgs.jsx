@@ -1,9 +1,9 @@
 "use client"
 import {useState} from "react";
 /*
-- click package card
-* other page onClick set state to true
-* state && render this page
+- click package card ***
+* other page onClick set state to true****
+* state && render this page***
 - page pop up in mid screen
 * with css
 - scroll arrows
@@ -33,7 +33,12 @@ console.log('{packages', packages)
   return(
     <>
     <button onClick={onClose}>x</button>
-  <div>Pop up</div>
-  </>
+    <div className="image-card">
+      <button>←</button>
+    <div>Pop up</div>
+    <button>→</button>
+
+    </div>
+    </>
   )
  }
