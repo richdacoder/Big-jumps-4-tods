@@ -14,7 +14,7 @@ export default function AboutUsPage() {
       {/* Content section */}
       <section className="content-section">
         <div className="content-image">
-          <img src=  '/images/IMG_0461.png' alt="Kids Playing" />
+          <img src=  '/images/gallery/IMG_0461.png' alt="Kids Playing" />
         </div>
         <div className="content-text">
           <h2>Our Purpose</h2>
