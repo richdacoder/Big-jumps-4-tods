@@ -26,13 +26,13 @@ margin-bottom: 1rem;
 }
 
 .packages-page {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: pageFadeIn 1s forwards;
+  /* max-width: 1000px; */
+  /* margin: 2rem auto; */
+  /* padding: 0 1rem; */
+  /* text-align: center; */
+  /* opacity: 0; */
+  /* transform: translateY(30px); */
+  /* animation: pageFadeIn 1s forwards; */
 }
 
 /* Title */
