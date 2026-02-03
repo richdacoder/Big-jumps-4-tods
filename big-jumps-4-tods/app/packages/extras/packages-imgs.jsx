@@ -1,4 +1,5 @@
 "use client";
+import "../../styles/package-images.css";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
@@ -17,11 +18,11 @@ export default function PackageImages({ pkg, onClose }) {
       <div className="image-card-wrapper">
         <button onClick={onClose}>x</button>
         <div className="image-card" {...handlers}>
-          <button onClick={() => setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1))}>
+          <button className="prev"onClick={() => setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1))}>
             ←
           </button>
           <img src={pkg.image[index]} alt={pkg.alt} className="images" />
-          <button onClick={() => setIndex((i) => (i + 1) % pkg.image.length)}>→</button>
+          <button className="next" onClick={() => setIndex((i) => (i + 1) % pkg.image.length)}>→</button>
         </div>
       </div>
     </div>
