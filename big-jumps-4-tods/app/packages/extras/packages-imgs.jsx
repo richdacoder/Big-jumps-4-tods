@@ -5,6 +5,16 @@ import { useSwipeable } from "react-swipeable";
 
 export default function PackageImages({ pkg, onClose }) {
   const [index, setIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+    setIsFullscreen(!isFullscreen);
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => setIndex((i) => (i + 1) % pkg.image.length),
@@ -15,8 +25,10 @@ export default function PackageImages({ pkg, onClose }) {
 
   return (
     <div className="wrapper">
+
       <div className="image-card-wrapper">
-        <button onClick={onClose}>x</button>
+         <button onClick={onClose}>x</button>
+
         <div className="image-card" {...handlers}>
           <button className="prev"onClick={() => setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1))}>
             ←
@@ -24,7 +36,9 @@ export default function PackageImages({ pkg, onClose }) {
           <img src={pkg.image[index]} alt={pkg.alt} className="images" />
           <button className="next" onClick={() => setIndex((i) => (i + 1) % pkg.image.length)}>→</button>
         </div>
+
       </div>
+
     </div>
   );
 }
