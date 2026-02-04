@@ -15,25 +15,31 @@
 
 /* ===== Card Wrapper ===== */
 .image-card-wrapper {
-  position: fixed;
-  width: 1000%;
-  max-width: 100%;
-  height: 85vh;               /* fills most of screen height */
+  width: 75%;
+  max-width: 900px;       /* prevents it getting too wide on big screens */
+  height: 85vh;
+
+  position: fixed;        /* or absolute depending on layout */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;    /* no separate card background */
+
+  background: transparent;
   border-radius: 12px;
-  overflow: hidden;           /* ensures arrows/buttons stay inside */
+  overflow: hidden;
 }
 
 /* ===== Carousel Image ===== */
 .image-card .images {
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* scales image inside container */
-  border-radius: 0;           /* no card radius needed */
-  display: block;
+  object-fit: contain;   /* scales image inside container */
+  display: flex;
+  justify-content: center;
 }
 
 /* ===== Close Button (X) ===== */
