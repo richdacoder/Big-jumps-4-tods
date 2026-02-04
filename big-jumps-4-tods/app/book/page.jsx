@@ -1,4 +1,5 @@
 'use client';
+import  PhoneNumberFormatter  from './utils/format-phone.jsx'
 import { useState } from 'react';
 import '../styles/book.css';
 import { submitRequest } from './utils/submitRequest';
@@ -19,7 +20,6 @@ export default function BookingPage() {
     theme: '',
     referral: ''
   };
-
   const formatTimestamp = (dateString, timestring) => {
     console.log('datestring and timestring formatimestmat', dateString)
    const date = new Date(dateString);
@@ -45,6 +45,14 @@ export default function BookingPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if(name === "phone"){
+      const newValue = parseInt(value);
+      console.log('handle change', typeof newValue );
+      setFormData({...formData, [name]: newValue});
+      console.log('phone number', formData.phone)
+
+
+    }
 
   };
 
@@ -148,6 +156,11 @@ export default function BookingPage() {
 
         <button type="submit" className="submit-btn">Book Now</button>
       </form>
+      <PhoneNumberFormatter
+      number={formData.phone}
+
+      />
+
     </div>
   );
 }
