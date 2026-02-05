@@ -72,6 +72,7 @@ const handleUpdate = async (e) => {
     }
 
     const updatedRequest = await res.json();
+    alert('Update successful:')
     console.log('Update successful:', updatedRequest);
 
     onUpdate(updatedRequest);
