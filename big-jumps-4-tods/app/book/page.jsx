@@ -85,7 +85,6 @@ export default function BookingPage({formatted}) {
   });
       console.log('Booking submitted:', data);
       console.log(router);
-      alert('Booking submitted successfully!');
       setFormData(initialState);
       router.push(`/confirmation/${data.id}`);
     } catch (err) {
@@ -162,11 +161,43 @@ export default function BookingPage({formatted}) {
 
         {/* Package, Theme, Referral */}
         {['package','theme','referral'].map((field, i) => (
-          <div className="form-row" key={i}>
-            <label>{field.charAt(0).toUpperCase() + field.slice(1)} *</label>
-            <input type="text" name={field} value={formData[field]} onChange={handleChange} required={field === 'package'} />
-          </div>
-        ))}
+  <div className="form-row" key={i}>
+    <label>{field.charAt(0).toUpperCase() + field.slice(1)} *</label>
+
+    {field === "package" ? (
+      <select
+        name="package"
+        value={formData.package}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select package</option>
+        <option value="Basics">Basics</option>
+        <option value="Big white bounce w play house">
+          Big white bounce w play house
+        </option>
+        <option value="Small white bounce house w play house">
+          Small white bounce house w play house
+        </option>
+        <option value="Pink bounce w playhouse">
+          Pink bounce w playhouse
+        </option>
+        <option value="Black bounce w playhouse">
+          Black bounce w playhouse
+        </option>
+      </select>
+    ) : (
+      <input
+        type="text"
+        name={field}
+        value={formData[field]}
+        onChange={handleChange}
+        required={field === 'package'}
+      />
+    )}
+
+  </div>
+))}
 
         <button type="submit" className="submit-btn">Book Now</button>
       </form>
