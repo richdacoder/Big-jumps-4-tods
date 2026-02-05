@@ -1,5 +1,6 @@
 "use client";
-import {useState} from "react"
+import {useState} from "react";
+import BookingPage from "../page.jsx";
 
 export default function PhoneNumberFormatter({number}){
 /*
@@ -16,19 +17,24 @@ export default function PhoneNumberFormatter({number}){
 
 */
 
-const numberFormatter = (value) => {
+  if (!number) return "";
 
-  console.log('look here', value)
-  return value;
-
-}
-console.log('working phone number formatter', numberFormatter(number));
-numberFormatter(number);
-// const [phoneNumber, setphoneNumber] = useState(value || "");
+let transformation = number.replace(/\D/g, "").substring(0, 10);
+if(transformation.length >= 3){transformation = transformation.replace(/^(\d{3})(\d{3})/, "($1)$2-")}
+console.log('transformation look here', transformation, transformation.length);
 
 
 
 
-  return;
+console.log('working phone number formatter', transformation);
+
+
+
+
+  return (
+    <BookingPage
+    formatted={transformation}
+    />
+    )
 
 }
