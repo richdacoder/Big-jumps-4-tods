@@ -4,7 +4,7 @@ import { useState } from 'react';
 import '../styles/book.css';
 import { submitRequest } from './utils/submitRequest';
 import { useRouter } from 'next/navigation';
-export default function BookingPage() {
+export default function BookingPage({formatted}) {
   const initialState = {
     first_name: '',
     last_name: '',
@@ -34,9 +34,21 @@ export default function BookingPage() {
     return date.toISOString();
   }
 
+
   const today = new Date().toISOString().split("T")[0];
 
   const [formData, setFormData] = useState(initialState);
+
+  const PhoneNumberFormatter = (number) => {
+    if (!number) return "";
+
+    let digits = number.replace(/\D/g, "").substring(0, 10);
+
+    if (digits.length <= 3) return digits;             // 1-3 digits: no formatting
+    if (digits.length <= 6) return `(${digits.slice(0,3)})${digits.slice(3)}`;   // 4-6 digits
+    return `(${digits.slice(0,3)})${digits.slice(3,6)}-${digits.slice(6)}`;    // 7-10 digits
+  }
+
 
   const hours = Array.from({ length: 12 }, (_, i) => i + 1);
   const minutes = Array.from({ length: 60 }, (_, i) => i);
@@ -44,18 +56,20 @@ export default function BookingPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    if(name === "phone"){
-      const newValue = parseInt(value);
-      console.log('handle change', typeof newValue );
-      setFormData({...formData, [name]: newValue});
-      console.log('phone number', formData.phone)
 
+    // Update formData, apply formatting only for phone
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === "phone" ? PhoneNumberFormatter(value) : value
+    }));
 
+    // Optional: console logs
+    if (name === "phone") {
+      console.log('Formatted phone:', PhoneNumberFormatter(value));
+    } else {
+      console.log(`${name}:`, value);
     }
-
   };
-
 
   const router = useRouter();
   const handleSubmit = async (e) => {
@@ -156,11 +170,9 @@ export default function BookingPage() {
 
         <button type="submit" className="submit-btn">Book Now</button>
       </form>
-      <PhoneNumberFormatter
+      {/* <PhoneNumberFormatter
       number={formData.phone}
-
-      />
-
-    </div>
+      /> */}
+       </div>
   );
 }
