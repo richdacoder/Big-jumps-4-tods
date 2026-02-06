@@ -5,7 +5,7 @@ import RequestModal from "./extras/pop-up"; // import modal
 import Delete from "./extras/delete.jsx";
 import "../styles/requests.css";
 import "../styles/edit-request.css";
-import "../styles/modal.css"; // Import the separate CSS
+import "../styles/request-modal.css"; // Import the separate CSS
 
 
 export default function RequestsPage() {

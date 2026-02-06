@@ -29,9 +29,9 @@ export default function BookingModal({ booking, onClose }) {
   const hideBookingContent = () => setIsHidden(true);
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="booking-modal-overlay" onClick={onClose}>
       <div
-        className="modal-card"
+        className="booking-modal-card"
         onClick={(e) => {
           onClose;
           e.stopPropagation()}}
@@ -39,7 +39,7 @@ export default function BookingModal({ booking, onClose }) {
         {/* BookingModal content */}
         {!isEditing && !isHidden && (
           <>
-            <div className="modal-header">
+            <div className="booking-modal-header">
               <h2>
                 {booking.first_name} {booking.last_name}
               </h2>
@@ -48,7 +48,7 @@ export default function BookingModal({ booking, onClose }) {
               </button>
             </div>
 
-            <ul className="request-details">
+            <ul className="booking-details">
               <li>
                 <strong>Booking ID:</strong> {booking.id}
               </li>
@@ -87,11 +87,11 @@ export default function BookingModal({ booking, onClose }) {
               </li>
             </ul>
 
-            <div className="modal-actions">
+            <div className="booking-modal-actions">
               <button className="check-button" onClick={onClose}>
                 Close
               </button>
-              <button
+              <button className="booking-edit-button"
                 onClick={() => {
                   setIsEditing(true);
                   hideBookingContent();

@@ -1,3 +1,110 @@
-.request-details input {
-border: none;
+/* ==== Booking Edit Modal Card ==== */
+.modal-card {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #fff3f0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif;
+  color: #333;
+}
+
+/* Header title */
+.modal-card h2 {
+  font-size: 1.4rem;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+/* Close button (same as request) */
+.close-button {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.25s ease;
+}
+
+.close-button:hover {
+  background-color: #ff3b3b;
+}
+
+/* ==== Booking Details List ==== */
+.booking-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.booking-details li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-details li strong {
+  margin-bottom: 0.2rem;
+  color: #ff6b6b;
+}
+
+/* Inputs styled same as request */
+.booking-details input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: none;
+  background: white;
+}
+
+/* ==== Buttons ==== */
+.update-book {
+  background-color: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.update-book:hover {
+  background-color: #4338ca;
+}
+
+.delete-book {
+  background-color: #666;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.delete-book:hover {
+  background-color: #444;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 480px) {
+  .modal-card {
+    padding: 1rem;
+  }
+
+  .booking-details li {
+    flex-direction: column;
+  }
 }

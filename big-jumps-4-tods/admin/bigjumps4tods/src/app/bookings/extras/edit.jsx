@@ -104,7 +104,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
       </button>
 
       <form onSubmit={handleUpdate}>
-        <ul className="request-details">
+        <ul className="booking-details">
           <li>
             <strong>Booking ID:</strong> {booking.id}
           </li>
@@ -153,8 +153,8 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           </li>
         </ul>
 
-        <button type="submit">Update Booking</button>
-        <button type="button" onClick={() => handleDelete(booking.id)}>
+        <button className="update-book" type="submit">Update Booking</button>
+        <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
           Delete Booking
         </button>
       </form>
