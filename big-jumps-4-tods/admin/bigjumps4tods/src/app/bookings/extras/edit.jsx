@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import CheckAvailableBooking from "./check-available-booking.jsx";
+import {ContactUser} from "./contact-user.jsx";
 
 export default function EditBookings({ booking, onClose, formatDate, formatTime }) {
   const today = new Date().toISOString().split('T')[0];
@@ -12,7 +14,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
     const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
   };
-
+console.log('booking', booking)
   // Helper function to convert full date string to "YYYY-MM-DD" for input[type="date"]
   const toDateInput = (dateString) => {
     if (!dateString) return "";
@@ -153,7 +155,11 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           </li>
         </ul>
 
-        <button className="update-book" type="submit">Update Booking</button>
+
+        <button className="update-book" type="button">Check Availability</button>
+        {CheckAvailableBooking() &&
+        (<button className="update-book" type="submit">Update Booking</button>)
+         }
         <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
           Delete Booking
         </button>
