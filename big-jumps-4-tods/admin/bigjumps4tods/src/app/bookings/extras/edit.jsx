@@ -40,6 +40,10 @@ console.log('booking', booking)
   const startTimestamp = `${partyDate} ${startTime}`;
     const endTimestamp   = `${partyDate} ${endTime}`;
 
+    const checkAvailability = () => {
+    }
+
+
   // Submit function for updating booking
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -157,9 +161,15 @@ console.log('booking', booking)
 
 
         <button className="update-book" type="button">Check Availability</button>
-        {CheckAvailableBooking() &&
-        (<button className="update-book" type="submit">Update Booking</button>)
-         }
+         <CheckAvailableBooking
+           date={partyDate}
+           startTime={startTime}
+           endTime={endTime}
+           checkAvailability={checkAvailability}
+
+         />
+        <button className="update-book" type="submit">Update Booking</button>
+
         <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
           Delete Booking
         </button>
