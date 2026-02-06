@@ -1,21 +1,27 @@
 .hide{
   display:none;
 }
-.edit-button{
-    flex: 1;
+
+.booking-edit-button{
   padding: 0.6rem;
   font-weight: bold;
-  color: #c7217f;
+  color: #f9f7f8;
+  background-color: #dd0808;
   border: none;
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.25s ease;
 
 }
-/* RequestModal.css */
+
+.booking-edit-button:hover{
+  background-color: #8a0b0b;
+
+}
+
 
 /* Modal Overlay */
-.modal-overlay {
+.booking-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
