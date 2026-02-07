@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 
-const ContactUser = ({ onClose, request }) => {
+const ContactUser = ({ onClose, booking }) => {
   console.log("contact user here");
 
-  const [email, setEmail] = useState(request.email || "");
+  const [email, setEmail] = useState(booking.email || "");
   const [message, setMessage] = useState("");
 
   const sendMessage = async (e) => {
@@ -30,7 +30,7 @@ const ContactUser = ({ onClose, request }) => {
     console.error('Message fail to send', err)
   }
   };
-  console.log('request object', request)
+  console.log('booking object', booking)
 
 
 
