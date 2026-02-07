@@ -1,8 +1,8 @@
 "use client";
 /*
-- click button
-- create function in edit.jsx (checkBooking)
-- throw set state in that function
+- click button***
+- create function in edit.jsx (checkBooking) ****
+- throw set state in that function*****
 - if its true ->update button if false-> contact user
 - pass date(state), starttime(state) and endtime(state) and the function (checkBooking) to this component
 
@@ -17,26 +17,38 @@
 
   const CheckAvailableBooking = ({date, startTime, endTime, checkAvailability}) => {
 
+    console.log(
+      {
+        'date': date,
+        'start tiem': startTime,
+        'end time': endTime
+      }
+    )
   const checkExistingBooking = async () => {
+    try{
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
-    const [Sdate, bookingStartTime] = bookings.party_start_time.split('T');
-    const [_, bookingEndTime] = bookings.party_end_time.split('T');
-    const bookingDate = Sdate;
-    let availability;
-    const isOverLap = bookings.some( b =>{
-      const [sBookDate, bookingsStartTime] = b.party_start_time.split('T');
-      const [eBookDate, bookingsEndTime] = b.party_end_time.split('T');
-      const bookingsDate = sBookDate && eBookDate;
-      if(bookingStartTime === bookingsStartTime && bookingEndTime === bookingsEndTime && bookingDate === bookingsDate ){
-        availability = true;
-      } else {
-        availability = false
-      }
-      return availability
-    })
-
+    // let availability;
+    // const isOverLap = bookings.some( b =>{
+    //   const [sBookDate, bookingsStartTime] = b.party_start_time.split('T');
+    //   const [eBookDate, bookingsEndTime] = b.party_end_time.split('T');
+    //   const bookingsDate = sBookDate && eBookDate;
+      // if(bookingStartTime === bookingsStartTime && bookingEndTime === bookingsEndTime && bookingDate === bookingsDate ){
+      //   availability = true;
+      // } else {
+      //   availability = false
+      // }availability
+    //   return bookings;
+    // })
+ console.log(bookings);
+} catch(err) {
+console.error(err);
+}
 };
+
+checkExistingBooking();
+console.log(checkExistingBooking)
+
   }
 
 export default CheckAvailableBooking;
