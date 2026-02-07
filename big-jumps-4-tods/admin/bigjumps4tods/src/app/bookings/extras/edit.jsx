@@ -181,9 +181,10 @@ console.log('booking', booking)
           &&
          (<NotAvailable
           booking={booking}
+          formatDate={formatDate}
+          formatTime={formatTime}
          />)
          }
-
     </>
   );
 }

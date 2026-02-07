@@ -7,6 +7,7 @@
 - pass date(state), starttime(state) and endtime(state) and the function (checkBooking) to this component
 
 - go inside database or display it
+- change time format
 - compare desired date and start time and end time to all in database
 - if available pop up upgrade button]
 - if not contact user
@@ -15,7 +16,8 @@
 
 */
 
-  const CheckAvailableBooking = ({date, startTime, endTime, checkAvailability}) => {
+  const CheckAvailableBooking = ({date, startTime, endTime, checkAvailability,formatDate, formatTime
+  }) => {
 
     console.log(
       {
@@ -40,14 +42,13 @@
       // }availability
     //   return bookings;
     // })
- console.log(bookings);
+ console.log('object', bookings);
 } catch(err) {
 console.error(err);
 }
 };
 
 checkExistingBooking();
-console.log(checkExistingBooking)
 
   }
 
