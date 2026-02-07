@@ -30,6 +30,29 @@
     try{
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
+
+    const isOverLap = bookings.some(b => {
+      const desiredStartTime = new Date(`${date}T${ startTime}`);
+      const desiredEndTime = new Date(`${date}T${endTime}`);
+      const existingStartTime = new Date(b.party_start_time);
+      const existingEndTime = new Date(b.party_end_time);
+
+
+      console.log('desired', {
+        'start': desiredStartTime,
+        'end': desiredEndTime
+
+      });
+
+      console.log('existing', {
+        'start': existingStartTime,
+        'end': existingEndTime
+      })
+
+
+
+    });
+
     // let availability;
     // const isOverLap = bookings.some( b =>{
     //   const [sBookDate, bookingsStartTime] = b.party_start_time.split('T');

@@ -18,7 +18,7 @@ export default function BookingModal({ booking, onClose }) {
       : "";
 
   const formatTime = (dateString) =>
-    dateString
+    console.log('time string', dateString)
       ? new Date(dateString).toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "2-digit",
