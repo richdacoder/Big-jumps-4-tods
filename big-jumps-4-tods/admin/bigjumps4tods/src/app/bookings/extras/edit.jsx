@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import CheckAvailableBooking from "./check-available-booking.jsx";
-import ContactUser from "./contact-user.jsx";
+import NotAvailable from "./not-available.jsx";
 
 export default function EditBookings({ booking, onClose, formatDate, formatTime }) {
   const today = new Date().toISOString().split('T')[0];
@@ -162,7 +162,13 @@ console.log('booking', booking)
         </ul>
 
 
-        <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
+        <button className="update-book" type="submit">Update Booking</button>
+
+        <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
+          Delete Booking
+        </button>
+      </form>
+      <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
          <CheckAvailableBooking
            date={partyDate}
            startTime={startTime}
@@ -173,16 +179,11 @@ console.log('booking', booking)
          {
           isAvailable === false
           &&
-         (<ContactUser
+         (<NotAvailable
           booking={booking}
          />)
          }
-        <button className="update-book" type="submit">Update Booking</button>
 
-        <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
-          Delete Booking
-        </button>
-      </form>
     </>
   );
 }
