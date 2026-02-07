@@ -3,7 +3,7 @@
 - click button***
 - create function in edit.jsx (checkBooking) ****
 - throw set state in that function*****
-- if its true ->update button if false-> contact user
+- if its true ->update button if false-> render not available contact user
 - pass date(state), starttime(state) and endtime(state) and the function (checkBooking) to this component
 
 - go inside database or display it
