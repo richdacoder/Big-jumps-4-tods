@@ -174,6 +174,9 @@ console.log('booking', booking)
            startTime={startTime}
            endTime={endTime}
            checkAvailability={checkAvailability}
+           formatDate={formatDate}
+           formatTime={formatTime}
+
 
          />
          {
@@ -181,8 +184,6 @@ console.log('booking', booking)
           &&
          (<NotAvailable
           booking={booking}
-          formatDate={formatDate}
-          formatTime={formatTime}
          />)
          }
     </>
