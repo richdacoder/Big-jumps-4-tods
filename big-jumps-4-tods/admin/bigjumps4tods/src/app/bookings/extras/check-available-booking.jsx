@@ -16,17 +16,15 @@
 
 */
 
-  const CheckAvailableBooking = ({date, startTime, endTime, checkAvailability,formatDate, formatTime
-  }) => {
+  const CheckAvailableBooking = async ({date, startTime, endTime }) => {
 
-    console.log(
-      {
-        'date': date,
-        'start tiem': startTime,
-        'end time': endTime
-      }
-    )
-  const checkExistingBooking = async () => {
+    // console.log(
+    //   {
+    //     'date': date,
+    //     'start tiem': startTime,
+    //     'end time': endTime
+    //   }
+    // )
     try{
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
@@ -37,41 +35,32 @@
       const existingStartTime = new Date(b.party_start_time);
       const existingEndTime = new Date(b.party_end_time);
 
+      // console.log('desired', {
+      //   'start': desiredStartTime,
+      //   'end': desiredEndTime
 
-      console.log('desired', {
-        'start': desiredStartTime,
-        'end': desiredEndTime
+      // });
 
-      });
+      // console.log('existing', {
+      //   'start': existingStartTime,
+      //   'end': existingEndTime
+      // })
 
-      console.log('existing', {
-        'start': existingStartTime,
-        'end': existingEndTime
-      })
+      return desiredStartTime < existingEndTime &&
+      desiredEndTime > existingStartTime;
+
+
 
 
 
     });
 
-    // let availability;
-    // const isOverLap = bookings.some( b =>{
-    //   const [sBookDate, bookingsStartTime] = b.party_start_time.split('T');
-    //   const [eBookDate, bookingsEndTime] = b.party_end_time.split('T');
-    //   const bookingsDate = sBookDate && eBookDate;
-      // if(bookingStartTime === bookingsStartTime && bookingEndTime === bookingsEndTime && bookingDate === bookingsDate ){
-      //   availability = true;
-      // } else {
-      //   availability = false
-      // }availability
-    //   return bookings;
-    // })
- console.log('object', bookings);
 } catch(err) {
 console.error(err);
+return true;
 }
-};
 
-checkExistingBooking();
+
 
   }
 

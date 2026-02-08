@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 const ContactUser = ({ onClose, booking }) => {
-  console.log("contact user here");
 
   const [email, setEmail] = useState(booking.email || "");
   const [message, setMessage] = useState("");
@@ -30,7 +29,7 @@ const ContactUser = ({ onClose, booking }) => {
     console.error('Message fail to send', err)
   }
   };
-  console.log('booking object', booking)
+  // console.log('booking object', booking)
 
 
 
