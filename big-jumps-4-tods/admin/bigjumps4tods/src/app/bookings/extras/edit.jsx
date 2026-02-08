@@ -40,11 +40,17 @@ console.log('booking', booking)
   const startTimestamp = `${partyDate} ${startTime}`;
     const endTimestamp   = `${partyDate} ${endTime}`;
 
-    const [isAvailable, setIsAvailable] = useState(false)
-    const checkAvailability = (availability) => {
-     return setIsAvailable(availability);
-    }
+    const [isAvailable, setIsAvailable] = useState(null)
+    const checkAvailability = async () => {
+      const overlap = await CheckAvailableBooking({
+        partyDate,
+        startTime,
+        endTime
+      });
 
+      setIsAvailable(!overlap);
+    };
+    console.log(isAvailable? 'available': 'not available', isAvailable );
 
   // Submit function for updating booking
   const handleUpdate = async (e) => {
@@ -169,7 +175,7 @@ console.log('booking', booking)
         </button>
       </form>
       <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
-         <CheckAvailableBooking
+         {/* <CheckAvailableBooking
            date={partyDate}
            startTime={startTime}
            endTime={endTime}
@@ -178,7 +184,7 @@ console.log('booking', booking)
            formatTime={formatTime}
 
 
-         />
+         /> */}
          {
           isAvailable === false
           &&
