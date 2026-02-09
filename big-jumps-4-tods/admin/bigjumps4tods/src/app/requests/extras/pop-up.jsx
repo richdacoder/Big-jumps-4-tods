@@ -47,26 +47,19 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
   const handleCheckAvailability = async () => {
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
-    // const [Sdate, requestStartTime] = request.party_start_time.split('T');
-    // const [_, requestEndTime] = request.party_end_time.split('T');
 
     const requestStartTime = request.party_start_time;
     const requestEndTime = request.party_end_time;
 
 
-    // const requestDate = Sdate;
     let availability;
     const isOverLap = bookings.some( b =>{
-      // const [sBookDate, bookingStartTime] = b.party_start_time.split('T');
-      // const [eBookDate, bookingEndTime] = b.party_end_time.split('T');
-      // && requestDate === bookingDate
 
           const  bookingStartTime = b.party_start_time;
           const  bookingEndTime = b.party_end_time;
 
 
 
-      // const bookingDate = sBookDate && eBookDate;
       console.log('book',
       { 'booking': bookingStartTime,
       'booking end': bookingEndTime
@@ -75,17 +68,14 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
         'request': requestStartTime,
         'request end': requestEndTime
       } );
-      if(requestStartTime === bookingStartTime && requestEndTime === bookingEndTime ){
+      if(requestStartTime < bookingEndTime && requestEndTime > bookingStartTime
+        ){
         availability = true;
         console.log('true boy');
-        // console.log('request date',requestDate);
-        // console.log('book date',bookingDate);
 
       } else {
         availability = false;
         console.log('false boy');
-        // console.log('request date',requestDate);
-        // console.log('book date',bookingDate);
 
 
       }
