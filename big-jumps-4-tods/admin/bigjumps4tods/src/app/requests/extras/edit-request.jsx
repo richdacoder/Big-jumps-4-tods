@@ -20,7 +20,6 @@ const toTimeInput = (t) => {
   }
 
   const today = new Date().toISOString().split('T')[0];
- console.log('today yes',today);
 
 
 const [ email, setEmail ] = useState(request.email || "");
@@ -48,7 +47,7 @@ const handleUpdate = async (e) => {
     const startTimestamp = new Date(`${partyDate}T${startTime}:00`).toISOString();
     const endTimestamp = new Date(`${partyDate}T${endTime}:00`).toISOString();
 
-
+    console.log('before update', partyDate);
     const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
@@ -66,6 +65,8 @@ const handleUpdate = async (e) => {
         referral: referral
       })
     });
+    console.log('after update', partyDate);
+
 
     if (!res.ok) {
       throw new Error(`Update failed with status ${res.status}`);
