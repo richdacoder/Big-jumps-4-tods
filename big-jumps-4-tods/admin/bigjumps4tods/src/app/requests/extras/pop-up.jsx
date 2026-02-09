@@ -41,7 +41,7 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
     onClose();
     onDelete(request.id);
   };
-
+//chip sylard and yyosif garcia
   const [availabilityComponent, setAvailabilityComponent] = useState(null);
 
   const handleCheckAvailability = async () => {
@@ -55,6 +55,8 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
       const [sBookDate, bookingStartTime] = b.party_start_time.split('T');
       const [eBookDate, bookingEndTime] = b.party_end_time.split('T');
       const bookingDate = sBookDate && eBookDate;
+      console.log('check', bookingStartTime, bookingEndTime );
+      console.log('check two', requestStartTime, requestEndTime )
       if(requestStartTime === bookingStartTime && requestEndTime === bookingEndTime && requestDate === bookingDate ){
         availability = true;
       } else {
