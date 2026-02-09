@@ -44,6 +44,22 @@
   color: #333;
 }
 
+.not-available-btn{
+  color: #fcfcfc;
+  cursor: pointer;
+  background: #b8b3b3;
+  border: none;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.not-available-btn:hover{
+  background: #8b8888;
+
+}
+
 /* Close button */
 .close-button {
   background: transparent;
