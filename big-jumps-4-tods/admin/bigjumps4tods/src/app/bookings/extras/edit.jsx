@@ -14,7 +14,6 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
     const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
   };
-console.log('booking', booking)
   // Helper function to convert full date string to "YYYY-MM-DD" for input[type="date"]
   const toDateInput = (dateString) => {
     if (!dateString) return "";
@@ -47,6 +46,7 @@ console.log('booking', booking)
         startTime,
         endTime
       });
+      console.log('check party date', partyDate);
 
       setIsAvailable(!overlap);
     };

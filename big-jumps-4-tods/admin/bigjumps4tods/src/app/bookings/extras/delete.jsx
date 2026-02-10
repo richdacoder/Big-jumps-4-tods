@@ -8,7 +8,6 @@ export default function Delete({ bookings }) {
 
     const dueDate = new Date();
     dueDate.setHours(0, 0, 0, 0);
-    console.log('look date', dueDate);
     const removeExpiredBookings = async () => {
       for (const booking of bookings) {
         if (!booking.party_date || !booking.id) continue;
