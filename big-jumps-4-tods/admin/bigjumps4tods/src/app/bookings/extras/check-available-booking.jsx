@@ -12,50 +12,59 @@
 - if available pop up upgrade button]
 - if not contact user
 
-requests:
--  71 | chip       | skylard   | (929)039-4039 | richard.williams5697@yahoo.com | 2026-02-12 | yesisir  | 33 yo ave     |               | 2026-02-12 11:20:00-05 | 2026-02-12 12:30:00-05 | Big white bounce w play house |
-
-
-53 | yosif      | garcia    | 92903940393   | richard.williams5697@yahoo.com | 2026-02-12 | sjianndnad forr eal | 33 yo ave     | sasas         | 2026-02-11 11:20:00-05 | 2026-02-11 12:30:00-05 | how                           | sas   | sadssas  | 2026-01-27 13:53:27.35-05  | 2026-01-27 13:53:27.35-05
-
-bookings:
- 74 | lalalalla  | janurary  | (929)039-4039 | richard.williams5697@yahoo.com | 2026-02-12 |          | 33 yo ave     |               | 2026-02-11 11:20:00-05 | 2026-02-11 12:30:00-05 | Basics
-
 
 
 
 */
 
-  const CheckAvailableBooking = async ({date, startTime, endTime }) => {
+  const CheckAvailableBooking = async ({partyDate, startTime, endTime }) => {
 
-    // console.log(
-    //   {
-    //     'date': date,
-    //     'start tiem': startTime,
-    //     'end time': endTime
-    //   }
-    // )
+    console.log(
+      {
+        'date': partyDate,
+        'start tiem': startTime,
+        'end time': endTime
+      }
+    )
+    const toUTC = (dateString, timeString) => {
+      const [y, m, d] =  dateString.split('-').map(Number);
+      const [hours, mins] = timeString.split(':').map(Number);
+
+      console.log('before utc',  hours, mins,  'split', m, d, y);
+
+      return new Date(Date.UTC(y, m - 1, d, hours, mins))
+    }
+
+    const desiredStartTime = toUTC(partyDate, startTime);
+    const desiredEndTime = toUTC(partyDate, endTime);
+    console.log('desired', desiredStartTime, 'desired end', desiredEndTime);
+
     try{
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
 
     const isOverLap = bookings.some(b => {
-      const desiredStartTime = new Date(`${date}T${ startTime}`);
-      const desiredEndTime = new Date(`${date}T${endTime}`);
+      // const desiredStartTime = new Date(Date.UTC(`${partyDate}T${ startTime}`));
+      // const desiredEndTime = new Date(`${partyDate}T${endTime}`);
       const existingStartTime = new Date(b.party_start_time);
       const existingEndTime = new Date(b.party_end_time);
 
       // console.log('desired', {
       //   'start': desiredStartTime,
-      //   'end': desiredEndTime
-
+      //   'end': desiredEndTime,
+      //   'date': partyDate
       // });
 
       // console.log('existing', {
       //   'start': existingStartTime,
-      //   'end': existingEndTime
+      //   'end': existingEndTime,
+      //   'start no date': b.party_start_time,
+      //   'end no date': b.party_end_time
+
       // })
 
+      // add day plus one day
+      // or convert desired time to utc
       return desiredStartTime < existingEndTime &&
       desiredEndTime > existingStartTime;
 
@@ -64,7 +73,7 @@ bookings:
 
 
     });
-
+    isOverLap
 } catch(err) {
 console.error(err);
 return true;
