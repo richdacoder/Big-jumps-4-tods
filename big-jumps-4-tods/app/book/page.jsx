@@ -21,16 +21,11 @@ export default function BookingPage({formatted}) {
     referral: ''
   };
   const formatTimestamp = (dateString, timestring) => {
-    console.log('datestring and timestring formatimestmat', dateString)
-   const date = new Date(dateString);
-   console.log('date formatimestmap', timestring)
-   const [ hour, minutes ] = timestring.split(':');
-   console.log('hour mintutes formatimestmap', hour, minutes)
-   date.setHours(parseInt(hour, 10));
-   date.setMinutes(parseInt(minutes, 10));
-   date.setSeconds(0);
-   date.setMilliseconds(0);
-   console.log('TIMESTAMP', date);
+    const [y, m, d] = dateString.split('-').map(Number);
+    const [hour, minutes] = timestring.split(':').map(Number);
+
+   const date = new Date(y,m - 1,d,hour,minutes);
+   console.log('TIMESTAMP', date.toISOString());
     return date.toISOString();
   }
 
