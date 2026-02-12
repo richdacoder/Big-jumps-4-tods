@@ -34,6 +34,12 @@ const [ message, setMessage] = useState(request.message|| "");
 const [ theme, setTheme] = useState(request.theme  || "");
 const [ referral, setReferral] = useState(request.referral   || "");
 
+const toUTC = (date, time) => {
+const [y, m, d] = date.split('-').map(Number);
+const [hour, minute] = time.split(':').map(Number);
+return new Date(y, m - 1, d, hour, minute).toISOString();
+
+}
 
 const handleUpdate = async (e) => {
   e.preventDefault();
@@ -44,10 +50,11 @@ const handleUpdate = async (e) => {
 
 
   try {
-    const startTimestamp = new Date(`${partyDate}T${startTime}:00`).toISOString();
-    const endTimestamp = new Date(`${partyDate}T${endTime}:00`).toISOString();
 
-    console.log('before update', partyDate);
+    const startTimestamp = toUTC(partyDate, startTime);
+    const endTimestamp = toUTC(partyDate, endTime);
+
+    console.log('before update', startTimestamp, endTimestamp );
     const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
