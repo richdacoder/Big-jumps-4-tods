@@ -39,18 +39,27 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
   const startTimestamp = `${partyDate} ${startTime}`;
     const endTimestamp   = `${partyDate} ${endTime}`;
 
+    const currentBookingId = booking.id;
     const [isAvailable, setIsAvailable] = useState(null)
     const checkAvailability = async () => {
       const overlap = await CheckAvailableBooking({
         partyDate,
         startTime,
-        endTime
+        endTime,
+        currentBookingId
       });
       console.log('check party date', partyDate);
 
       setIsAvailable(!overlap);
     };
-    console.log(isAvailable? 'available': 'not available', isAvailable );
+    console.log(
+      isAvailable === null
+        ? 'not checked yet'
+        : isAvailable
+          ? 'available'
+          : 'not available',
+      isAvailable
+    );
 
   // Submit function for updating booking
   const handleUpdate = async (e) => {

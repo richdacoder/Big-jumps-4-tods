@@ -17,69 +17,47 @@
 
 */
 
-  const CheckAvailableBooking = async ({partyDate, startTime, endTime }) => {
+  const CheckAvailableBooking = async ({partyDate, startTime, endTime, currentBookingId }) => {
 
     console.log(
       {
         'date': partyDate,
         'start tiem': startTime,
-        'end time': endTime
+        'end time': endTime,
+        'currrent ID': currentBookingId
       }
     )
-    const toUTC = (dateString, timeString) => {
+    const convertDate = (dateString, timeString) => {
 
-      // const newDate = new Date(`${dateString}T${timeString}`);
-      // console.log('new date', newDate )
-      // const [date, time] = newDate.toISOString().split('T');
-      // console.log('date time construct', date, time);
       const [y, m, d] =  dateString.split('-').map(Number);
       const [hours, mins] = timeString.split(':').map(Number);
 
       console.log('before utc',  hours, mins,  'split', m, d, y);
 
-      return new Date(Date.UTC(y, m - 1, d , hours, mins));
+      return new Date(y, m - 1, d , hours, mins);
     }
 
-    const fakeDate = '2026-2-10';
-    const fakeStartTime = '13:00';
-    const fakeEndTime = '15:04';
-    const testSTime =  toUTC(fakeDate, fakeStartTime );
-    const testETime =  toUTC(fakeDate, fakeEndTime );
+    const desiredStartTime = convertDate(partyDate, startTime);
+    const desiredEndTime = convertDate(partyDate, endTime);
 
-
-    const desiredStartTime = toUTC(partyDate, startTime);
-    const desiredEndTime = toUTC(partyDate, endTime);
-    console.log(
-      Intl.DateTimeFormat().resolvedOptions()
-    );
-
-    console.log('desired get utc', desiredStartTime, 'desired end', desiredEndTime);
+    console.log('desired', desiredStartTime, 'desired end', desiredEndTime);
 
     try{
     const res = await fetch('http://localhost:3002/api/bookings');
     const bookings = await res.json();
 
     const isOverLap = bookings.some(b => {
-      const existingStartTime = b.party_start_time;
-      const existingEndTime = b.party_end_time;
-      console.log(
-        Intl.DateTimeFormat().resolvedOptions()
-      );
+      if (b.id === currentBookingId) return false;
+      const existingStartTime = new Date(b.party_start_time);
+      const existingEndTime = new Date(b.party_end_time);
 
       console.log('first name:', b.first_name, 'existing start', existingStartTime, 'existing end', existingEndTime);
 
 
-      // add day plus one day
-      // or convert desired time to utc
       return desiredStartTime < existingEndTime &&
       desiredEndTime > existingStartTime;
-
-
-
-
-
     });
-    isOverLap
+    return isOverLap;
 } catch(err) {
 console.error(err);
 return true;
