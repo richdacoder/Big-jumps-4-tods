@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const requestRouter = require('../routes/request');
 const bookingRouter = require('../routes/booking.js');
+const contactUserRouter = require('../routes/contactUser');
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
