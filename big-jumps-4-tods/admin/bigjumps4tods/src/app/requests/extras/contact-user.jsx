@@ -61,7 +61,7 @@ const ContactUser = ({ onClose, request }) => {
           />
         </div>
 
-        <button type="submit">Send</button>
+        <button onClick={sendMessage} type="submit">Send</button>
       </form>
     </div>
   );
