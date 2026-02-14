@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 const requestRouter = require('../routes/request');
 const bookingRouter = require('../routes/booking.js');
-const contactUserRouter = require('../routes/contactUser');
+const contactUserRouter = require('../routes/contact-user.js');
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
@@ -31,6 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', requestRouter);
 app.use('/api', bookingRouter);
+app.use('/api', contactUserRouter);
 
 // 404 handler
 app.use((req, res, next) => {
