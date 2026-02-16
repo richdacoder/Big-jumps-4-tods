@@ -17,6 +17,7 @@ const ContactUser = ({ onClose, request }) => {
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
+      firstName: request.first_name,
       subject: subject,
       email: email,
       message: message
