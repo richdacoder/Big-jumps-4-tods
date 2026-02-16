@@ -4,6 +4,7 @@ import { useState } from "react";
 const ContactUser = ({ onClose, request }) => {
   console.log("contact user here");
 
+  const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(request.email || "");
   const [message, setMessage] = useState("");
 
@@ -16,6 +17,7 @@ const ContactUser = ({ onClose, request }) => {
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
+      subject: subject,
       email: email,
       message: message
       })
@@ -50,6 +52,17 @@ const ContactUser = ({ onClose, request }) => {
             required
           />
         </div>
+
+        <div>
+      <h2>Subject</h2>
+      <input
+        type="text"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
+        placeholder="Enter subject"
+        required
+      />
+    </div>
 
         <div>
           <h3>Message</h3>
