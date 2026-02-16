@@ -1,23 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const { send } = require("../services/contact-user.js");
+const { sendAdminContactEmail } = require('../services/contact-user');
 
-router.post('/message', async (req, res) => {
+router.post('/admin/contact-user', async (req, res) => {
+  try {
+    const { firstName, email, subject, message } = req.body;
 
-/*
-- req goes here
-- then email and name sent to contact user
+    await sendAdminContactEmail(firstName, email, subject, message);
 
+    res.json({ success: true });
 
-
-*/
-try{
-
-const { email, name } = req.body;
-  console.log('contact user');
-} catch(err){
-  console.error('error')
-}
-
-}
-)
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Email failed' });
+  }
+});

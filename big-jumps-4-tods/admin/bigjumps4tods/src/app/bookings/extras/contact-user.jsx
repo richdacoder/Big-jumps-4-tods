@@ -15,6 +15,7 @@ const ContactUser = ({ onClose, booking }) => {
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
+      firstName: booking.first_name,
       subject: subject,
       email: email,
       message: message
