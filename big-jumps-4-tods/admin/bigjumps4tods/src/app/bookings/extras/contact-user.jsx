@@ -37,13 +37,13 @@ const ContactUser = ({ onClose, booking }) => {
 
   return (
     <div className="popup">
-      <button onClick={onClose}>&times;</button>
+      <button className="booking-close" onClick={onClose}>&times;</button>
 
-      <h1>Contact User</h1>
+      <h1 className="booking-contact-user">Contact User</h1>
 
       <form onSubmit={sendMessage}>
         <div>
-          <h2>Email</h2>
+          <h2 >Email</h2>
           <input
             type="email"
             value={email}
@@ -55,6 +55,7 @@ const ContactUser = ({ onClose, booking }) => {
         <div>
       <h2>Subject</h2>
       <input
+        className="booking-email"
         type="text"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
@@ -66,6 +67,7 @@ const ContactUser = ({ onClose, booking }) => {
         <div>
           <h3>Message</h3>
           <textarea
+            className="booking-messages"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message here"
@@ -73,7 +75,7 @@ const ContactUser = ({ onClose, booking }) => {
           />
         </div>
 
-        <button type="submit">Send</button>
+        <button className="booking-send" type="submit">Send</button>
       </form>
     </div>
   );

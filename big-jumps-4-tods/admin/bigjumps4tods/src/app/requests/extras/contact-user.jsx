@@ -39,7 +39,7 @@ const ContactUser = ({ onClose, request }) => {
 
   return (
     <div className="popup">
-      <button onClick={onClose}>&times;</button>
+      <button className="request-close" onClick={onClose}>&times;</button>
 
       <h1>Contact User</h1>
 
@@ -47,6 +47,7 @@ const ContactUser = ({ onClose, request }) => {
         <div>
           <h2>Email</h2>
           <input
+            className="request-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -57,6 +58,7 @@ const ContactUser = ({ onClose, request }) => {
         <div>
       <h2>Subject</h2>
       <input
+        className="request-subject"
         type="text"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
@@ -68,6 +70,7 @@ const ContactUser = ({ onClose, request }) => {
         <div>
           <h3>Message</h3>
           <textarea
+            className="request-message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message here"
@@ -75,7 +78,7 @@ const ContactUser = ({ onClose, request }) => {
           />
         </div>
 
-        <button onClick={sendMessage} type="submit">Send</button>
+        <button className="request-send" onClick={sendMessage} type="submit">Send</button>
       </form>
     </div>
   );
