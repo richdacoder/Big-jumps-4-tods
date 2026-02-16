@@ -33,6 +33,10 @@ app.use('/api', requestRouter);
 app.use('/api', bookingRouter);
 app.use('/api', contactUserRouter);
 
+console.log('booking', typeof bookingRouter );
+console.log('contact user', typeof contactUserRouter);
+
+
 // 404 handler
 app.use((req, res, next) => {
   next(createError(404));
