@@ -1,32 +1,44 @@
 const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-/*
-- click send button
-- message stores in vairable and mkaes way into req.body
-- req.body to server
-- make a mmessenger api route starting in server page express js
-- make router page with router
-- passing message from react into contact-user function on router
-- message sends
+console.log('before function');
 
+async function sendAdminContactEmail(firstName, email, subject, message) {
+  try {
+    if (!email || !subject || !message) {
+      throw new Error('Missing required email fields');
+    }
 
-future:
-when update to data table is made make function to send th confirm email to user saying that schedule have been update
+    const result = await resend.emails.send({
+      from: 'Big Jumps 4 Tods <onboarding@resend.dev>',
+      to: [email],
+      reply_to: 'Bigjumps4tods@gmail.com',
+      subject: subject,
+      html: `
+        <p>Hi ${firstName || 'there'},</p>
 
+        <p>${message}</p>
 
+        <br/>
 
+        <p>
+          — Big Jumps 4 Tods Team<br/>
+          📞 <a href="tel:+12038437531">(203) 843-7531</a><br/>
+          📧 <a href="mailto:Bigjumps4tods@gmail.com">
+              Bigjumps4tods@gmail.com
+          </a>
+        </p>
+      `
+    });
 
-*/
-async function send() {
-  await resend.emails.send({
-    from:'Big Jumps 4 Tods <onboarding@resend.dev>',
-    to: 'you@example.com',
-    subject: 'Hello',
-    html: '<strong>It works</strong>'
-  });
+    console.log('✅ Admin contact email sent:', result.id);
+
+    return result;
+
+  } catch (error) {
+    console.error('❌ Failed to send admin contact email:', error);
+    throw error;
+  }
 }
 
-module.exports = {
-  send
-};
+module.exports = { sendAdminContactEmail };
