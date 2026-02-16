@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 const ContactUser = ({ onClose, booking }) => {
-
+  const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(booking.email || "");
   const [message, setMessage] = useState("");
 
@@ -15,6 +15,7 @@ const ContactUser = ({ onClose, booking }) => {
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
+      subject: subject,
       email: email,
       message: message
       })
