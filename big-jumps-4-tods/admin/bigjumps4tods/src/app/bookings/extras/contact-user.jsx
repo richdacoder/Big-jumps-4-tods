@@ -51,6 +51,17 @@ const ContactUser = ({ onClose, booking }) => {
         </div>
 
         <div>
+      <h2>Subject</h2>
+      <input
+        type="text"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
+        placeholder="Enter subject"
+        required
+      />
+    </div>
+
+        <div>
           <h3>Message</h3>
           <textarea
             value={message}
