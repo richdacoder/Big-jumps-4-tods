@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import "../../styles/book-contact-user.css"
+
+
 
 const ContactUser = ({ onClose, booking }) => {
   const [subject, setSubject] = useState("");
@@ -27,6 +30,8 @@ const ContactUser = ({ onClose, booking }) => {
       return;
     }
     console.log('message sent', data);
+    setSubject('');
+    setMessage('')
   } catch (err) {
     console.error('Message fail to send', err)
   }
