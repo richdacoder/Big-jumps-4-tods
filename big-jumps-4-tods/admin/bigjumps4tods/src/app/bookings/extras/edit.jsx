@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import CheckAvailableBooking from "./check-available-booking.jsx";
 import NotAvailable from "./not-available.jsx";
 
-export default function EditBookings({ booking, onClose, formatDate, formatTime }) {
+export default function EditBookings({ booking, onClose, formatDate, formatTime, setLockScroll }) {
   const today = new Date().toISOString().split('T')[0];
+
 
   // Helper function to convert full date/time string to "HH:MM" for input[type="time"]
   const toTimeInput = (dateString) => {
@@ -200,6 +201,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
           &&
          (<NotAvailable
           booking={booking}
+          setLockScroll={setLockScroll}
          />)
          }
     </>
