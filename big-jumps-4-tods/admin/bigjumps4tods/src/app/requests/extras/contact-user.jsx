@@ -1,8 +1,13 @@
 "use client";
 import { useState } from "react";
+import { useEffect } from "react";
 
-const ContactUser = ({ onClose, request }) => {
-  console.log("contact user here");
+const ContactUser = ({ onClose, request, setLockScroll }) => {
+
+  useEffect(() => {
+    setLockScroll(true);
+    return () => setLockScroll(false);
+  }, []);
 
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(request.email || "");
@@ -29,6 +34,8 @@ const ContactUser = ({ onClose, request }) => {
       return;
     }
     console.log('message sent', data);
+    setSubject('');
+    setMessage('');
   } catch (err) {
     console.error('Message fail to send', err)
   }
@@ -38,10 +45,10 @@ const ContactUser = ({ onClose, request }) => {
 
 
   return (
-    <div className="popup">
+    <div className="req-popup">
       <button className="request-close" onClick={onClose}>&times;</button>
 
-      <h1>Contact User</h1>
+      <h1 className="request-contact-user">Contact User</h1>
 
       <form onSubmit={sendMessage}>
         <div>
