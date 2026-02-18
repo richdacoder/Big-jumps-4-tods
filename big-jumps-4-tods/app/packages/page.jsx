@@ -84,39 +84,6 @@ export default function PackagesPage() {
       description:"Includes playhouse",
       price:"$550"
     },
-    {
-      id:"chairs-tables",
-      image:["/images/tables-chairs.jpg"] ,
-      alt:"Kids tables and chairs",
-      name:"Kids tables and chairs",
-      description:"10 chairs and 2 tables for the whole day",
-      price:"$125"
-
-
-    },
-    {
-      id:"ball-pit",
-      image:["/images/ball-pit.jpg"] ,
-      alt:"Personalized ball pit",
-      name:"Personalized ball pit",
-      description:"10 chairs and 2 tables for the whole day",
-      price:"$25"
-
-
-    },
-    {
-      id:"Personalized-soft-blocks",
-      image:["/images/tables-chairs.jpg"] ,
-      alt:"Personalized soft blocks",
-      name:"Personalized soft blocks",
-      description:"Custom soft blocks for kids",
-      price:"$10"
-
-
-    }
-
-
-  ,
   ]
 
   return (
@@ -130,6 +97,9 @@ export default function PackagesPage() {
             <li>Outdoor setups: If it rains, reschedule or get half deposit back</li>
             <li>All Toddler Playhouse packages include 4 hours of playtime.
               Additional time beyond the initial 4 hours is available for $40 per extra hour.</li>
+              <li>10 chairs and 2 tables for the whole day for $125</li>
+              <li>Personalized ball pit for $25</li>
+              <li> Custom soft blocks for kids for $10</li>
           </ul>
         </div>
 
