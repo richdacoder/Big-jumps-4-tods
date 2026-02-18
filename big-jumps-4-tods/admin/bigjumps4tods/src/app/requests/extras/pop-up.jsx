@@ -4,11 +4,13 @@ import Available from './available.jsx';
 import NotAvailable from './not-available.jsx';
 import EditRequest from './edit-request.jsx';
 import { useState } from 'react';
+import "../../styles/request-contact-user.css";
 
 
 export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
 
   const[editRequest, setEditRequest] = useState(false);
+  const[lockScroll, setLockScroll] = useState(false);
 
   if (!request) return null;
 
@@ -85,6 +87,7 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
           isOverLap
             ? <NotAvailable
             request={request}
+            setLockScroll={setLockScroll}
             />
             : <Available
                 request={request}
@@ -97,7 +100,7 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className={`modal-card ${lockScroll? "no-scroll" : ""} `} onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>
             {request.first_name} {request.last_name}

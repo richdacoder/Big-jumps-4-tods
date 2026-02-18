@@ -2,7 +2,7 @@
 import ContactUser from "./contact-user";
 import { useState } from "react";
 
-export default function NotAvailable({request}){
+export default function NotAvailable({request, setLockScroll }){
 
   const [ showContact, setShowContact ] = useState(false);
 
@@ -26,6 +26,7 @@ return (
           <ContactUser
             request={request}
             onClose={() => setShowContact(false)}
+            setLockScroll={setLockScroll}
           />
         )}
   </div>
