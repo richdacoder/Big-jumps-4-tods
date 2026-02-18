@@ -7,6 +7,7 @@ import "../styles/book-contact-user.css"
 export default function BookingModal({ booking, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [lockScreen, setLockScreen] = useState(false);
 
   if (!booking) return null;
 
