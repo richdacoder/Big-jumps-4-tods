@@ -142,6 +142,10 @@
   background: #1366c0;
 }
 
+.no-scroll {
+  overflow: clip;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 
-export default function NotAvailable ({booking}){
+export default function NotAvailable ({booking, setLockScroll}){
 
   const [ showContact, setShowContact ] = useState(false);
 
@@ -25,7 +25,9 @@ return(
   (
           <ContactUser
             booking={booking}
+            setLockScroll={setLockScroll}
             onClose={() => setShowContact(false)}
+
           />
         )}
   </div>

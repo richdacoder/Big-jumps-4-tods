@@ -1,12 +1,19 @@
 "use client";
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 
-const ContactUser = ({ onClose, booking }) => {
+const ContactUser = ({ onClose, booking, setLockScroll }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(booking.email || "");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setLockScroll(true);
+    return () => setLockScroll(false);
+  }, []);
+
 
   const sendMessage = async (e) => {
     e.preventDefault();

@@ -7,7 +7,8 @@ import "../styles/book-contact-user.css"
 export default function BookingModal({ booking, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
-  const [lockScreen, setLockScreen] = useState(false);
+  const [lockScroll, setLockScroll] = useState(false);
+
 
   if (!booking) return null;
 
@@ -31,10 +32,11 @@ export default function BookingModal({ booking, onClose }) {
   // Hide main BookingModal content
   const hideBookingContent = () => setIsHidden(true);
 
+
   return (
-    <div className="booking-modal-overlay" onClick={onClose}>
+    <div className= "booking-modal-overlay"  onClick={onClose}>
       <div
-        className="booking-modal-card"
+        className={`booking-modal-card ${lockScroll ? "no-scroll" : ""}`}
         onClick={(e) => {
           onClose;
           e.stopPropagation()}}
@@ -114,6 +116,7 @@ export default function BookingModal({ booking, onClose }) {
               onClose={() => setIsEditing(false)}
               formatDate={formatDate}
               formatTime={formatTime}
+              setLockScroll={setLockScroll}
             />
           </div>
         )}
