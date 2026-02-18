@@ -117,6 +117,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime 
     }
   };
 
+
   return (
     <>
       <h2>
