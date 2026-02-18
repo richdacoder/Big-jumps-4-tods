@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import EditBookings from "./extras/edit.jsx";
+import "../styles/book-contact-user.css"
+
 
 export default function BookingModal({ booking, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
