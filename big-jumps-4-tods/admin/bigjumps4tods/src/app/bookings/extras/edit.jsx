@@ -199,17 +199,17 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
 
 
          /> */}
-{
-  isAvailable === null ? null :
-  isAvailable ? (
-    <IsAvailable />
-  ) : (
-    <NotAvailable
-      booking={booking}
-      setLockScroll={setLockScroll}
-    />
-  )
-}
+        {
+          isAvailable === null ? null :
+          isAvailable ? (
+            <IsAvailable />
+          ) : (
+            <NotAvailable
+              booking={booking}
+              setLockScroll={setLockScroll}
+            />
+          )
+        }
     </>
   );
 }
