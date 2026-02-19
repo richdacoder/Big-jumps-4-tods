@@ -42,7 +42,7 @@ router.put('/booking/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
-
+    const type = "booking"
     const updatedBooking = await db('bookings')
       .where({ id })
       .update(updateData)
@@ -52,6 +52,7 @@ router.put('/booking/:id', async (req, res) => {
       return res.status(404).json({ error: 'Booking not found' });
     }
 
+    //send email confirmation
     res.json({ message: 'Booking updated', booking: updatedBooking[0] });
   } catch (error) {
     console.error(error);

@@ -91,6 +91,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
       const data = await res.json();
       console.log("Updated booking:", data);
       alert("Booking updated successfully!");
+      //send confirmation eamil
       onClose();
     } catch (err) {
       console.error(err);

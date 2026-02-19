@@ -62,6 +62,7 @@ router.put('/requests/:id', async (req, res) => {
     } = req.body;
 
     console.log(party_date, party_start_time );
+    const type = "request";
 
     const updated = await db('requests')
       .where({ id })
@@ -86,6 +87,7 @@ router.put('/requests/:id', async (req, res) => {
       return res.status(404).json({ message: 'Request not found' });
     }
 
+        //send email confirmation
     res.status(200).json(updated[0]);
 
   } catch (err) {

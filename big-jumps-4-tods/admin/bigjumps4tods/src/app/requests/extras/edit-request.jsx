@@ -82,7 +82,7 @@ const handleUpdate = async (e) => {
     const updatedRequest = await res.json();
     alert('Update successful:')
     console.log('Update successful:', updatedRequest);
-
+    //send confirmation email
     onUpdate(updatedRequest);
 
   } catch (err) {

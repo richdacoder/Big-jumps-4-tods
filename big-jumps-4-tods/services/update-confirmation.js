@@ -1,0 +1,23 @@
+const { Resend } = require('resend');
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+async function updateConfirmation(type, toEmail, firstName){
+  return resend.emails.send({
+    from: 'Big Jumps 4 Tods <onboarding@resend.dev>',
+    to: [toEmail],
+    reply_to: 'richardwilliams5697@yahoo.com',
+    subject: 'We received your party request 🎉',
+    html: `
+      <p>Hi ${firstName},</p>
+      <p>Your party request has been received.</p>
+      <p>We’ll contact you shortly to confirm availability.</p>
+    `
+  });
+
+
+}
+
+module.exports = {
+  updateConfirmation
+};
