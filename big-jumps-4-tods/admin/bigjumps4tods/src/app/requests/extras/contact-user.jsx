@@ -12,6 +12,9 @@ const ContactUser = ({ onClose, request, setLockScroll }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(request.email || "");
   const [message, setMessage] = useState("");
+  const [sentMesage, setSentMesage] = useState("");
+  const [visible, setVisible] = useState(false);
+const [isFading, setIsFading] = useState(false);
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -36,12 +39,28 @@ const ContactUser = ({ onClose, request, setLockScroll }) => {
     console.log('message sent', data);
     setSubject('');
     setMessage('');
+    setSentMesage(true);
+
   } catch (err) {
     console.error('Message fail to send', err)
   }
   };
   console.log('request object', request)
 
+  useEffect(() => {
+    if (!sentMesage) return;
+
+    const fadeTimer = setTimeout(() => setIsFading(true), 1500);
+    const removeTimer = setTimeout(() => {
+      setSentMesage(false);
+      setIsFading(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }, [sentMesage]);
 
 
   return (
@@ -87,6 +106,13 @@ const ContactUser = ({ onClose, request, setLockScroll }) => {
 
         <button className="request-send" onClick={sendMessage} type="submit">Send</button>
       </form>
+      {
+        sentMesage &&
+        (
+          <div className={`message-sent ${isFading ? "fade-out" : ""}`}> message sent </div>
+        )
+      }
+
     </div>
   );
 };
