@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import CheckAvailableBooking from "./check-available-booking.jsx";
 import NotAvailable from "./not-available.jsx";
+import IsAvailable from "./available.jsx";
 
 export default function EditBookings({ booking, onClose, formatDate, formatTime, setLockScroll }) {
   const today = new Date().toISOString().split('T')[0];
@@ -198,14 +199,17 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
 
 
          /> */}
-         {
-          isAvailable === false
-          &&
-         (<NotAvailable
-          booking={booking}
-          setLockScroll={setLockScroll}
-         />)
-         }
+{
+  isAvailable === null ? null :
+  isAvailable ? (
+    <IsAvailable />
+  ) : (
+    <NotAvailable
+      booking={booking}
+      setLockScroll={setLockScroll}
+    />
+  )
+}
     </>
   );
 }
