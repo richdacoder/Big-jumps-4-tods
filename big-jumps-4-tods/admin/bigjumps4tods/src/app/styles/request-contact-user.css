@@ -42,7 +42,7 @@
   background: none;
   font-size: 26px;
   cursor: pointer;
-  color: #dfdbdb;
+  color: white;
   transition: 0.2s;
 }
 
@@ -57,6 +57,7 @@
   font-size: 22px;
   font-weight: 700;
   text-align: center;
+  color:white;
 }
 
 /* labels */

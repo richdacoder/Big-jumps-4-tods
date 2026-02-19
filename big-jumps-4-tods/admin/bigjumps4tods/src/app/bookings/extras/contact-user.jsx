@@ -8,6 +8,10 @@ const ContactUser = ({ onClose, booking, setLockScroll }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(booking.email || "");
   const [message, setMessage] = useState("");
+  const [sentMesage, setSentMesage] = useState("");
+  const [visible, setVisible] = useState(false);
+const [isFading, setIsFading] = useState(false);
+
 
   useEffect(() => {
     setLockScroll(true);
@@ -37,16 +41,33 @@ const ContactUser = ({ onClose, booking, setLockScroll }) => {
     }
     console.log('message sent', data);
     setSubject('');
-    setMessage('')
+    setMessage('');
+    setSentMesage(true);
+
   } catch (err) {
     console.error('Message fail to send', err)
   }
   };
   // console.log('booking object', booking)
+  useEffect(() => {
+    if (!sentMesage) return;
+
+    const fadeTimer = setTimeout(() => setIsFading(true), 1500);
+    const removeTimer = setTimeout(() => {
+      setSentMesage(false);
+      setIsFading(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }, [sentMesage]);
 
 
 
   return (
+
     <div className="popup">
       <button className="booking-close" onClick={onClose}>&times;</button>
 
@@ -86,8 +107,14 @@ const ContactUser = ({ onClose, booking, setLockScroll }) => {
           />
         </div>
 
-        <button className="booking-send" type="submit">Send</button>
+        <button className="booking-send" type="submit" >Send</button>
       </form>
+      {
+        sentMesage &&
+        (
+          <div className={`message-sent ${isFading ? "fade-out" : ""}`}> message sent </div>
+        )
+      }
     </div>
   );
 };
