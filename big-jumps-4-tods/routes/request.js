@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../db/db.js');
 const { sendRequestConfirmationEmail } = require('../services/email-services');
+const { updateConfirmation } = require('../services/update-confirmation.js');
 const router = express.Router();
 
 console.log('connecting requests 1');
@@ -48,6 +49,7 @@ router.put('/requests/:id', async (req, res) => {
     const { id } = req.params;
 
     const {
+      first_name,
       email,
       phone,
       party_address,
@@ -61,7 +63,8 @@ router.put('/requests/:id', async (req, res) => {
       referral
     } = req.body;
 
-    console.log(party_date, party_start_time );
+    console.log('first name', first_name );
+
     const type = "request";
 
     const updated = await db('requests')
@@ -88,6 +91,7 @@ router.put('/requests/:id', async (req, res) => {
     }
 
         //send email confirmation
+        updateConfirmation(type, email, first_name )
     res.status(200).json(updated[0]);
 
   } catch (err) {
@@ -122,7 +126,7 @@ router.post('/request', async (req, res, next) => {
     };
 
     console.log('final', normalizedData);
-    console.log('final', normalizedData)
+    console.log('final', normalizedData);
 
 
     const required = [

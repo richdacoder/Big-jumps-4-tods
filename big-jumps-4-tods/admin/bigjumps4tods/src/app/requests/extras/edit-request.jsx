@@ -59,6 +59,7 @@ const handleUpdate = async (e) => {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        first_name: request.first_name,
         email: email,
         phone: phone,
         party_address: partyAddress,
@@ -72,7 +73,7 @@ const handleUpdate = async (e) => {
         referral: referral
       })
     });
-    console.log('after update', partyDate);
+    console.log('after update', request.first_name);
 
 
     if (!res.ok) {
@@ -82,7 +83,6 @@ const handleUpdate = async (e) => {
     const updatedRequest = await res.json();
     alert('Update successful:')
     console.log('Update successful:', updatedRequest);
-    //send confirmation email
     onUpdate(updatedRequest);
 
   } catch (err) {
