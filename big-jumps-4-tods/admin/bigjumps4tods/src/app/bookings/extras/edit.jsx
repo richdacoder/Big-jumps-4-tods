@@ -75,6 +75,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          first_name: booking.first_name,
           email,
           phone,
           party_address: partyAddress,
