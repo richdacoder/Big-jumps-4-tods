@@ -1,6 +1,8 @@
 const express = require('express');
 const db = require('../db/db.js'); // correct import
-const { sendBookingConfirmationEmail } = require('../services/email-booking.js')
+const { sendBookingConfirmationEmail } = require('../services/email-booking.js');
+const { updateConfirmation } = require('../services/update-confirmation.js');
+
 const router = express.Router();
 
 router.get('/bookings', async (req, res, next) => {
@@ -42,7 +44,7 @@ router.put('/booking/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
-    const type = "booking"
+    const type = "booking";
     const updatedBooking = await db('bookings')
       .where({ id })
       .update(updateData)
@@ -53,6 +55,8 @@ router.put('/booking/:id', async (req, res) => {
     }
 
     //send email confirmation
+    updateConfirmation(type, updateData.email, updateData.first_name )
+    console.log('first name', updateData.first_name, updateData.email)
     res.json({ message: 'Booking updated', booking: updatedBooking[0] });
   } catch (error) {
     console.error(error);
