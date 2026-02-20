@@ -41,6 +41,8 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
   const startTimestamp = `${partyDate} ${startTime}`;
     const endTimestamp   = `${partyDate} ${endTime}`;
 
+    console.log('time stamps', typeof partyDate , partyDate  )
+
     const currentBookingId = booking.id;
     const [isAvailable, setIsAvailable] = useState(null)
     const checkAvailability = async () => {

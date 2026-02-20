@@ -8,29 +8,53 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
     type,
     toEmail,
     firstName,
-    partyDate,
-    startTime,
+    'party': (typeof partyDate, partyDate),
+    'start time': typeof startTime,
     endTime
   });
 
-  const formattedDate = new Date(partyDate).toLocaleDateString("en-US", {
+
+
+  const ISOdate = (pDate) => {
+    const [y, m, d] = pDate.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  const date =  type === 'request'?
+  ISOdate(partyDate):
+  new Date(partyDate);
+
+
+
+  console.log('new date', typeof date, date);
+
+  const formattedDate = date.toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+  console.log('format in data', typeof formattedDate, formattedDate)
 
   const formattedStart = new Date(startTime).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
   });
-
   const formattedEnd = new Date(endTime).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
   });
+
+  console.log({
+    'formatted updated':'formated',
+    formattedDate,
+    formattedStart,
+    formattedEnd
+
+    });
+
 
     return resend.emails.send({
     from: 'Big Jumps 4 Tods <onboarding@resend.dev>',

@@ -91,7 +91,7 @@ router.put('/requests/:id', async (req, res) => {
     }
 
         //send email confirmation
-        updateConfirmation(type, email, first_name )
+        updateConfirmation(type, email, first_name, party_date, party_start_time, party_end_time )
     res.status(200).json(updated[0]);
 
   } catch (err) {
