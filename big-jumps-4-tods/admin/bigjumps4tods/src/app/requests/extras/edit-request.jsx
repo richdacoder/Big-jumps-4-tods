@@ -37,7 +37,8 @@ const [ referral, setReferral] = useState(request.referral   || "");
 const toUTC = (date, time) => {
 const [y, m, d] = date.split('-').map(Number);
 const [hour, minute] = time.split(':').map(Number);
-return new Date(y, m - 1, d, hour, minute).toISOString();
+
+return new Date (y, m - 1, d, hour, minute).toISOString();
 
 }
 
@@ -53,6 +54,16 @@ const handleUpdate = async (e) => {
 
     const startTimestamp = toUTC(partyDate, startTime);
     const endTimestamp = toUTC(partyDate, endTime);
+     console.log('time stamps',  partyDate.split('-').map(Number), startTime, endTime  )
+
+     const formattedDate = new Date( endTimestamp ).toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    console.log('format in data', typeof formattedDate, formattedDate)
+
 
     console.log('before update', startTimestamp, endTimestamp );
     const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
