@@ -3,16 +3,6 @@ import '../styles/packages.css';
 import PackageImages from "./extras/packages-imgs.jsx";
 import { useState } from "react";
 
-/*
-- function for all packages
-- includes an array of img urls
-- turn package card into button
-- change hover
-- arrows to go back and forth in photos
-- when click image goes large and you can scroll with arrows
-
-
-*/
 
 export default function PackagesPage() {
 

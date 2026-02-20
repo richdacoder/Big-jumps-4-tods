@@ -7,14 +7,14 @@ export default function PackageImages({ pkg, onClose }) {
   const [index, setIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const toggleFullscreen = () => {
-    if (!isFullscreen) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-    setIsFullscreen(!isFullscreen);
-  };
+  // const toggleFullscreen = () => {
+  //   if (!isFullscreen) {
+  //     document.documentElement.requestFullscreen();
+  //   } else {
+  //     document.exitFullscreen();
+  //   }
+  //   setIsFullscreen(!isFullscreen);
+  // };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => setIndex((i) => (i + 1) % pkg.image.length),
@@ -33,7 +33,7 @@ export default function PackageImages({ pkg, onClose }) {
           <button className="prev"onClick={() => setIndex((i) => (i === 0 ? pkg.image.length - 1 : i - 1))}>
             ←
           </button>
-          <img src={pkg.image[index]} alt={pkg.alt} className="images" />
+          <img src={pkg.image[index]} alt={pkg.alt} className="image" />
           <button className="next" onClick={() => setIndex((i) => (i + 1) % pkg.image.length)}>→</button>
         </div>
 

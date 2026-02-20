@@ -34,7 +34,7 @@
 }
 
 /* ===== Carousel Image ===== */
-.image-card .images {
+.image-card .image {
   width: 100%;
   height: 100%;
   object-fit: contain;   /* scales image inside container */
