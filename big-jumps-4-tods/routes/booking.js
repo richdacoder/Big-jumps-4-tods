@@ -45,6 +45,7 @@ router.put('/booking/:id', async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
     const type = "booking";
+
     const updatedBooking = await db('bookings')
       .where({ id })
       .update(updateData)
@@ -54,10 +55,13 @@ router.put('/booking/:id', async (req, res) => {
       return res.status(404).json({ error: 'Booking not found' });
     }
 
+    const booking = updatedBooking[0];
+
     //send email confirmation
-    updateConfirmation(type, updateData.email, updateData.first_name )
+    updateConfirmation(type, booking.email, booking.first_name, booking.party_date, booking.party_start_time,
+      booking.party_end_time )
     console.log('first name', updateData.first_name, updateData.email)
-    res.json({ message: 'Booking updated', booking: updatedBooking[0] });
+    res.json({ message: 'Booking updated', booking: booking});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
