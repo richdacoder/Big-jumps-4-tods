@@ -5,7 +5,7 @@ const { sendAdminContactEmail } = require('../services/contact-user');
 
 router.post('/message', async (req, res) => {
   try {
-    const { firstName, email, subject, message } = req.body;
+    const { firstName, email, subject, message, party_date,  party_start_time,  party_end_time } = req.body;
 
     if (!email || !subject || !message) {
       return res.status(400).json({ error: 'Missing required fields' });

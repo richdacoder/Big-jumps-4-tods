@@ -31,9 +31,10 @@ const [isFading, setIsFading] = useState(false);
       firstName: booking.first_name,
       subject: subject,
       email: email,
-      message: message
+      message: message,
       })
     })
+
     const data = await res.json();
     if (!res.ok){
       console.error('messaage failed to send', data);
