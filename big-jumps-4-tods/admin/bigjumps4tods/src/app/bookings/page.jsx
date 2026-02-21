@@ -38,7 +38,6 @@ export default function BookingModal({ booking, onClose }) {
       <div
         className={`booking-modal-card ${lockScroll ? "no-scroll" : ""}`}
         onClick={(e) => {
-          onClose;
           e.stopPropagation()}}
       >
         {/* BookingModal content */}
@@ -99,7 +98,6 @@ export default function BookingModal({ booking, onClose }) {
               <button className="booking-edit-button"
                 onClick={() => {
                   setIsEditing(true);
-                  hideBookingContent();
                 }}
               >
                 Edit Booking

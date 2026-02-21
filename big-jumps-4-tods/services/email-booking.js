@@ -11,12 +11,6 @@ async function sendBookingConfirmationEmail(firstName, email, partyDate, startTi
      endTime
   })
 
-  // const toDateTime = (dateStr) => {
-  //   const [y, m, d] = dateStr.split('-').map(Number);
-  //   return new Date(y, m - 1, d);
-  // };
-
-  // const party = toDateTime(partyDate);
 
   const formattedDate = partyDate.toLocaleDateString("en-US", {
     weekday: "long",
