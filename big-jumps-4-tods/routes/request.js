@@ -157,7 +157,12 @@ router.post('/request', async (req, res, next) => {
 
       await sendRequestConfirmationEmail(
         normalizedData.email,
-        normalizedData.first_name
+        normalizedData.first_name,
+        normalizedData.party_date,
+        normalizedData.party_start_time,
+        normalizedData.party_end_time
+
+
       );
 
 
