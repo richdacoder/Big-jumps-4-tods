@@ -26,11 +26,21 @@ const bookings = await db('bookings')
 .insert(req.body)
 .returning('*');
 const booking = bookings[0];
-console.log('check booking info', booking.first_name, booking. email)
+console.log('check booking info',
+  booking.first_name,
+  booking.email,
+  booking.party_date,
+  booking.party_start_time,
+  booking.party_end_time,
+
+)
 
  await sendBookingConfirmationEmail(
    booking.first_name,
-   booking. email
+   booking.email,
+   booking.party_date,
+   booking.party_start_time,
+   booking.party_end_time,
    )
 console.log('after email sent', booking )
 res.status(201).json(bookings);
