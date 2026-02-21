@@ -61,7 +61,7 @@ export default function RequestsPage() {
     setRequests(prev =>
       prev.map(req => req.id === updatedRequest.id ? updatedRequest : req)
     );
-    setSelectedRequest(null);
+    setSelectedRequest(updatedRequest);
   };
 
   return (

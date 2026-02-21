@@ -96,7 +96,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
       console.log("Updated booking:", data);
       alert("Booking updated successfully!");
       //send confirmation eamil
-      onClose();
+      // onClose();
     } catch (err) {
       console.error(err);
       alert("Error updating booking: " + err.message);
@@ -117,6 +117,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
       const data = await res.json();
       console.log("Deleted booking:", data);
       alert("Booking deleted successfully!");
+      onClose();
     } catch (err) {
       console.error(err);
       alert("Error deleting booking: " + err.message);
@@ -183,14 +184,7 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
           </li>
         </ul>
 
-
-        <button className="update-book" type="submit">Update Booking</button>
-
-        <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
-          Delete Booking
-        </button>
-      </form>
-      <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
+        <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
          {/* <CheckAvailableBooking
            date={partyDate}
            startTime={startTime}
@@ -201,6 +195,11 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
 
 
          /> */}
+        <button className="update-book" type="submit">Update Booking</button>
+
+        <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
+          Delete Booking
+        </button>
         {
           isAvailable === null ? null :
           isAvailable ? (
@@ -212,6 +211,8 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
             />
           )
         }
+
+      </form>
     </>
   );
 }
