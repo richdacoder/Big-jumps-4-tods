@@ -23,7 +23,7 @@ export default function PackagesPage() {
       `${basic}/IMG_6490.png`],
       alt:"Basic Package",
        name:"Basic Package",
-       description:"All basic packages include 4 hours of fun! Extra hour: $40/hr.",
+       description:"Includes ball pit, climber,",
        price:"$250 / 4 hours"
     },
     {
@@ -90,6 +90,7 @@ export default function PackagesPage() {
               <li>10 chairs and 2 tables for the whole day for $125</li>
               <li>Personalized ball pit for $25</li>
               <li> Custom soft blocks for kids for $10</li>
+              <li> After 4 hours extra hours: $40/hr.</li>
           </ul>
         </div>
 
