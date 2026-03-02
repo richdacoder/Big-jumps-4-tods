@@ -5,7 +5,10 @@ const app = express();
 const requestRouter = require('../routes/request');
 const bookingRouter = require('../routes/booking.js');
 const contactUserRouter = require('../routes/contact-user.js');
+// const initSecrets = require('@/secrets');
 
+console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
+console.log("RESEND key exists:", !!process.env.RESEND_API_KEY);
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
