@@ -1,6 +1,6 @@
 build:
   docker:
-    web: dockerfile.backend
+    web: Dockerfile.backend
 # Note: Postgres is NOT built here. You use a Heroku Add-on instead.
 setup:
   addons:

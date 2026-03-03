@@ -18,7 +18,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: dockerfile.backend
+      dockerfile: Dockerfile.backend
     container_name: backend
     environment:
       NODE_ENV: production
