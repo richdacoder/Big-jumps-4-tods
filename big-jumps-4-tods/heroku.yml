@@ -1,0 +1,10 @@
+build:
+  docker:
+    backend: dockerfile.backend
+    customer: Dockerfile.customer
+    admin: Dockerfile.admin
+# Note: Postgres is NOT built here. You use a Heroku Add-on instead.
+setup:
+  addons:
+    - plan: heroku-postgresql:essential-0
+      as: DATABASE
