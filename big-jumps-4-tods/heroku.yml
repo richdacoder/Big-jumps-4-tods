@@ -2,6 +2,8 @@ build:
   docker:
     web: Dockerfile
 # Note: Postgres is NOT built here. You use a Heroku Add-on instead.
+run:
+  web: infisical run --client-id=$INFISICAL_UNIVERSAL_AUTH_CLIENT_ID --client-secret=$INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET --projectId 0eaba646-92c7-4cf1-8102-aabb7f2e9c07 --env=prod -- node myapp/app.js
 setup:
   addons:
     - plan: heroku-postgresql:essential-0
