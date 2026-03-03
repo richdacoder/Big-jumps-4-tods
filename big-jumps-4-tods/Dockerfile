@@ -1,5 +1,5 @@
 # Use official Node LTS image
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Install bash & curl for Infisical CLI setup
 RUN apk add --no-cache bash curl
