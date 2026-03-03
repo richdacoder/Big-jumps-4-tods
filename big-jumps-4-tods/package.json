@@ -28,5 +28,9 @@
     "eslint-config-next": "16.0.6",
     "prisma": "^7.1.0",
     "tailwindcss": "^4"
+  },
+  "engines": {
+    "node": "22.x"
   }
+
 }
