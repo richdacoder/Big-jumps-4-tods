@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR /admin
+WORKDIR /bigjumps4tods
 
 # Copy package files and install dependencies
 COPY package*.json ./
@@ -12,7 +12,7 @@ RUN npm install --frozen-lockfile
 COPY . .
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 3001
 
 # Start frontend app
 CMD ["npm","run", "dev"]
