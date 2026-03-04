@@ -5,10 +5,10 @@ FROM node:20-alpine
 WORKDIR ./big-jumps-4-tods
 
 # Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install --frozen-lockfile
 RUN pwd
 RUN ls -la
+COPY package*.json ./
+RUN npm install --frozen-lockfile
 
 # Copy the rest of the frontend files
 COPY . .
