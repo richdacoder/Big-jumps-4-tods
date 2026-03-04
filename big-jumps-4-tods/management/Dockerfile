@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR /bigjumps4tods
+WORKDIR /admin/bigjumps4tods
 
 # Copy package files and install dependencies
 COPY package*.json ./
