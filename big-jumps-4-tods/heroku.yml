@@ -1,12 +1,22 @@
-build:
-  docker:
-    web: Dockerfile
-
-# Note: Postgres is handled by the addon below.
-run:
-  web: infisical run --projectId 0eaba646-92c7-4cf1-8102-aabb7f2e9c07 --env=prod -- node myapp/app.js
-
 setup:
   addons:
     - plan: heroku-postgresql:essential-0
       as: DATABASE
+
+build:
+  docker:
+    web: Dockerfile
+    admin_worker: management/Dockerfile
+    customer_worker: customer/Dockerfile
+
+
+# Note: Postgres is handled by the addon below.
+run:
+  web: infisical run --projectId 0eaba646-92c7-4cf1-8102-aabb7f2e9c07 --env=prod -- node big-jumps-4-tods/myapp/app.js
+
+   admin_worker: |
+     npm start --prefix management --production
+
+  # Your Customer Worker (Professional "Start")
+  customer_worker: |
+    npm start --prefix customer --production
