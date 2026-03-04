@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR ./big-jumps-4-tods-customer
+WORKDIR ./big-jumps-4-tods
 
 # Copy package files and install dependencies
 COPY package*.json ./
