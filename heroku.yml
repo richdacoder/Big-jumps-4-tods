@@ -5,7 +5,7 @@ setup:
 
 build:
   docker:
-    web: Dockerfile
+    web: big-jumps-4-tods/Dockerfile
     admin_worker: big-jumps-4-tods/management/Dockerfile
     customer_worker: big-jumps-4-tods/customer/Dockerfile
 
