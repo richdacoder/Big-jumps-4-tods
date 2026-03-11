@@ -6,8 +6,8 @@ setup:
 build:
   docker:
     web: Dockerfile
-    admin_worker: management/Dockerfile
-    customer_worker: customer/Dockerfile
+    admin_worker: big-jumps-4-tods/management/Dockerfile
+    customer_worker: big-jumps-4-tods/customer/Dockerfile
 
 run:
   web: infisical run --projectId 0eaba646-92c7-4cf1-8102-aabb7f2e9c07 --env=prod -- node big-jumps-4-tods/myapp/app.js
