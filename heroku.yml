@@ -6,7 +6,7 @@ setup:
 build:
   docker:
     web: big-jumps-4-tods/Dockerfile
-    admin_worker: big-jumps-4-tods/management/Dockerfile
+    admin_worker: big-jumps-4-tods/admin/bigjumps4tods/Dockerfile
     customer_worker: big-jumps-4-tods/customer/Dockerfile
 
 run:
