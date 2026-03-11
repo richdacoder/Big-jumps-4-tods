@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR /admin/bigjumps4tods
+WORKDIR /admin
 
 # Copy package files and install dependencies
 RUN pwd
