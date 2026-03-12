@@ -13,7 +13,12 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 // CORS - Allow only your frontend
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+const allowedOrigins = [
+'http://localhost:3000',
+'http://localhost:3001',
+'https://b-j-4-t-manage-2150425cf836.herokuapp.com',
+'https://big-jumps-4-tods-52d72fe9eda1.herokuapp.com'
+];
 
 app.use(cors({
   origin: function(origin, callback){
