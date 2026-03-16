@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3001
 
 # Start frontend app
-CMD ["npm","run"]
+CMD ["npm","run","start"]
