@@ -11,3 +11,4 @@ build:
 
 run:
   web: infisical run --projectId 0eaba646-92c7-4cf1-8102-aabb7f2e9c07 --env=prod -- node big-jumps-4-tods/myapp/app.js
+# create 3 seperate ymls
