@@ -16,7 +16,7 @@ app.get('/health', (req, res) => {
 const allowedOrigins = [
 'http://localhost:3000',
 'http://localhost:3001',
-'https://big-jumps-4-tods.onrender.com/',
+'https://big-jumps-4-tods.onrender.com',
 ];
 
 app.use(cors({

@@ -11,8 +11,7 @@ COPY package*.json ./
 RUN npm install --frozen-lockfile
 
 # Copy the rest of the frontend files
-COPY . .
-
+COPY big-jumps-4-tods/ .
 # Expose port 3000
 EXPOSE 3000
 
