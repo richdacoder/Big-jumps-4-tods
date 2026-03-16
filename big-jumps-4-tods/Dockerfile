@@ -7,7 +7,7 @@ WORKDIR ./app
 # Copy package files and install dependencies
 RUN pwd
 RUN ls -la
-COPY package*.json ./
+COPY big-jumps-4-tods/package*.json ./
 RUN npm install --frozen-lockfile
 
 # Copy the rest of the frontend files
