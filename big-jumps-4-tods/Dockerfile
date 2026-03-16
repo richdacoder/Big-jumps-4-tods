@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR ./big-jumps-4-tods
+WORKDIR ./app
 
 # Copy package files and install dependencies
 RUN pwd
