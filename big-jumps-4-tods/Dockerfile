@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set working directory inside container
-WORKDIR ./app
+WORKDIR /app
 
 # Copy package files and install dependencies
 RUN pwd
