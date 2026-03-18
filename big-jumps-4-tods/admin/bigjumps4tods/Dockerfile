@@ -6,7 +6,7 @@ WORKDIR /admin
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm install --frozen-lockfile
+RUN npm ci
 
 # Copy the rest of the frontend files
 COPY . .
