@@ -14,4 +14,4 @@ COPY big-jumps-4-tods/ .
 RUN npm run build
 
 # Start frontend app
-CMD ["npm","run","start"]
+CMD ["npm", "start", "--", "-p", "10000"]
