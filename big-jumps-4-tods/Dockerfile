@@ -6,12 +6,12 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY big-jumps-4-tods/package*.json ./
-RUN npm install --frozen-lockfile
+RUN npm install
 
 # Copy the rest of the frontend files
 COPY big-jumps-4-tods/ .
-# Expose port 3000
-EXPOSE 3000
+
+RUN npm run build
 
 # Start frontend app
 CMD ["npm","run","start"]
