@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
           <div className="header-inner">
           <Link href="/" className="logo">
               <Image
-                src="/images/IMG_0442_2-removebg-preview.png"
+                src="/images/gallery/logo-bj4t.png"
                 alt="Big Jumps 4 Tods Logo"
                 width={200}
                 height={200}
