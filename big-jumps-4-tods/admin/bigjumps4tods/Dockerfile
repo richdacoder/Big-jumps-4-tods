@@ -11,8 +11,6 @@ RUN npm install
 # Copy the rest of the frontend files
 COPY . .
 
-# Expose port 3000
-EXPOSE 3001
-
+RUN npm run build
 # Start frontend app
-CMD ["npm","run","start"]
+CMD ["npm", "start", "--", "-p", "10000"]
