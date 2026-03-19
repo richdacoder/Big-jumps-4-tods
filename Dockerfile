@@ -24,4 +24,4 @@ COPY . .
 EXPOSE 5000
 
 # Use CMD with Infisical, secrets come from environment
-CMD ["node", "big-jumps-4-tods/myapp/app.js"]
+CMD ["infisical", "node", "big-jumps-4-tods/myapp/app.js"]
