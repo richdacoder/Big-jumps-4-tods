@@ -8,9 +8,20 @@ module.exports = {
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB
     },
+
     migrations: {
       directory: "./migrations"
     }
+  },
+  production: {
+    client: "pg",
+    connection:{
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    },
+    migrations: {
+      directory: "./migrations"
+    },
   },
   local: {
     client: "pg",
