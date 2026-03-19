@@ -11,7 +11,7 @@ export const submitRequest = async (formData) => {
     },
     body: JSON.stringify(formData)
   });
-  console.log('after fetch', structuredClone(formData),
+  console.log('after fetch', structuredClone(formData), window.location.hostname,
   window.location.hostname === 'localhost'
   ? 'http://localhost:3002'
   : 'https://big-jumps-api.onrender.com'
