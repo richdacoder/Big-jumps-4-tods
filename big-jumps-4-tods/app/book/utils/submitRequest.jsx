@@ -1,10 +1,15 @@
 export const submitRequest = async (formData) => {
   console.log('before fetch', structuredClone(formData));
 
-  // if (formData.url === 'http://localhost:3002/api/request'){
+
+  const url =   window.location.hostname === 'localhost'
+  ? 'http://localhost:3002'
+  : 'https://big-jumps-api.onrender.com'
 
 
-  const res = await fetch('http://localhost:3002/api/request', {
+
+
+  const res = await fetch(`${url}/api/request`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -20,7 +25,6 @@ export const submitRequest = async (formData) => {
     const errorData = await res.json();
     throw errorData;
   }
-// }
 return res.json();
 
 };
