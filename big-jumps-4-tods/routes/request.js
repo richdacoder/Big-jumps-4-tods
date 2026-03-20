@@ -157,6 +157,9 @@ router.post('/request', async (req, res, next) => {
       .insert(normalizedData)
       .returning('*');
 
+    console.log('database', newRequest );
+    console.log(newRequest? 'database working' : 'database dont work');
+
       await sendRequestConfirmationEmail(
         normalizedData.email,
         normalizedData.first_name,
@@ -166,6 +169,7 @@ router.post('/request', async (req, res, next) => {
 
 
       );
+      console.log('after email sent');
 
 
     res.status(201).json(newRequest[0]);
