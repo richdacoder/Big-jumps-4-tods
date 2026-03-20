@@ -141,12 +141,14 @@ router.post('/request', async (req, res, next) => {
       'package'
     ];
 
+    console.log('before missing');
+
     const missing = required.filter(f =>
       normalizedData[f] === undefined ||
       normalizedData[f] === null ||
       normalizedData[f] === ''
     );
-
+    console.log('after missing');
     if (missing.length) {
       return res.status(400).json({ error: `Missing required fields: ${missing.join(', ')}` });
     }
