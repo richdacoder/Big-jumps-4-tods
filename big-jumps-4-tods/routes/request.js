@@ -153,7 +153,7 @@ router.post('/request', async (req, res, next) => {
       return res.status(400).json({ error: `Missing required fields: ${missing.join(', ')}` });
     }
 
-    console.log('before database');
+    console.log('before database', db? db : 'not avialable database', db());
 
     const newRequest = await db('requests')
       .insert(normalizedData)
