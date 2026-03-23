@@ -24,12 +24,16 @@ const formatTime = (dateString) =>
   });
 
 
+  const url =   window.location.hostname === 'localhost'
+  ? 'http://localhost:3002'
+  : 'https://big-jumps-api.onrender.com'
+
   useEffect(() => {
     if (!id) return;
 
     const fetchRequest = async () => {
       try {
-        const res = await fetch(`http://localhost:3002/api/requests/${id}`);
+        const res = await fetch(`${url}/api/requests/${id}`);
         const data = await res.json();
         console.log(data)
         setRequest(data);
