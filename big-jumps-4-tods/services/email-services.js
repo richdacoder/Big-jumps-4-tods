@@ -27,6 +27,8 @@ async function sendRequestConfirmationEmail(
 
   const party = toDateTime(partyDate);
 
+  console.log('party date variable', party);
+
   const formattedDate = party.toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
