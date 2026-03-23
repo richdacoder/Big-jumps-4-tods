@@ -16,7 +16,7 @@ function ConfirmRequest() {
     day: "numeric",
     year: "numeric",
   });
-console.log('fomat date confirmationpage', formatDate);
+console.log('fomat date confirmationpage', request.party_date, formatDate(request.party_date));
 
 const formatTime = (dateString) =>
   new Date(dateString).toLocaleTimeString("en-US", {
