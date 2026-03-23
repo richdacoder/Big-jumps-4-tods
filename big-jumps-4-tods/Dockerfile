@@ -1,6 +1,9 @@
 # Use official Node.js LTS image
 FROM node:20-alpine
 
+RUN apk add --no-cache tzdata
+ENV TZ=America/New_York
+
 # Set working directory inside container
 WORKDIR /app
 
