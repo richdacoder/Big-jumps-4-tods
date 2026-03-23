@@ -16,7 +16,6 @@ function ConfirmRequest() {
     day: "numeric",
     year: "numeric",
   });
-console.log('fomat date confirmationpage', request.party_date, formatDate(request.party_date));
 
 const formatTime = (dateString) =>
   new Date(dateString).toLocaleTimeString("en-US", {
@@ -25,12 +24,13 @@ const formatTime = (dateString) =>
   });
 
 
-  const url =   window.location.hostname === 'localhost'
-  ? 'http://localhost:3002'
-  : 'https://big-jumps-api.onrender.com'
-
+  let url = {};
   useEffect(() => {
     if (!id) return;
+
+      url =   window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com'
 
     const fetchRequest = async () => {
       try {
@@ -45,6 +45,11 @@ const formatTime = (dateString) =>
 
     fetchRequest();
   }, [id]);
+
+  if (request){
+  console.log('URL', url);
+  console.log('fomat date confirmationpage', request.party_date, formatDate(request.party_date));
+  }
 
 return (
   <>
