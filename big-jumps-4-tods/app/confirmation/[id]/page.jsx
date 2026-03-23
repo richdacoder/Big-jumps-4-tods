@@ -15,6 +15,7 @@ function ConfirmRequest() {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC"
   });
 
 const formatTime = (dateString) =>
@@ -28,7 +29,7 @@ const formatTime = (dateString) =>
   useEffect(() => {
     if (!id) return;
 
-      url =   window.location.hostname === 'localhost'
+      url = window.location.hostname === 'localhost'
     ? 'http://localhost:3002'
     : 'https://big-jumps-api.onrender.com'
 
