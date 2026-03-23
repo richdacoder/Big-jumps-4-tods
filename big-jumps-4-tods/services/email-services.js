@@ -37,6 +37,9 @@ async function sendRequestConfirmationEmail(
     timeZone: "America/New_York"
   });
 
+  console.log('format date to resend', formattedDate);
+
+
   const formattedStart = new Date(startTime).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
