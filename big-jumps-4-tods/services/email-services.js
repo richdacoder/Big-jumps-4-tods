@@ -27,7 +27,13 @@ async function sendRequestConfirmationEmail(
 
   const party = toDateTime(partyDate);
 
+
   console.log('party date variable', party);
+  console.log('partydate data type', typeof partyDate);
+
+  console.log("Server timezone:", Intl.DateTimeFormat().resolvedOptions().timeZone);
+console.log("Current server time:", new Date().toString());
+console.log("ISO time:", new Date().toISOString());
 
   const formattedDate = party.toLocaleDateString("en-US", {
     weekday: "long",
