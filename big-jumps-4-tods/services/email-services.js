@@ -39,7 +39,7 @@ console.log("Current server time:", new Date().toString());
 console.log("ISO time:", new Date().toISOString());
 console.log('local date string', new Date().toLocaleDateString());
 
-  const formattedDate = party.toLocaleDateString("en-US", {
+  const formattedDate = party.toLocaleString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
