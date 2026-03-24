@@ -22,18 +22,22 @@ async function sendRequestConfirmationEmail(
   // Convert request strings safely to Date (UTC to prevent day shifting)
   const toDateTime = (dateStr) => {
     const [y, m, d] = dateStr.split('-').map(Number);
-    return new Date(y, m - 1, d);
+    return new Date(Date.UTC(y, m - 1, d));
   };
 
   const party = toDateTime(partyDate);
 
+  const end = new Date(endTime);
 
-  console.log('party date variable', party);
-  console.log('partydate data type', typeof partyDate);
+  console.log('party  variable', party.toISOString());
+  console.log('partydate data type', typeof partyDate, 'party variable type', typeof party);
+  console.log('start time', typeof startTime);
+  console.log('new date', party.toString(), 'party timezone',  )
 
   console.log("Server timezone:", Intl.DateTimeFormat().resolvedOptions().timeZone);
 console.log("Current server time:", new Date().toString());
 console.log("ISO time:", new Date().toISOString());
+console.log('local date string', new Date().toLocaleDateString());
 
   const formattedDate = party.toLocaleDateString("en-US", {
     weekday: "long",
