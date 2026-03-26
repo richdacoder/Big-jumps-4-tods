@@ -4,10 +4,12 @@ import {useState, useEffect} from 'react';
 export default function EditRequest({ request, onClose, onUpdate, formatDate, formatTime }){
 
 const toDateInput = (d) =>{
-  const date = new Date(d);
+  const [split] = d.split('T');
+  const date = new Date(`${split}T12:00:00`);
 const month = (date.getMonth() + 1).toString().padStart(2,"0");
 const dateDay = date.getDate().toString().padStart(2,"0");
 const year = date.getFullYear();
+console.log('date d',d,'date split', split,'date', date);
 console.log(`${year}-${month}-${dateDay}`);
   return `${year}-${month}-${dateDay}` ;
 }
