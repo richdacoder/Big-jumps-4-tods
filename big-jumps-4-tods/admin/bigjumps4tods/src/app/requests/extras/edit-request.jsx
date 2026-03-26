@@ -45,6 +45,11 @@ return new Date (y, m - 1, d, hour, minute).toISOString();
 const handleUpdate = async (e) => {
   e.preventDefault();
 
+  const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+  ? 'http://localhost:3002'
+  : 'https://big-jumps-api.onrender.com';
+
+
   if (!email || !phone || !partyAddress || !partyDate || !startTime || !endTime || !pkg) {
     return alert('Please fill in all required fields.');
   }
@@ -66,7 +71,7 @@ const handleUpdate = async (e) => {
 
 
     console.log('before update', startTimestamp, endTimestamp );
-    const res = await fetch(`http://localhost:3002/api/requests/${request.id}`, {
+    const res = await fetch(`${url}/api/requests/${request.id}`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
