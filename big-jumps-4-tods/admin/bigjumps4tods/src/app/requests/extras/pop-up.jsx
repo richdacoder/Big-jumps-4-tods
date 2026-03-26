@@ -14,14 +14,18 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
 
   if (!request) return null;
 
-  const formatDate = (dateString) =>
-    dateString
-      ? new Date(dateString).toLocaleDateString("en-US", {
+  const formatDate = (dateString) =>{
+    if (!dateString) return "";
+
+    const [date] = dateString.split("T");
+
+     return new Date(`${date}T12:00:00`).toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",
           day: "numeric",
         })
-      : "";
+  }
+
   const formatTime = (dateString) =>
     dateString
       ? new Date(dateString).toLocaleTimeString("en-US", {
@@ -30,6 +34,11 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
         })
       : "";
 
+      console.log({
+        'request date':request.party_date,
+        'formated time':formatTime(request.party_date),
+        'formated date':formatDate(request.party_date)
+      })
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this request?")) return;
 
