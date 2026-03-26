@@ -42,8 +42,12 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this request?")) return;
 
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
     try {
-      await fetch(`http://localhost:3002/api/request/${request.id}`, {
+      await fetch(`${url}/api/request/${request.id}`, {
         method: "DELETE",
       });
     } catch (err) {
@@ -56,7 +60,11 @@ export default function RequestModal({ request, onClose, onDelete, onUpdate }) {
   const [availabilityComponent, setAvailabilityComponent] = useState(null);
 
   const handleCheckAvailability = async () => {
-    const res = await fetch('http://localhost:3002/api/bookings');
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
+    const res = await fetch(`${url}/api/bookings`);
     const bookings = await res.json();
 
     const requestStartTime = request.party_start_time;

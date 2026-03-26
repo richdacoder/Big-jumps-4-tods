@@ -45,14 +45,18 @@ export default function RequestsPage() {
   if (loading) return <p className="loading">Loading requests...</p>;
   if (error) return <p className="error">{error}</p>;
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString) =>{
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
+
+    const [date] = dateString.split("T");
+
+     return new Date(`${date}T12:00:00`).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+  }
+
   const formatTime = (dateString) =>
   dateString
     ? new Date(dateString).toLocaleTimeString("en-US", {
