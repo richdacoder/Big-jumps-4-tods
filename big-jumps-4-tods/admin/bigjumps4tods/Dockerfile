@@ -8,7 +8,7 @@ ENV TZ=America/New_York
 WORKDIR /admin
 
 # Copy package files and install dependencies
-COPY bigjumps4tods/package*.json ./
+COPY  big-jumps-4-tods/admin/bigjumps4tods/package*.json ./
 RUN npm install
 RUN ls -la
 
