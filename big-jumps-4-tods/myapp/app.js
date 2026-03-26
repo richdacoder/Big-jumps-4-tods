@@ -17,6 +17,7 @@ const allowedOrigins = [
 'http://localhost:3000',
 'http://localhost:3001',
 'https://big-jumps-4-tods.onrender.com',
+'https://big-jumps-4-tods-admin.onrender.com'
 ];
 
 app.use(cors({
