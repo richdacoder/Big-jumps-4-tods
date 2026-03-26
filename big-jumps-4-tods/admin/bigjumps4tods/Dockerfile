@@ -10,9 +10,10 @@ WORKDIR /admin
 # Copy package files and install dependencies
 COPY bigjumps4tods/package*.json ./
 RUN npm install
+RUN ls -la
 
 # Copy the rest of the frontend files
-COPY . .
+COPY bigjumps4tods/ .
 
 RUN npm run build
 # Start frontend app
