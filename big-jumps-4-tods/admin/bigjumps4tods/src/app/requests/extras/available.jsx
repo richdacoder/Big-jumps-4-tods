@@ -1,8 +1,12 @@
 "use client";
 
 export default function Available({request,onClose, onDelete}){
+  const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+  ? 'http://localhost:3002'
+  : 'https://big-jumps-api.onrender.com';
+
   const createBooking = async () => {
-    const res = await fetch('http://localhost:3002/api/booking', {
+    const res = await fetch(`${url}/api/booking`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -19,7 +23,11 @@ return data;
   }
 
   const deleteRequest = async () => {
-    const res = await fetch(`http://localhost:3002/api/request/${request.id}`,{
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
+    const res = await fetch(`${url}/api/request/${request.id}`,{
       method:'DELETE'
     })
     console.log('deleted', res.body);
