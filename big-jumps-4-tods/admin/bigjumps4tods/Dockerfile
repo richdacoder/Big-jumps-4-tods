@@ -13,7 +13,7 @@ RUN npm install
 RUN ls -la
 
 # Copy the rest of the frontend files
-COPY bigjumps4tods/ .
+COPY big-jumps-4-tods/admin/bigjumps4tods/ .
 
 RUN npm run build
 # Start frontend app
