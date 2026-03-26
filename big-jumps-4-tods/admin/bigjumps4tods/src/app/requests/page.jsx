@@ -14,10 +14,16 @@ export default function RequestsPage() {
   const [error, setError] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
+  const url =   window.location.hostname === 'localhost'
+  ? 'http://localhost:3002'
+  : 'https://big-jumps-api.onrender.com'
+
+  console.log(url);
+
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await fetch("http://localhost:3002/api/requests");
+        const res = await fetch(`${url}/api/requests`);
         if (!res.ok) throw new Error("Failed to fetch requests");
 
         const data = await res.json();
