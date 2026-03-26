@@ -14,13 +14,16 @@ export default function RequestsPage() {
   const [error, setError] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
-  const url =   window.location.hostname === 'localhost'
-  ? 'http://localhost:3002'
-  : 'https://big-jumps-api.onrender.com'
 
-  console.log(url);
 
   useEffect(() => {
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
+
+    console.log("Fetching from:", url);
+
     const fetchRequests = async () => {
       try {
         const res = await fetch(`${url}/api/requests`);
