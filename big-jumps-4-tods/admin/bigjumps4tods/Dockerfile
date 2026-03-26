@@ -1,11 +1,14 @@
 # Use official Node.js LTS image
 FROM node:20-alpine
 
+RUN apk add --no-cache tzdata
+ENV TZ=America/New_York
+
 # Set working directory inside container
 WORKDIR /admin
 
 # Copy package files and install dependencies
-COPY package*.json ./
+COPY bigjumps4tods/package*.json ./
 RUN npm install
 
 # Copy the rest of the frontend files
