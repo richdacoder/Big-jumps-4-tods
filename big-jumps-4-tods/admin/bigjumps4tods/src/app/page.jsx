@@ -35,8 +35,12 @@ const HomePage = () => {
   // Fetch bookings once on mount
   useEffect(() => {
     const fetchBookings = async () => {
+      const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+      ? 'http://localhost:3002'
+      : 'https://big-jumps-api.onrender.com';
+
       try {
-        const res = await fetch("http://localhost:3002/api/bookings");
+        const res = await fetch(`${url}/api/bookings`);
         if (!res.ok) throw new Error("Fail to fetch bookings");
         const data = await res.json();
         setBookings(data);
