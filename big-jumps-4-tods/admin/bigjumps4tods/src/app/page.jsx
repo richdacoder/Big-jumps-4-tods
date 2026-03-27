@@ -11,14 +11,17 @@ const HomePage = () => {
   const [selectedBooking, setSelectedBooking] = useState(null);
 
   // Format dates safely
-  const formatDate = (dateString) => {
+  const formatDate = (dateString) =>{
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
+
+    const [date] = dateString.split("T");
+
+     return new Date(`${date}T12:00:00`).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+  }
 
   const formatTime = (timeString) => {
     if (!timeString) return "";
