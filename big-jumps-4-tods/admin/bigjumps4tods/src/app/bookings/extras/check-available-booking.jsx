@@ -1,6 +1,9 @@
 "use client";
 
   const CheckAvailableBooking = async ({partyDate, startTime, endTime, currentBookingId }) => {
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
 
     console.log(
       {
@@ -26,7 +29,7 @@
     console.log('desired', desiredStartTime, 'desired end', desiredEndTime);
 
     try{
-    const res = await fetch('http://localhost:3002/api/bookings');
+    const res = await fetch(`${url}/api/bookings`);
     const bookings = await res.json();
 
     const isOverLap = bookings.some(b => {
