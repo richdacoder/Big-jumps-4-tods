@@ -12,14 +12,17 @@ export default function BookingModal({ booking, onClose }) {
 
   if (!booking) return null;
 
-  const formatDate = (dateString) =>
-    dateString
-      ? new Date(dateString).toLocaleDateString("en-US", {
+  const formatDate = (dateString) =>{
+    if (!dateString) return "";
+
+    const [date] = dateString.split("T");
+
+     return new Date(`${date}T12:00:00`).toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",
           day: "numeric",
         })
-      : "";
+  }
 
   const formatTime = (dateString) =>
     dateString
