@@ -17,14 +17,16 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
     return `${hours}:${minutes}`;
   };
   // Helper function to convert full date string to "YYYY-MM-DD" for input[type="date"]
-  const toDateInput = (dateString) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
+  const toDateInput = (d) =>{
+    const [split] = d.split('T');
+    const date = new Date(`${split}T12:00:00`);
+  const month = (date.getMonth() + 1).toString().padStart(2,"0");
+  const dateDay = date.getDate().toString().padStart(2,"0");
+  const year = date.getFullYear();
+  console.log('date d',d,'date split', split,'date', date);
+  console.log(`${year}-${month}-${dateDay}`);
+    return `${year}-${month}-${dateDay}` ;
+  }
 
   // State for editable fields
   const [email, setEmail] = useState(booking.email || "");
@@ -68,13 +70,17 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
   // Submit function for updating booking
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
 
     if (!email || !phone || !partyAddress || !partyDate || !startTime || !endTime || !pkg) {
       return alert('Please fill in all required fields.');
     }
 
     try {
-      const res = await fetch(`http://localhost:3002/api/booking/${booking.id}`, {
+      const res = await fetch(`${url}/api/booking/${booking.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -105,8 +111,12 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
 
   //fetch delete
   const handleDelete = async (bookingId) => {
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
     try {
-      const res = await fetch(`http://localhost:3002/api/booking/${bookingId}`, {
+      const res = await fetch(`${url}/api/booking/${bookingId}`, {
         method: "DELETE",
       });
 
@@ -186,16 +196,6 @@ export default function EditBookings({ booking, onClose, formatDate, formatTime,
         </form>
 
         <button className="update-book" type="button" onClick={checkAvailability}>Check Availability</button>
-         {/* <CheckAvailableBooking
-           date={partyDate}
-           startTime={startTime}
-           endTime={endTime}
-           checkAvailability={checkAvailability}
-           formatDate={formatDate}
-           formatTime={formatTime}
-
-
-         /> */}
         <button className="update-book" onClick={handleUpdate}>Update Booking</button>
 
         <button className="delete-book" type="button" onClick={() => handleDelete(booking.id)}>
