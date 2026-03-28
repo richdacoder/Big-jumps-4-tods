@@ -21,8 +21,12 @@ const [isFading, setIsFading] = useState(false);
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
+
     try{
-    const res = await fetch('http://localhost:3002/api/message', {
+    const res = await fetch(`${url}/api/message`, {
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
