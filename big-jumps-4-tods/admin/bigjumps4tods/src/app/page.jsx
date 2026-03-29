@@ -52,8 +52,8 @@ const HomePage = () => {
         setBookings(data);
         console.log(data);
       } catch (err) {
-        console.error(err);
         setError(err);
+        console.error(err);
       } finally {
         setLoading(false);
       }
