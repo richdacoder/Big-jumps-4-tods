@@ -33,6 +33,7 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "America/New_York"
   });
   console.log('format in data', typeof formattedDate, formattedDate)
 
