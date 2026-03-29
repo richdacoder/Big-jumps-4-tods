@@ -5,6 +5,9 @@ import { useEffect } from "react";
 export default function Delete({ bookings }) {
   useEffect(() => {
     if (!bookings || bookings.length === 0) return;
+    const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+    ? 'http://localhost:3002'
+    : 'https://big-jumps-api.onrender.com';
 
     const dueDate = new Date();
     dueDate.setHours(0, 0, 0, 0);
@@ -22,7 +25,7 @@ export default function Delete({ bookings }) {
               party_date: partyDate
             })
 
-            await fetch(`http://localhost:3002/api/booking/${booking.id}`, {
+            await fetch(`${url}/api/booking/${booking.id}`, {
               method: "DELETE",
               headers: { "Content-Type": "application/json" },
             });

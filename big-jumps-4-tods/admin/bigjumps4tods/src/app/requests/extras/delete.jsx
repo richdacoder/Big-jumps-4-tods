@@ -14,13 +14,17 @@ export default function Delete({ requests }) {
     const removeExpiredRequests = async () => {
       for (const req of requests) {
         if (!req.party_date || !req.id) continue;
+        const url = typeof window !== "undefined" && window.location.hostname === 'localhost'
+        ? 'http://localhost:3002'
+        : 'https://big-jumps-api.onrender.com';
+
 
         const partyDate = new Date(req.party_date);
 
         if (dateNow > partyDate) {
           try {
             console.log("Deleting expired request:", req.id, partyDate);
-            await fetch(`http://localhost:3002/api/request/${req.id}`, {
+            await fetch(`${url}/api/request/${req.id}`, {
               method: "DELETE",
               headers: { "Content-Type": "application/json" },
             });
