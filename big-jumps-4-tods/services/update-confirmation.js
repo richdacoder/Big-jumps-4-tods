@@ -41,11 +41,13 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
+    timeZone: "America/New_York"
   });
   const formattedEnd = new Date(endTime).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
+    timeZone: "America/New_York"
   });
 
   console.log({
