@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 const HomePage = () => {
   const [bookings, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
 
   // Format dates safely
   const formatDate = (dateString) =>{
@@ -50,11 +53,18 @@ const HomePage = () => {
         console.log(data);
       } catch (err) {
         console.error(err);
+        setError(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchBookings();
   }, []);
+
+  if (loading) return <p className="loading">Loading Bookings...</p>;
+  if (error) return <p className="error">{error}</p>;
+
 
   return (
     <section className="site-main">
