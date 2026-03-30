@@ -91,6 +91,20 @@ export default function PackagesPage() {
               <li>Personalized ball pit for $25</li>
               <li> Custom soft blocks for kids for $10</li>
               <li> After 4 hours extra hours: $40/hr.</li>
+              <li>each package includes: </li>
+              <li>-2 hoppers </li>
+              <li>-slide</li>
+              <li> -ball pit (Matching theme balls)</li>
+              <li>-Soft Obstacle Course</li>
+              <li>-See Saw</li>
+              <li>-Softplay Tunnel </li>
+              <li>-Softplay Rocker</li>
+              <li>-Ride On Car</li>
+              <li>-Soft Blocks</li>
+              <li>-Climber</li>
+              <li>-Gates</li>
+              <li> -Mats</li>
+              <li>-Shoe Rack</li>
           </ul>
         </div>
 

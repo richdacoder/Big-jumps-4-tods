@@ -12,7 +12,6 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
  // 2. Check how JavaScript "sees" these as Dates
  console.log("--- JS INTERPRETATION ---");
  console.log("As Date object:", new Date(startTime).toString());
- console.log("Is it UTC?", startTime.includes('Z') ? "YES (Z found)" : "NO (Local/Raw)");
 
  // 3. Check the "Noon Fix" result
  const testNoon = new Date(`${partyDate}T12:00:00`);
