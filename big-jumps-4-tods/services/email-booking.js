@@ -11,8 +11,10 @@ async function sendBookingConfirmationEmail(firstName, email, partyDate, startTi
      endTime
   })
 
+  const [dateOfParty] = partyDate.toISOString().split('T');
+  console.log('date of party', dateOfParty);
 
-  const formattedDate = new Date(`${partyDate}T12:00:00`).toLocaleDateString("en-US", {
+  const formattedDate = new Date(`${dateOfParty}T12:00:00`).toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -33,6 +35,8 @@ async function sendBookingConfirmationEmail(firstName, email, partyDate, startTi
     hour12: true,
     timeZone: "America/New_York"
   });
+
+  console.log('format date to resend', formattedDate);
 
   try {
     const result = await resend.emails.send({

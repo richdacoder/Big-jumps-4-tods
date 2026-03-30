@@ -19,20 +19,6 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
  console.log("Noon Fix Result:", testNoon.toLocaleString("en-US", { timeZone: "America/New_York" }));
  console.log("-----------------------");
 
-
-  const ISOdate = (pDate) => {
-    const [y, m, d] = pDate.split('-').map(Number);
-    return new Date(y, m - 1, d);
-  }
-
-  const date =  type === 'request'?
-  ISOdate(partyDate):
-  new Date(partyDate);
-
-
-
-  // console.log('new date', typeof date, date);
-
   const formattedDate = new Date(`${partyDate}T12:00:00`).toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
