@@ -12,7 +12,7 @@ async function sendBookingConfirmationEmail(firstName, email, partyDate, startTi
   })
 
 
-  const formattedDate = partyDate.toLocaleDateString("en-US", {
+  const formattedDate = new Date(`${partyDate}T12:00:00`).toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",

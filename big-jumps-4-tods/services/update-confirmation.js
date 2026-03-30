@@ -3,16 +3,21 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function updateConfirmation(type, toEmail, firstName, partyDate, startTime, endTime){
-  console.log({
-    'updated':'update booking',
-    type,
-    toEmail,
-    firstName,
-    'party': (typeof partyDate, partyDate),
-    'start time': typeof startTime,
-    endTime
-  });
+ // 1. Check the Raw Data from Database
+ console.log("--- RAW DATA CHECK ---");
+ console.log("Raw partyDate:", partyDate);
+ console.log("Raw startTime:", startTime);
+ console.log("Raw endTime:", endTime);
 
+ // 2. Check how JavaScript "sees" these as Dates
+ console.log("--- JS INTERPRETATION ---");
+ console.log("As Date object:", new Date(startTime).toString());
+ console.log("Is it UTC?", startTime.includes('Z') ? "YES (Z found)" : "NO (Local/Raw)");
+
+ // 3. Check the "Noon Fix" result
+ const testNoon = new Date(`${partyDate}T12:00:00`);
+ console.log("Noon Fix Result:", testNoon.toLocaleString("en-US", { timeZone: "America/New_York" }));
+ console.log("-----------------------");
 
 
   const ISOdate = (pDate) => {
@@ -26,9 +31,9 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
 
 
 
-  console.log('new date', typeof date, date);
+  // console.log('new date', typeof date, date);
 
-  const formattedDate = date.toLocaleDateString("en-US", {
+  const formattedDate = new Date(`${partyDate}T12:00:00`).toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -57,6 +62,8 @@ async function updateConfirmation(type, toEmail, firstName, partyDate, startTime
     formattedEnd
 
     });
+    console.log("Server timezone:", Intl.DateTimeFormat().resolvedOptions().timeZone);
+    console.log("Current server time:", new Date().toString());
 
 
     return resend.emails.send({
