@@ -92,7 +92,7 @@ export default function BookingPage({formatted}) {
       <h1>Book Your Party</h1>
       <form className="booking-form" onSubmit={handleSubmit}>
         {/* First Name / Last Name / Phone / Email */}
-        {['first_name','last_name','phone','email'].map((field, i) => (
+        {['First Name','Last Name','Phone','Email'].map((field, i) => (
           <div className="form-row" key={i}>
             <label>{field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} *</label>
             <input
