@@ -50,12 +50,13 @@ export default function BookingPage({formatted}) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+console.log('SPOTTTT 11111');
     // Update formData, apply formatting only for phone
     setFormData(prev => ({
       ...prev,
       [name]: name === "phone" ? PhoneNumberFormatter(value) : value
     }));
+    console.log('SPOTTTT 222222')
 
     // Optional: console logs
     if (name === "phone") {
@@ -63,14 +64,21 @@ export default function BookingPage({formatted}) {
     } else {
       console.log(`${name}:`, value);
     }
+    console.log('SPOTTTT 33333')
+
   };
+
+  console.log('SPOTTTT 44444')
 
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('SPOTTTT 5555')
+
     const startTimeStamp = formatTimestamp(formData. party_date, formData.party_start_time);
     const endTimeStamp = formatTimestamp(formData. party_date, formData.party_end_time);
+    console.log('SPOTTTT 666666')
 
     try {
     const data = await submitRequest({...formData,
@@ -86,6 +94,8 @@ export default function BookingPage({formatted}) {
       alert(err.error || 'Submission failed');
     }
   };
+  console.log('SPOTTTT 777777')
+
 
   return (
     <div className="booking-page">
