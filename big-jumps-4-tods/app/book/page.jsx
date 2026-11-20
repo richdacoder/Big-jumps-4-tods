@@ -94,7 +94,7 @@ console.log('SPOTTTT 11111');
       alert(err.error || 'Submission failed');
     }
   };
-  console.log('SPOTTTT 777777')
+  console.log('SPOTTTT 777777');
 
 
   return (
@@ -102,7 +102,7 @@ console.log('SPOTTTT 11111');
       <h1>Book Your Party</h1>
       <form className="booking-form" onSubmit={handleSubmit}>
         {/* First Name / Last Name / Phone / Email */}
-        {['First Name','Last Name','Phone','Email'].map((field, i) => (
+        {['first_name','last_name','phone','email'].map((field, i) => (
           <div className="form-row" key={i}>
             <label>{field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} *</label>
             <input
